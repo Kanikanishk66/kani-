@@ -497,7 +497,7 @@ class App {
     if (whatsappBtn) {
       whatsappBtn.addEventListener("click", () => {
         const text = encodeURIComponent("Hello Kani Vision Studio, I am interested in starting a creative 3D / Design project with you.");
-        window.open(`https://wa.me/?text=${text}`, "_blank");
+        window.open(`https://wa.me/919500899152?text=${text}`, "_blank");
       });
     }
   }
@@ -707,7 +707,7 @@ class App {
     if (waSend) {
       const message = `*Project Request: Kani Vision Studio*\n\n*Name:* ${data.name}\n*Email:* ${data.email}\n*Phone:* ${data.phone || 'N/A'}\n*Service:* ${data.service}\n*Budget:* ${data.budget}\n*Project Details:*\n${data.details}`;
       waSend.onclick = () => {
-        window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, "_blank");
+        window.open(`https://wa.me/919500899152?text=${encodeURIComponent(message)}`, "_blank");
       };
     }
 

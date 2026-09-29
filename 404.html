@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08090d">
   <title>404 — Lost in the Virtual Space | Kani Vision Studio</title>
   <meta name="description" content="The coordinate you are searching for does not exist in 3D coordinate space. Return to Kani Vision Studio.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%2308090d'/><polygon points='16,4 27,10 27,22 16,28 5,22 5,10' fill='none' stroke='%238b5cf6' stroke-width='2'/><polygon points='16,4 27,10 16,16 5,10' fill='%236366f1' opacity='0.7'/><polygon points='16,16 27,10 27,22 16,28' fill='%238b5cf6' opacity='0.5'/><polygon points='16,16 5,10 5,22 16,28' fill='%2306b6d4' opacity='0.6'/></svg>">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
-
-  <!-- Vercel Web Analytics -->
-  <script>
-    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-  </script>
-  <script defer src="/_vercel/insights/script.js"></script>
-
   <style>
+    body {
+      min-height: 100vh;
+      background: #08090d;
+    }
+
     .not-found-page {
       min-height: 100vh;
       display: flex;
@@ -22,69 +22,206 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 40px 24px;
+      padding: 40px 24px 64px;
       position: relative;
       overflow: hidden;
-      background: radial-gradient(circle at 50% 40%, #151829 0%, #08090d 70%);
+      background:
+        radial-gradient(circle at 50% 35%, rgba(99, 102, 241, 0.16) 0%, rgba(6, 182, 212, 0.06) 18%, transparent 38%),
+        radial-gradient(circle at 50% 100%, rgba(139, 92, 246, 0.14) 0%, transparent 40%),
+        #08090d;
+    }
+
+    .nf-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 10;
+      padding: 28px 32px 0;
+    }
+
+    .brand-mini {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-heading);
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(15, 17, 24, 0.6);
+      backdrop-filter: blur(10px);
+      border-radius: 999px;
+      padding: 10px 16px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .mini-mark {
+      width: 24px;
+      height: 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.25), rgba(6, 182, 212, 0.2));
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-weight: 800;
+      color: var(--accent-cyan);
     }
 
     .nf-grid-lines {
       position: absolute;
       inset: 0;
-      background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
       background-size: 60px 60px;
-      transform: perspective(600px) rotateX(60deg) translateY(100px);
+      transform: perspective(700px) rotateX(66deg) translateY(110px);
       transform-origin: center bottom;
+      opacity: 0.7;
       pointer-events: none;
     }
 
-    .nf-code {
-      font-family: var(--font-heading);
-      font-size: clamp(80px, 14vw, 180px);
-      font-weight: 900;
-      line-height: 1;
-      letter-spacing: -6px;
-      background: linear-gradient(135deg, #a855f7 0%, #6366f1 50%, #06b6d4 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 8px;
-      filter: drop-shadow(0 0 40px rgba(139, 92, 246, 0.4));
+    .nf-glow {
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.3;
+      pointer-events: none;
     }
 
-    .nf-headline {
-      font-family: var(--font-heading);
-      font-size: clamp(28px, 4vw, 48px);
-      font-weight: 800;
-      color: #ffffff;
-      letter-spacing: -1px;
-      text-transform: uppercase;
-      margin-bottom: 16px;
+    .nf-glow--violet {
+      background: rgba(139, 92, 246, 0.4);
+      top: 15%;
+      left: 18%;
     }
 
-    .nf-desc {
-      font-size: 16px;
-      color: var(--text-secondary);
-      max-width: 520px;
-      line-height: 1.7;
-      margin-bottom: 36px;
+    .nf-glow--cyan {
+      background: rgba(6, 182, 212, 0.35);
+      right: 20%;
+      bottom: 18%;
+    }
+
+    .container.nf-content {
+      position: relative;
+      z-index: 10;
+      width: min(100%, 760px);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     .nf-telemetry {
       font-family: var(--font-mono);
       font-size: 12px;
       color: var(--accent-cyan);
-      margin-bottom: 24px;
+      margin-bottom: 12px;
       letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .nf-code {
+      font-family: var(--font-heading);
+      font-size: clamp(90px, 14vw, 190px);
+      font-weight: 900;
+      line-height: 0.9;
+      letter-spacing: -7px;
+      background: linear-gradient(135deg, #a855f7 0%, #6366f1 50%, #06b6d4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+      filter: drop-shadow(0 0 36px rgba(139, 92, 246, 0.38));
+    }
+
+    .nf-headline {
+      font-family: var(--font-heading);
+      font-size: clamp(30px, 4vw, 52px);
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -1px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .nf-desc {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 580px;
+      line-height: 1.75;
+      margin-bottom: 36px;
+    }
+
+    .nf-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-bright);
+      padding: 16px 30px;
+      border-radius: var(--radius-pill);
+      transition: all var(--trans-fast);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.4);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      .nf-header {
+        padding: 20px 16px 0;
+      }
+
+      .brand-mini {
+        font-size: 10px;
+        letter-spacing: 1.2px;
+        padding: 8px 12px;
+      }
+
+      .nf-actions {
+        flex-direction: column;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+        justify-content: center;
+      }
     }
   </style>
 </head>
 <body>
   <div class="not-found-page">
     <div class="nf-grid-lines"></div>
+    <div class="nf-glow nf-glow--violet"></div>
+    <div class="nf-glow nf-glow--cyan"></div>
 
-    <div class="container" style="position: relative; z-index: 10;">
+    <header class="nf-header">
+      <a href="index.html" class="brand-mini" aria-label="Return to Kani Vision Studio home">
+        <span class="mini-mark">K</span>
+        <span>Kani Vision Studio</span>
+      </a>
+    </header>
+
+    <div class="container nf-content">
       <div class="nf-telemetry">ERROR: 0x404 // NULL_TRANSFORM_MATRIX</div>
       <div class="nf-code">404</div>
       <h1 class="nf-headline">LOST IN THE VIRTUAL SPACE.</h1>
@@ -92,9 +229,14 @@
         The coordinate you are attempting to render does not exist or has been shifted in 3D space. Let's redirect you back to the active studio.
       </p>
 
-      <a href="index.html" class="btn-primary">
-        <span>Back to Studio →</span>
-      </a>
+      <div class="nf-actions">
+        <a href="index.html" class="btn-primary">
+          <span>Back to Studio →</span>
+        </a>
+        <a href="viewer-3d.html" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+          <span>Open 3D Studio ↗</span>
+        </a>
+      </div>
     </div>
   </div>
 </body>
