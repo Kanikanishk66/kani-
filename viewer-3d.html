@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Studio Sandbox Viewer | Kani Vision Studio</title>
+  <meta name="description" content="Interactive 3D model viewer and shader studio for Kani Vision Studio. Rotate, zoom, and inspect 3D assets in real-time WebGL.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%2308090d'/><polygon points='16,4 27,10 27,22 16,28 5,22 5,10' fill='none' stroke='%238b5cf6' stroke-width='2'/></svg>">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <style>
+    body {
+      background-color: #06070a;
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+    }
+    .viewer-layout {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      height: 100vh;
+      width: 100vw;
+    }
+    .canvas-viewport {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 50%, #151829 0%, #06070a 80%);
+    }
+    #full-canvas {
+      width: 100%;
+      height: 100%;
+      cursor: grab;
+    }
+    #full-canvas:active {
+      cursor: grabbing;
+    }
+    .hud-header {
+      position: absolute;
+      top: 24px;
+      left: 28px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .hud-title {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 1px;
+    }
+    .hud-badge {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(6, 182, 212, 0.15);
+      border: 1px solid #06b6d4;
+      color: #38bdf8;
+    }
+    .viewer-controls-panel {
+      background: rgba(14, 16, 24, 0.95);
+      backdrop-filter: blur(20px);
+      border-left: 1px solid var(--border-subtle);
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow-y: auto;
+      z-index: 20;
+    }
+    .control-block {
+      margin-bottom: 24px;
+    }
+    .control-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .mode-btn {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all var(--trans-fast);
+    }
+    .mode-btn.active, .mode-btn:hover {
+      background: var(--accent-violet);
+      color: #ffffff;
+      border-color: var(--accent-violet);
+      box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+    }
+    .telemetry-box {
+      background: #090a10;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-top: 16px;
+    }
+    @media (max-width: 900px) {
+      .viewer-layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 280px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="viewer-layout">
+    <!-- Viewport -->
+    <div class="canvas-viewport">
+      <div class="hud-header">
+        <a href="index.html" class="mode-btn" style="background: rgba(255,255,255,0.1); color: #fff;">← Back to Studio</a>
+        <div class="hud-title">3D STANDALONE STUDIO</div>
+        <div class="hud-badge">OPEN TAB // WEBGL 60FPS</div>
+      </div>
+      <div id="full-canvas" title="Orbit with Mouse/Touch Drag • Zoom with Mouse Wheel"></div>
+    </div>
+
+    <!-- Sidebar Controls -->
+    <div class="viewer-controls-panel">
+      <div>
+        <div class="control-block">
+          <span class="control-label">3D OBJECT SELECTION</span>
+          <div class="btn-row">
+            <button class="mode-btn active" data-model="drone">Cyber Drone</button>
+            <button class="mode-btn" data-model="poly">Sculpture</button>
+            <button class="mode-btn" data-model="torus">Torus Knot</button>
+          </div>
+        </div>
+
+        <div class="control-block">
+          <span class="control-label">SURFACE SHADER</span>
+          <div class="btn-row">
+            <button class="mode-btn active" data-shader="pbr">PBR Metallic</button>
+            <button class="mode-btn" data-shader="wireframe">Wireframe</button>
+            <button class="mode-btn" data-shader="clay">Studio Clay</button>
+            <button class="mode-btn" data-shader="glow">Neon Glow</button>
+          </div>
+        </div>
+
+        <div class="control-block">
+          <span class="control-label">LIGHTING ENVIRONMENT</span>
+          <div class="btn-row">
+            <button class="mode-btn active" data-light="cyber">Cyberpunk Violet</button>
+            <button class="mode-btn" data-light="cyan">Electric Cyan</button>
+            <button class="mode-btn" data-light="amber">Warm Gold</button>
+            <button class="mode-btn" data-light="studio">Studio Daylight</button>
+          </div>
+        </div>
+
+        <div class="control-block">
+          <span class="control-label">ANIMATION SPEED</span>
+          <div class="btn-row">
+            <button class="mode-btn active" id="btn-toggle-rotate">Auto-Rotate: On</button>
+            <button class="mode-btn" id="btn-reset-cam">Reset View</button>
+          </div>
+        </div>
+
+        <div class="telemetry-box">
+          <div>ASSET: <span id="tel-asset" style="color: #38bdf8;">AEGIS_DRONE_MK4</span></div>
+          <div>POLYGONS: <span style="color: #c084fc;">32,480 QUADS</span></div>
+          <div>MATERIALS: <span style="color: #4ade80;">PBR_TITANIUM_EXR</span></div>
+          <div>LIGHTING: <span id="tel-light" style="color: #f59e0b;">CYBER_VIOLET</span></div>
+        </div>
+      </div>
+
+      <div style="margin-top: 24px;">
+        <a href="index.html#contact" class="btn-primary" style="width: 100%; justify-content: center;">
+          <span>Request Custom 3D Asset →</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let scene, camera, renderer, currentGroup, meshes = {}, lights = {};
+    let isDragging = false, prevMouse = { x: 0, y: 0 };
+    let autoRotate = true, activeShader = 'pbr';
+
+    function init() {
+      const container = document.getElementById('full-canvas');
+      const w = container.clientWidth || window.innerWidth * 0.7;
+      const h = container.clientHeight || window.innerHeight;
+
+      scene = new THREE.Scene();
+      camera = new THREE.PerspectiveCamera(45, w / h, 0.1, 100);
+      camera.position.set(0, 0, 7);
+
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setSize(w, h);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.3;
+      container.appendChild(renderer.domElement);
+
+      currentGroup = new THREE.Group();
+      scene.add(currentGroup);
+
+      // Models
+      buildModels();
+      setupLights();
+      setupEvents(container);
+      animate();
+    }
+
+    function buildModels() {
+      // 1. Drone
+      const droneGroup = new THREE.Group();
+      const pbrMat = new THREE.MeshPhysicalMaterial({ color: 0x1f2438, metalness: 0.85, roughness: 0.2, clearcoat: 1.0 });
+      const ringMat = new THREE.MeshPhysicalMaterial({ color: 0x8b5cf6, metalness: 0.9, roughness: 0.15 });
+      const lensMat = new THREE.MeshPhysicalMaterial({ color: 0x06b6d4, transmission: 0.9, transparent: true, opacity: 0.85 });
+
+      const core = new THREE.Mesh(new THREE.SphereGeometry(1.3, 32, 32), pbrMat);
+      droneGroup.add(core);
+
+      const ring = new THREE.Mesh(new THREE.TorusGeometry(1.65, 0.08, 16, 64), ringMat);
+      ring.rotation.x = Math.PI / 2;
+      droneGroup.add(ring);
+
+      const wingL = new THREE.Mesh(new THREE.BoxGeometry(0.9, 0.08, 0.5), pbrMat);
+      wingL.position.set(-1.9, 0, 0);
+      const wingR = wingL.clone();
+      wingR.position.set(1.9, 0, 0);
+      droneGroup.add(wingL);
+      droneGroup.add(wingR);
+
+      const eye = new THREE.Mesh(new THREE.CylinderGeometry(0.4, 0.4, 0.2, 32), lensMat);
+      eye.rotation.x = Math.PI / 2;
+      eye.position.set(0, 0, 1.25);
+      droneGroup.add(eye);
+
+      meshes.drone = droneGroup;
+      currentGroup.add(droneGroup);
+
+      // 2. Polyhedral Sculpture
+      const polyGeom = new THREE.IcosahedronGeometry(2.1, 1);
+      meshes.poly = new THREE.Mesh(polyGeom, pbrMat.clone());
+      meshes.poly.visible = false;
+      currentGroup.add(meshes.poly);
+
+      // 3. Torus Knot
+      const knotGeom = new THREE.TorusKnotGeometry(1.6, 0.45, 128, 32, 2, 3);
+      meshes.torus = new THREE.Mesh(knotGeom, pbrMat.clone());
+      meshes.torus.visible = false;
+      currentGroup.add(meshes.torus);
+    }
+
+    function setupLights() {
+      lights.ambient = new THREE.AmbientLight(0x101322, 2.5);
+      scene.add(lights.ambient);
+
+      lights.key = new THREE.DirectionalLight(0x8b5cf6, 4.0);
+      lights.key.position.set(5, 6, 4);
+      scene.add(lights.key);
+
+      lights.rim = new THREE.DirectionalLight(0x06b6d4, 3.5);
+      lights.rim.position.set(-5, -4, -3);
+      scene.add(lights.rim);
+    }
+
+    function setupEvents(dom) {
+      dom.addEventListener('mousedown', e => {
+        isDragging = true;
+        prevMouse = { x: e.clientX, y: e.clientY };
+      });
+      window.addEventListener('mouseup', () => isDragging = false);
+      dom.addEventListener('mousemove', e => {
+        if (!isDragging) return;
+        const dx = e.clientX - prevMouse.x;
+        const dy = e.clientY - prevMouse.y;
+        currentGroup.rotation.y += dx * 0.01;
+        currentGroup.rotation.x += dy * 0.01;
+        prevMouse = { x: e.clientX, y: e.clientY };
+      });
+
+      dom.addEventListener('wheel', e => {
+        e.preventDefault();
+        camera.position.z = Math.min(Math.max(camera.position.z + e.deltaY * 0.005, 3), 12);
+      }, { passive: false });
+
+      window.addEventListener('resize', () => {
+        const w = dom.clientWidth;
+        const h = dom.clientHeight;
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+        renderer.setSize(w, h);
+      });
+
+      // UI Model Switch
+      document.querySelectorAll('[data-model]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('[data-model]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const m = btn.getAttribute('data-model');
+          Object.keys(meshes).forEach(k => meshes[k].visible = (k === m));
+          document.getElementById('tel-asset').textContent = m.toUpperCase() + '_MODEL';
+        });
+      });
+
+      // Shader Switch
+      document.querySelectorAll('[data-shader]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('[data-shader]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const sh = btn.getAttribute('data-shader');
+          setShader(sh);
+        });
+      });
+
+      // Light Switch
+      document.querySelectorAll('[data-light]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('[data-light]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const lt = btn.getAttribute('data-light');
+          setLight(lt);
+        });
+      });
+
+      // Rotate Toggle
+      const rotBtn = document.getElementById('btn-toggle-rotate');
+      rotBtn.addEventListener('click', () => {
+        autoRotate = !autoRotate;
+        rotBtn.textContent = autoRotate ? 'Auto-Rotate: On' : 'Paused';
+        rotBtn.classList.toggle('active', autoRotate);
+      });
+
+      // Reset Cam
+      document.getElementById('btn-reset-cam').addEventListener('click', () => {
+        camera.position.set(0, 0, 7);
+        currentGroup.rotation.set(0, 0, 0);
+      });
+    }
+
+    function setShader(sh) {
+      activeShader = sh;
+      currentGroup.traverse(child => {
+        if (child.isMesh) {
+          if (sh === 'wireframe') {
+            child.material.wireframe = true;
+            child.material.color.setHex(0x38bdf8);
+          } else if (sh === 'clay') {
+            child.material.wireframe = false;
+            child.material.color.setHex(0x94a3b8);
+            child.material.roughness = 0.8;
+            child.material.metalness = 0.1;
+          } else if (sh === 'glow') {
+            child.material.wireframe = false;
+            child.material.color.setHex(0xec4899);
+            child.material.emissive.setHex(0x831843);
+            child.material.roughness = 0.1;
+            child.material.metalness = 0.9;
+          } else {
+            child.material.wireframe = false;
+            child.material.color.setHex(0x1f2438);
+            child.material.emissive.setHex(0x000000);
+            child.material.roughness = 0.2;
+            child.material.metalness = 0.85;
+          }
+        }
+      });
+    }
+
+    function setLight(lt) {
+      document.getElementById('tel-light').textContent = lt.toUpperCase();
+      if (lt === 'cyan') {
+        lights.key.color.setHex(0x06b6d4);
+        lights.rim.color.setHex(0x38bdf8);
+      } else if (lt === 'amber') {
+        lights.key.color.setHex(0xf59e0b);
+        lights.rim.color.setHex(0xd97706);
+      } else if (lt === 'studio') {
+        lights.key.color.setHex(0xffffff);
+        lights.rim.color.setHex(0x94a3b8);
+      } else {
+        lights.key.color.setHex(0x8b5cf6);
+        lights.rim.color.setHex(0x06b6d4);
+      }
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      if (autoRotate && currentGroup) {
+        currentGroup.rotation.y += 0.006;
+      }
+      renderer.render(scene, camera);
+    }
+
+    window.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <radialGradient id="brandBg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#141724" />
+      <stop offset="60%" stop-color="#0b0d13" />
+      <stop offset="100%" stop-color="#040507" />
+    </radialGradient>
+    <linearGradient id="tokenGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+    <linearGradient id="tokenGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+    <filter id="cardShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#000000" flood-opacity="0.6" />
+    </filter>
+  </defs>
+
+  <rect width="1200" height="800" fill="url(#brandBg)" />
+
+  <!-- Grid Blueprint lines -->
+  <g stroke="#ffffff" stroke-opacity="0.04" stroke-width="1">
+    <line x1="100" y1="0" x2="100" y2="800" />
+    <line x1="300" y1="0" x2="300" y2="800" />
+    <line x1="500" y1="0" x2="500" y2="800" />
+    <line x1="700" y1="0" x2="700" y2="800" />
+    <line x1="900" y1="0" x2="900" y2="800" />
+    <line x1="1100" y1="0" x2="1100" y2="800" />
+    <line x1="0" y1="200" x2="1200" y2="200" />
+    <line x1="0" y1="400" x2="1200" y2="400" />
+    <line x1="0" y1="600" x2="1200" y2="600" />
+  </g>
+
+  <!-- Left: Master Brand Identity Tile (Black Card with Holographic Geometric Logo) -->
+  <g transform="translate(140, 180)" filter="url(#cardShadow)">
+    <rect x="0" y="0" width="400" height="480" rx="24" fill="#0f111a" stroke="rgba(255,255,255,0.1)" stroke-width="1.5" />
+    
+    <!-- Logo Grid Construction Circles (Subtle Rulers) -->
+    <circle cx="200" cy="200" r="120" fill="none" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3,3" />
+    <circle cx="200" cy="200" r="80" fill="none" stroke="rgba(255,255,255,0.08)" stroke-dasharray="4,4" />
+    <line x1="80" y1="200" x2="320" y2="200" stroke="rgba(255,255,255,0.06)" stroke-dasharray="2,2" />
+    <line x1="200" y1="80" x2="200" y2="320" stroke="rgba(255,255,255,0.06)" stroke-dasharray="2,2" />
+
+    <!-- Quantum Labs Monogram Logo (Interlocking Hexagon / Möbius Q) -->
+    <path d="M200,120 L270,160 L270,240 L200,280 L130,240 L130,160 Z" fill="none" stroke="url(#tokenGrad1)" stroke-width="12" stroke-linejoin="round" />
+    <path d="M200,160 L240,185 L240,215 L200,240 L160,215 L160,185 Z" fill="none" stroke="url(#tokenGrad2)" stroke-width="8" stroke-linejoin="round" />
+    <line x1="230" y1="230" x2="280" y2="280" stroke="#06b6d4" stroke-width="12" stroke-linecap="round" />
+
+    <!-- Brand Typography -->
+    <text x="200" y="360" font-family="'Space Grotesk', sans-serif" font-size="28" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="4">QUANTUM LABS</text>
+    <text x="200" y="390" font-family="'Space Grotesk', monospace" font-size="12" fill="#94a3b8" text-anchor="middle" letter-spacing="2">VISUAL DESIGN SYSTEM // v3.0</text>
+  </g>
+
+  <!-- Right: Design Tokens, Palette & Component Matrix -->
+  <!-- 1. Color Palette Tokens -->
+  <g transform="translate(600, 180)" filter="url(#cardShadow)">
+    <rect x="0" y="0" width="460" height="130" rx="20" fill="#0f111a" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+    <text x="24" y="32" font-family="'Space Grotesk', monospace" font-size="11" fill="#64748b" letter-spacing="2">COLOR TOKENS // SYSTEM PALETTE</text>
+    
+    <!-- Swatch Chips -->
+    <g transform="translate(24, 50)">
+      <!-- Swatch 1 -->
+      <rect x="0" y="0" width="70" height="50" rx="8" fill="#8b5cf6" />
+      <text x="0" y="66" font-family="'Space Grotesk', monospace" font-size="10" fill="#94a3b8">#8B5CF6</text>
+      <!-- Swatch 2 -->
+      <rect x="85" y="0" width="70" height="50" rx="8" fill="#06b6d4" />
+      <text x="85" y="66" font-family="'Space Grotesk', monospace" font-size="10" fill="#94a3b8">#06B6D4</text>
+      <!-- Swatch 3 -->
+      <rect x="170" y="0" width="70" height="50" rx="8" fill="#1e293b" />
+      <text x="170" y="66" font-family="'Space Grotesk', monospace" font-size="10" fill="#94a3b8">#1E293B</text>
+      <!-- Swatch 4 -->
+      <rect x="255" y="0" width="70" height="50" rx="8" fill="#090b10" stroke="#334155" stroke-width="1" />
+      <text x="255" y="66" font-family="'Space Grotesk', monospace" font-size="10" fill="#94a3b8">#090B10</text>
+      <!-- Swatch 5 -->
+      <rect x="340" y="0" width="70" height="50" rx="8" fill="#ffffff" />
+      <text x="340" y="66" font-family="'Space Grotesk', monospace" font-size="10" fill="#94a3b8">#FFFFFF</text>
+    </g>
+  </g>
+
+  <!-- 2. Typography Hierarchy Card -->
+  <g transform="translate(600, 340)" filter="url(#cardShadow)">
+    <rect x="0" y="0" width="460" height="150" rx="20" fill="#0f111a" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+    <text x="24" y="32" font-family="'Space Grotesk', monospace" font-size="11" fill="#64748b" letter-spacing="2">TYPOGRAPHY SCALES // SPACE GROTESK</text>
+    <text x="24" y="68" font-family="'Space Grotesk', sans-serif" font-size="28" font-weight="700" fill="#ffffff">Display Heading 01</text>
+    <text x="24" y="100" font-family="'Space Grotesk', sans-serif" font-size="18" font-weight="500" fill="#38bdf8">Secondary Subheading • Semibold</text>
+    <text x="24" y="126" font-family="'Inter', sans-serif" font-size="12" fill="#94a3b8">Fluid typography scale powered by modern clamp CSS tokens.</text>
+  </g>
+
+  <!-- 3. Component Specs Card -->
+  <g transform="translate(600, 520)" filter="url(#cardShadow)">
+    <rect x="0" y="0" width="460" height="140" rx="20" fill="#0f111a" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+    <text x="24" y="32" font-family="'Space Grotesk', monospace" font-size="11" fill="#64748b" letter-spacing="2">BUTTON &amp; PILL VARIANTS</text>
+    <!-- Buttons -->
+    <g transform="translate(24, 52)">
+      <!-- Primary Pill -->
+      <rect x="0" y="0" width="120" height="42" rx="21" fill="url(#tokenGrad1)" />
+      <text x="60" y="26" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">PRIMARY →</text>
+      <!-- Secondary Glass Pill -->
+      <rect x="140" y="0" width="130" height="42" rx="21" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
+      <text x="205" y="26" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="600" fill="#f8fafc" text-anchor="middle">SECONDARY</text>
+      <!-- Status Badge -->
+      <rect x="290" y="6" width="110" height="30" rx="15" fill="#162e3b" stroke="#06b6d4" stroke-width="1" />
+      <circle cx="308" cy="21" r="4" fill="#06b6d4" />
+      <text x="350" y="25" font-family="'Space Grotesk', monospace" font-size="10" font-weight="600" fill="#38bdf8" text-anchor="middle">ACTIVE</text>
+    </g>
+  </g>
+
+  <!-- Studio Header -->
+  <g fill="#94a3b8" font-family="'Space Grotesk', sans-serif">
+    <text x="80" y="90" fill="#f8fafc" font-size="13" font-weight="700" letter-spacing="1">PROJECT 06 // DIGITAL BRAND SYSTEM</text>
+    <text x="80" y="112" fill="#64748b" font-size="12">QUANTUM LABS • DESIGN LANGUAGE &amp; TOKENS • FIGMA</text>
+    <rect x="1000" y="75" width="120" height="28" rx="6" fill="#1e2230" stroke="#6366f1" stroke-width="1" />
+    <text x="1060" y="94" fill="#818cf8" font-size="11" text-anchor="middle" font-weight="600" letter-spacing="1">CONCEPT</text>
+  </g>
+</svg>

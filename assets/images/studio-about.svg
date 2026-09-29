@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800" width="100%" height="100%">
+  <defs>
+    <radialGradient id="aboutBg" cx="50%" cy="40%" r="75%">
+      <stop offset="0%" stop-color="#161928" />
+      <stop offset="60%" stop-color="#0a0c13" />
+      <stop offset="100%" stop-color="#030406" />
+    </radialGradient>
+    <linearGradient id="skylightBeam" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.35" />
+      <stop offset="50%" stop-color="#8b5cf6" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="prismGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c084fc" />
+      <stop offset="50%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+    <filter id="holoGlow">
+      <feGaussianBlur stdDeviation="16" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1000" height="800" fill="url(#aboutBg)" />
+
+  <!-- Architectural Studio Walls (Deep Charcoal Concrete in Atmospheric Perspective) -->
+  <polygon points="0,0 200,160 200,640 0,800" fill="#0d0f17" />
+  <polygon points="200,160 800,160 800,640 200,640" fill="#121520" />
+  <polygon points="800,160 1000,0 1000,800 800,640" fill="#0d0f17" />
+  <polygon points="0,800 200,640 800,640 1000,800" fill="#07080d" />
+
+  <!-- Overhead Concrete Skylight Opening -->
+  <polygon points="340,60 660,60 620,110 380,110" fill="#ffffff" opacity="0.9" />
+  
+  <!-- Dramatic Zenith Volumetric Light Column -->
+  <polygon points="380,110 620,110 740,650 260,650" fill="url(#skylightBeam)" />
+
+  <!-- Minimalist Basalt Display Pedestal -->
+  <polygon points="410,510 590,510 570,550 430,550" fill="#2d3345" />
+  <polygon points="430,550 570,550 550,680 450,680" fill="#181c28" />
+  <polygon points="410,510 430,550 450,680 430,680" fill="#0e111a" />
+  <polygon points="590,510 570,550 550,680 570,680" fill="#222838" />
+
+  <!-- Hovering Studio Artifact: Prismatic 3D Geometry (Hologram of KVS Monogram) -->
+  <g transform="translate(500, 390)">
+    <!-- Aura Glow -->
+    <circle cx="0" cy="0" r="100" fill="#8b5cf6" opacity="0.25" filter="url(#holoGlow)" />
+    
+    <!-- Outer Octahedron / Polyhedron -->
+    <polygon points="0,-90 65,-25 0,40 -65,-25" fill="none" stroke="url(#prismGrad)" stroke-width="2.5" />
+    <polygon points="0,-90 65,-25 0,-15" fill="rgba(192, 132, 252, 0.25)" stroke="#ffffff" stroke-width="1" />
+    <polygon points="0,-90 -65,-25 0,-15" fill="rgba(99, 102, 241, 0.35)" stroke="#818cf8" stroke-width="1" />
+    <polygon points="-65,-25 0,40 0,-15" fill="rgba(6, 182, 212, 0.35)" stroke="#06b6d4" stroke-width="1" />
+    <polygon points="65,-25 0,40 0,-15" fill="rgba(244, 114, 182, 0.25)" stroke="#ec4899" stroke-width="1" />
+
+    <!-- Orbital Light Ring -->
+    <ellipse cx="0" cy="0" rx="120" ry="36" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="4,6" opacity="0.6" transform="rotate(-15)" />
+
+    <!-- Floating Specular Sparkles -->
+    <circle cx="0" cy="-90" r="4" fill="#ffffff" filter="url(#holoGlow)" />
+    <circle cx="65" cy="-25" r="3" fill="#38bdf8" />
+    <circle cx="-65" cy="-25" r="3" fill="#c084fc" />
+    <circle cx="0" cy="40" r="3.5" fill="#06b6d4" />
+  </g>
+
+  <!-- Studio Wall Inscription -->
+  <g transform="translate(500, 220)" font-family="'Space Grotesk', sans-serif" text-anchor="middle">
+    <text x="0" y="0" font-size="14" font-weight="700" fill="#ffffff" letter-spacing="6">KANI VISION STUDIO</text>
+    <text x="0" y="24" font-family="'Space Grotesk', monospace" font-size="11" fill="#64748b" letter-spacing="3">DESIGN • MODEL • VISUALIZE</text>
+  </g>
+
+  <!-- Pedestal Floor Contact Shadow & Reflection -->
+  <ellipse cx="500" cy="680" rx="140" ry="20" fill="#000000" opacity="0.8" />
+  <ellipse cx="500" cy="680" rx="80" ry="10" fill="#8b5cf6" opacity="0.15" filter="blur(10px)" />
+</svg>

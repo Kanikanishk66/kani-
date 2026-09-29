@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 1280" width="100%" height="100%">
+  <defs>
+    <radialGradient id="cineBg" cx="50%" cy="35%" r="75%">
+      <stop offset="0%" stop-color="#1e1438" />
+      <stop offset="50%" stop-color="#0c0917" />
+      <stop offset="100%" stop-color="#030207" />
+    </radialGradient>
+    <linearGradient id="anamorphicFlare" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0" />
+      <stop offset="40%" stop-color="#06b6d4" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="1" />
+      <stop offset="60%" stop-color="#8b5cf6" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <!-- 9:16 Vertical Story / Mobile Poster Canvas -->
+  <rect width="720" height="1280" fill="url(#cineBg)" />
+
+  <!-- 35mm Film Sprocket Holes (Left & Right Margins) -->
+  <g fill="#181426">
+    <rect x="15" y="100" width="20" height="30" rx="4" />
+    <rect x="15" y="200" width="20" height="30" rx="4" />
+    <rect x="15" y="300" width="20" height="30" rx="4" />
+    <rect x="15" y="400" width="20" height="30" rx="4" />
+    <rect x="15" y="500" width="20" height="30" rx="4" />
+    <rect x="15" y="600" width="20" height="30" rx="4" />
+    <rect x="15" y="700" width="20" height="30" rx="4" />
+    <rect x="15" y="800" width="20" height="30" rx="4" />
+    <rect x="15" y="900" width="20" height="30" rx="4" />
+    <rect x="15" y="1000" width="20" height="30" rx="4" />
+    <rect x="15" y="1100" width="20" height="30" rx="4" />
+
+    <rect x="685" y="100" width="20" height="30" rx="4" />
+    <rect x="685" y="200" width="20" height="30" rx="4" />
+    <rect x="685" y="300" width="20" height="30" rx="4" />
+    <rect x="685" y="400" width="20" height="30" rx="4" />
+    <rect x="685" y="500" width="20" height="30" rx="4" />
+    <rect x="685" y="600" width="20" height="30" rx="4" />
+    <rect x="685" y="700" width="20" height="30" rx="4" />
+    <rect x="685" y="800" width="20" height="30" rx="4" />
+    <rect x="685" y="900" width="20" height="30" rx="4" />
+    <rect x="685" y="1000" width="20" height="30" rx="4" />
+    <rect x="685" y="1100" width="20" height="30" rx="4" />
+  </g>
+
+  <!-- Anamorphic Blue Horizontal Light Streak -->
+  <line x1="0" y1="480" x2="720" y2="480" stroke="url(#anamorphicFlare)" stroke-width="4" filter="blur(3px)" />
+  <line x1="0" y1="480" x2="720" y2="480" stroke="#ffffff" stroke-width="1.5" />
+
+  <!-- Center Artwork: Cinematic Celestial Prism / Monolith -->
+  <g transform="translate(360, 480)">
+    <!-- Monolith Aura -->
+    <circle cx="0" cy="0" r="180" fill="#8b5cf6" opacity="0.18" filter="blur(40px)" />
+    
+    <!-- Monolith Silhouette -->
+    <polygon points="-70,-160 70,-160 55,160 -55,160" fill="#090a12" stroke="#38bdf8" stroke-width="1.5" />
+    
+    <!-- Internal Laser Portal -->
+    <line x1="0" y1="-140" x2="0" y2="140" stroke="#06b6d4" stroke-width="2" />
+    <circle cx="0" cy="0" r="40" fill="#14182b" stroke="#ffffff" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="16" fill="#8b5cf6" />
+  </g>
+
+  <!-- Top Titles -->
+  <g transform="translate(60, 140)" font-family="'Space Grotesk', sans-serif">
+    <text x="0" y="0" font-family="'Space Grotesk', monospace" font-size="12" fill="#06b6d4" letter-spacing="4">MIDNIGHT SCREENINGS // SERIES 06</text>
+    <text x="0" y="55" font-size="52" font-weight="900" fill="#ffffff" letter-spacing="-1">QUANTUM CINEMA</text>
+    <text x="0" y="95" font-size="28" font-weight="700" fill="#a855f7" letter-spacing="2">SPECULATIVE SCI-FI FESTIVAL</text>
+  </g>
+
+  <!-- Bottom Details -->
+  <g transform="translate(60, 920)" font-family="'Space Grotesk', monospace" font-size="12" fill="#94a3b8">
+    <text x="0" y="0" font-weight="700" fill="#ffffff" letter-spacing="2">CURATED PROGRAM SELECTION</text>
+    <text x="0" y="30" fill="#cbd5e1">00:00 — MONOLITH: BEYOND EVENT HORIZON</text>
+    <text x="0" y="55" fill="#cbd5e1">01:45 — SYNTHETIC DREAMS OF ANDROIDS</text>
+    <text x="0" y="80" fill="#cbd5e1">03:30 — CHRONO-DISPLACEMENT // 70MM</text>
+
+    <!-- Venue Badge -->
+    <rect x="0" y="130" width="600" height="60" rx="12" fill="#121422" stroke="#334155" stroke-width="1" />
+    <text x="24" y="166" font-family="'Space Grotesk', sans-serif" font-size="14" font-weight="700" fill="#ffffff">PALACE OF LIGHT // CINEMA 01</text>
+    <text x="576" y="166" font-size="12" fill="#06b6d4" text-anchor="end" font-weight="700">DOORS: 23:30</text>
+  </g>
+
+  <!-- Footer Tag -->
+  <text x="60" y="1210" font-family="'Space Grotesk', sans-serif" font-size="11" fill="#64748b" letter-spacing="2">KANI VISION STUDIO // 9:16 VERTICAL POSTER DESIGN</text>
+</svg>

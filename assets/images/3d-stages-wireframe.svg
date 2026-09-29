@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <radialGradient id="stageWfBg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#0a121e" />
+      <stop offset="100%" stop-color="#04070c" />
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="800" fill="url(#stageWfBg)" />
+
+  <!-- 3D Studio Perspective Floor Grid -->
+  <g stroke="#06b6d4" stroke-opacity="0.12" stroke-width="1">
+    <line x1="200" y1="750" x2="600" y2="520" />
+    <line x1="350" y1="750" x2="600" y2="520" />
+    <line x1="500" y1="750" x2="600" y2="520" />
+    <line x1="650" y1="750" x2="600" y2="520" />
+    <line x1="800" y1="750" x2="600" y2="520" />
+    <line x1="950" y1="750" x2="600" y2="520" />
+    <ellipse cx="600" cy="620" rx="380" ry="90" fill="none" stroke="#06b6d4" stroke-dasharray="4,6" />
+  </g>
+
+  <!-- Stage 1: Mechanical Cyber Drone — Wireframe Topology -->
+  <g transform="translate(600, 380)" stroke="#38bdf8" stroke-width="1.2" fill="none">
+    <!-- Center Core Sphere Latitude / Longitude Circles -->
+    <circle cx="0" cy="0" r="140" stroke="#06b6d4" stroke-width="1.5" />
+    <ellipse cx="0" cy="0" rx="140" ry="60" stroke="#38bdf8" />
+    <ellipse cx="0" cy="0" rx="140" ry="110" stroke="#38bdf8" />
+    <ellipse cx="0" cy="0" rx="60" ry="140" stroke="#38bdf8" />
+    <ellipse cx="0" cy="0" rx="110" ry="140" stroke="#38bdf8" />
+
+    <!-- Equator Ring & Bevels -->
+    <path d="M-170,0 C-170,90 170,90 170,0 C170,-90 -170,-90 -170,0" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="4,2" />
+
+    <!-- Left Thruster Pod Wireframe -->
+    <g transform="translate(-240, -20)">
+      <polygon points="0,-40 60,-20 60,60 0,40" stroke="#38bdf8" />
+      <polygon points="60,-20 120,-30 120,50 60,60" stroke="#38bdf8" />
+      <ellipse cx="0" cy="0" rx="20" ry="40" stroke="#06b6d4" />
+      <line x1="120" y1="10" x2="160" y2="10" stroke="#38bdf8" stroke-width="2" />
+    </g>
+
+    <!-- Right Thruster Pod Wireframe -->
+    <g transform="translate(180, -20)">
+      <polygon points="0,-30 60,-20 60,40 0,50" stroke="#38bdf8" />
+      <polygon points="60,-20 120,-40 120,40 60,60" stroke="#38bdf8" />
+      <ellipse cx="120" cy="0" rx="20" ry="40" stroke="#06b6d4" />
+      <line x1="-40" y1="10" x2="0" y2="10" stroke="#38bdf8" stroke-width="2" />
+    </g>
+
+    <!-- Front Optical Sensor Array Housing -->
+    <circle cx="0" cy="0" r="48" stroke="#ffffff" stroke-width="2" />
+    <circle cx="0" cy="0" r="28" stroke="#38bdf8" />
+    <circle cx="0" cy="0" r="10" stroke="#06b6d4" />
+
+    <!-- Top & Bottom Antenna Mounts -->
+    <line x1="0" y1="-140" x2="0" y2="-210" stroke="#8b5cf6" stroke-width="2" />
+    <circle cx="0" cy="-210" r="6" stroke="#8b5cf6" />
+    <line x1="-70" y1="-120" x2="-110" y2="-170" stroke="#38bdf8" stroke-width="1.5" />
+    <line x1="70" y1="-120" x2="110" y2="-170" stroke="#38bdf8" stroke-width="1.5" />
+
+    <!-- Mesh Quads / Triangles Subdivision Lines -->
+    <line x1="-100" y1="-100" x2="100" y2="100" stroke="#8b5cf6" stroke-opacity="0.4" stroke-dasharray="3,3" />
+    <line x1="100" y1="-100" x2="-100" y2="100" stroke="#8b5cf6" stroke-opacity="0.4" stroke-dasharray="3,3" />
+  </g>
+
+  <!-- Glowing Wireframe Nodes -->
+  <g fill="#ffffff">
+    <circle cx="600" cy="240" r="3" />
+    <circle cx="600" cy="520" r="3" />
+    <circle cx="460" cy="380" r="3" />
+    <circle cx="740" cy="380" r="3" />
+  </g>
+
+  <!-- Stage Label Badge -->
+  <g transform="translate(80, 80)" font-family="'Space Grotesk', sans-serif">
+    <rect x="0" y="0" width="220" height="34" rx="8" fill="#082f49" stroke="#06b6d4" stroke-width="1" />
+    <text x="110" y="22" font-size="12" font-weight="700" fill="#38bdf8" text-anchor="middle" letter-spacing="2">STAGE 01 // WIREFRAME</text>
+    <text x="0" y="58" font-size="12" fill="#94a3b8">Clean quad-based topology • 24,600 Polygons • Zero N-Gons</text>
+  </g>
+</svg>

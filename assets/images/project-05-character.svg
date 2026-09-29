@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <radialGradient id="charBg" cx="50%" cy="45%" r="70%">
+      <stop offset="0%" stop-color="#181a28" />
+      <stop offset="60%" stop-color="#0b0d13" />
+      <stop offset="100%" stop-color="#040507" />
+    </radialGradient>
+    <linearGradient id="armorMetal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#475569" />
+      <stop offset="40%" stop-color="#1e293b" />
+      <stop offset="80%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#334155" />
+    </linearGradient>
+    <linearGradient id="visorGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="50%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+    <filter id="visorBlur" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="18" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="800" fill="url(#charBg)" />
+
+  <!-- Back Rim Light Flare -->
+  <circle cx="600" cy="380" r="240" fill="#8b5cf6" opacity="0.12" filter="blur(60px)" />
+  <circle cx="540" cy="320" r="180" fill="#06b6d4" opacity="0.1" filter="blur(40px)" />
+
+  <!-- Cyber Sentinel 3D Bust (Centered) -->
+  <g transform="translate(600, 390)">
+    <!-- Base Torso / Chest Armor Plate -->
+    <path d="M-180,260 L-140,110 L-60,100 L0,150 L60,100 L140,110 L180,260 Z" fill="#141824" stroke="#334155" stroke-width="2" />
+    <!-- Chest Core Reactor / Intake -->
+    <polygon points="0,170 50,220 -50,220" fill="#0c0e15" stroke="url(#visorGlow)" stroke-width="2" />
+    <circle cx="0" cy="200" r="14" fill="#06b6d4" filter="url(#visorBlur)" />
+
+    <!-- Mechanical Neck Pistons & Collar Structure -->
+    <rect x="-35" y="60" width="70" height="60" rx="8" fill="#1a1e2d" stroke="#475569" stroke-width="1.5" />
+    <line x1="-25" y1="70" x2="-25" y2="120" stroke="#64748b" stroke-width="4" />
+    <line x1="25" y1="70" x2="25" y2="120" stroke="#64748b" stroke-width="4" />
+    <!-- Hydraulic Tubing -->
+    <path d="M-60,100 Q-80,40 -40,10" fill="none" stroke="#38bdf8" stroke-width="3" stroke-dasharray="4,2" opacity="0.6" />
+    <path d="M60,100 Q80,40 40,10" fill="none" stroke="#a855f7" stroke-width="3" stroke-dasharray="4,2" opacity="0.6" />
+
+    <!-- Head Helmet Main Mass -->
+    <!-- Jaw / Chin Plate -->
+    <polygon points="-45,70 45,70 30,100 -30,100" fill="#0f172a" stroke="#475569" stroke-width="1.5" />
+    <!-- Cheeks & Mandibles -->
+    <polygon points="-110,0 -45,70 -30,100 -90,40" fill="url(#armorMetal)" stroke="#64748b" stroke-width="1" />
+    <polygon points="110,0 45,70 30,100 90,40" fill="url(#armorMetal)" stroke="#64748b" stroke-width="1" />
+
+    <!-- Cranial Helmet Plates (Angular Hard-Surface) -->
+    <polygon points="0,-180 80,-150 110,-40 60,-20 0,-30" fill="url(#armorMetal)" stroke="#94a3b8" stroke-width="1.5" />
+    <polygon points="0,-180 -80,-150 -110,-40 -60,-20 0,-30" fill="#181e2b" stroke="#475569" stroke-width="1.5" />
+    <polygon points="-80,-150 0,-180 0,-110 -50,-80" fill="#334155" stroke="#64748b" stroke-width="1" />
+    <polygon points="80,-150 0,-180 0,-110 50,-80" fill="#475569" stroke="#94a3b8" stroke-width="1" />
+
+    <!-- Temple Antennas & Sensory Fins -->
+    <polygon points="-110,-40 -160,-120 -140,-130 -90,-60" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5" />
+    <polygon points="110,-40 160,-120 140,-130 90,-60" fill="#1e293b" stroke="#a855f7" stroke-width="1.5" />
+
+    <!-- Continuous High-Tech Optical Visor / Cyclops HUD Sensor -->
+    <path d="M-75,-15 L75,-15 L60,18 L-60,18 Z" fill="#030712" stroke="url(#visorGlow)" stroke-width="2" />
+    <rect x="-65" y="-10" width="130" height="22" rx="4" fill="url(#visorGlow)" opacity="0.9" filter="url(#visorBlur)" />
+    
+    <!-- Sensor Data Reticle Inside Visor -->
+    <circle cx="0" cy="1" r="7" fill="#ffffff" />
+    <line x1="-50" y1="1" x2="-20" y2="1" stroke="#ffffff" stroke-width="2" />
+    <line x1="20" y1="1" x2="50" y2="1" stroke="#ffffff" stroke-width="2" />
+
+    <!-- Forehead Tactical Module / Sensor Grid -->
+    <rect x="-24" y="-85" width="48" height="24" rx="4" fill="#090b10" stroke="#38bdf8" stroke-width="1" />
+    <circle cx="-12" cy="-73" r="3" fill="#06b6d4" />
+    <circle cx="0" cy="-73" r="3" fill="#38bdf8" />
+    <circle cx="12" cy="-73" r="3" fill="#8b5cf6" />
+  </g>
+
+  <!-- Technical Telemetry & Studio Badges -->
+  <g fill="#94a3b8" font-family="'Space Grotesk', sans-serif">
+    <text x="80" y="90" fill="#f8fafc" font-size="13" font-weight="700" letter-spacing="1">PROJECT 05 // 3D CHARACTER CONCEPT</text>
+    <text x="80" y="112" fill="#64748b" font-size="12">HARD SURFACE ANATOMY • ZBRUSH &amp; BLENDER • CYBER SENTINEL</text>
+    <rect x="1000" y="75" width="120" height="28" rx="6" fill="#1e2230" stroke="#a855f7" stroke-width="1" />
+    <text x="1060" y="94" fill="#c084fc" font-size="11" text-anchor="middle" font-weight="600" letter-spacing="1">CONCEPT</text>
+  </g>
+</svg>

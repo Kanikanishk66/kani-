@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 1280" width="100%" height="100%">
+  <defs>
+    <radialGradient id="adBg" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#181a24" />
+      <stop offset="60%" stop-color="#0b0d13" />
+      <stop offset="100%" stop-color="#040507" />
+    </radialGradient>
+    <linearGradient id="titaniumRing" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#cbd5e1" />
+      <stop offset="40%" stop-color="#475569" />
+      <stop offset="70%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#94a3b8" />
+    </linearGradient>
+    <linearGradient id="goldHour" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="1280" fill="url(#adBg)" />
+
+  <!-- Subdued Lighting Corona -->
+  <circle cx="480" cy="520" r="260" fill="#3b82f6" opacity="0.08" filter="blur(50px)" />
+
+  <!-- Ad Headline -->
+  <g transform="translate(60, 100)" font-family="'Space Grotesk', sans-serif">
+    <text x="0" y="0" font-size="14" font-weight="700" fill="#f59e0b" letter-spacing="4">ZERO GRAVITY SERIES // TITANIUM 01</text>
+    <text x="0" y="60" font-size="76" font-weight="900" fill="#ffffff" letter-spacing="-2">APEX CHRONO</text>
+    <text x="0" y="100" font-size="18" fill="#94a3b8" letter-spacing="2">PRECISION MECHANICAL HOROLOGY ENGINEERED FOR ORBIT</text>
+  </g>
+
+  <!-- 3D Luxury Watch Face Visual (Centered, Floating at Angle) -->
+  <g transform="translate(480, 560)">
+    <!-- Shadow -->
+    <ellipse cx="0" cy="180" rx="200" ry="30" fill="#000000" opacity="0.8" filter="blur(20px)" />
+
+    <!-- Outer Titanium Bezel -->
+    <circle cx="0" cy="0" r="190" fill="url(#titaniumRing)" stroke="#94a3b8" stroke-width="2" />
+    <circle cx="0" cy="0" r="170" fill="#0f111a" stroke="#334155" stroke-width="2" />
+
+    <!-- Tachymeter Scale Ring -->
+    <circle cx="0" cy="0" r="150" fill="none" stroke="rgba(255,255,255,0.15)" stroke-dasharray="2,6" stroke-width="6" />
+
+    <!-- Matte Dark Dial Center -->
+    <circle cx="0" cy="0" r="140" fill="#090b10" />
+
+    <!-- Sub-Dials (Chronograph) -->
+    <circle cx="-50" cy="0" r="30" fill="#141724" stroke="#334155" stroke-width="1.5" />
+    <circle cx="50" cy="0" r="30" fill="#141724" stroke="#334155" stroke-width="1.5" />
+    <circle cx="0" cy="50" r="30" fill="#141724" stroke="#334155" stroke-width="1.5" />
+
+    <!-- Sub-Dial Hands -->
+    <line x1="-50" y1="0" x2="-40" y2="-12" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" />
+    <line x1="50" y1="0" x2="62" y2="8" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" />
+    <line x1="0" y1="50" x2="-8" y2="64" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" />
+
+    <!-- Hour Markers (Luminescent Blocks) -->
+    <g fill="#ffffff">
+      <rect x="-4" y="-136" width="8" height="16" rx="2" />
+      <rect x="-4" y="120" width="8" height="16" rx="2" />
+      <rect x="-136" y="-4" width="16" height="8" rx="2" />
+      <rect x="120" y="-4" width="16" height="8" rx="2" />
+    </g>
+
+    <!-- Main Hands (Skeletonized High-Horology) -->
+    <!-- Hour Hand -->
+    <line x1="0" y1="0" x2="-45" y2="-55" stroke="#ffffff" stroke-width="7" stroke-linecap="round" />
+    <!-- Minute Hand -->
+    <line x1="0" y1="0" x2="65" y2="-75" stroke="#ffffff" stroke-width="5" stroke-linecap="round" />
+    <!-- Second Hand (Orange Needle) -->
+    <line x1="0" y1="20" x2="0" y2="-110" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" />
+    <circle cx="0" cy="0" r="7" fill="#f59e0b" />
+
+    <!-- Crown & Pushers (Right Side) -->
+    <rect x="185" y="-16" width="22" height="32" rx="4" fill="#64748b" stroke="#cbd5e1" stroke-width="1" />
+    <rect x="175" y="-55" width="16" height="20" rx="3" fill="#475569" />
+    <rect x="175" y="35" width="16" height="20" rx="3" fill="#475569" />
+
+    <!-- Optical Sapphire Crystal Flare Arc -->
+    <path d="M-110,-110 C-30,-160 50,-150 110,-100" stroke="#ffffff" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.6" />
+  </g>
+
+  <!-- Technical Specs Footer -->
+  <g transform="translate(60, 980)" font-family="'Space Grotesk', monospace" font-size="12" fill="#94a3b8">
+    <line x1="0" y1="0" x2="840" y2="0" stroke="rgba(255,255,255,0.12)" />
+    <g transform="translate(0, 30)">
+      <text x="0" y="0" font-weight="700" fill="#ffffff" letter-spacing="2">GRADE 5 TITANIUM</text>
+      <text x="0" y="22" fill="#64748b">AEROSPACE CHASSIS // 48g</text>
+    </g>
+    <g transform="translate(280, 30)">
+      <text x="0" y="0" font-weight="700" fill="#ffffff" letter-spacing="2">COSC CHRONOMETER</text>
+      <text x="0" y="22" fill="#64748b">CALIBRE KV-01 // 72H RESERVE</text>
+    </g>
+    <g transform="translate(560, 30)">
+      <text x="0" y="0" font-weight="700" fill="#ffffff" letter-spacing="2">300M WATER RESISTANT</text>
+      <text x="0" y="22" fill="#64748b">SAPPHIRE AR-COATED</text>
+    </g>
+  </g>
+
+  <!-- Ad Baseline CTA -->
+  <g transform="translate(60, 1140)" font-family="'Space Grotesk', sans-serif">
+    <text x="0" y="0" font-size="14" font-weight="700" fill="#f59e0b" letter-spacing="3">EXPLORE THE LIMITED RUN →</text>
+    <text x="840" y="0" font-size="11" font-family="'Space Grotesk', monospace" fill="#64748b" text-anchor="end">CAMPAIGN BY KANI VISION STUDIO</text>
+  </g>
+</svg>

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <radialGradient id="stageMatBg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#1f232e" />
+      <stop offset="60%" stop-color="#11131a" />
+      <stop offset="100%" stop-color="#08090d" />
+    </radialGradient>
+    <radialGradient id="clayShade" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#f1f5f9" />
+      <stop offset="30%" stop-color="#cbd5e1" />
+      <stop offset="70%" stop-color="#64748b" />
+      <stop offset="100%" stop-color="#334155" />
+    </radialGradient>
+    <radialGradient id="clayPod" cx="40%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#e2e8f0" />
+      <stop offset="60%" stop-color="#64748b" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </radialGradient>
+    <filter id="clayShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="20" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="800" fill="url(#stageMatBg)" />
+
+  <!-- Studio Ambient Occlusion Ground Contact Shadow -->
+  <ellipse cx="600" cy="580" rx="320" ry="45" fill="#000000" opacity="0.6" filter="url(#clayShadow)" />
+  <ellipse cx="600" cy="570" rx="200" ry="25" fill="#000000" opacity="0.8" />
+
+  <!-- Stage 2: Clay Material / AO Pass -->
+  <g transform="translate(600, 380)">
+    <!-- Thruster Pod Struts -->
+    <rect x="-200" y="-12" width="100" height="24" rx="6" fill="#475569" stroke="#334155" stroke-width="1" />
+    <rect x="100" y="-12" width="100" height="24" rx="6" fill="#475569" stroke="#334155" stroke-width="1" />
+
+    <!-- Left Thruster Pod Assembly -->
+    <g transform="translate(-210, 0)">
+      <ellipse cx="0" cy="0" rx="42" ry="75" fill="url(#clayPod)" stroke="#94a3b8" stroke-width="1" />
+      <ellipse cx="-20" cy="0" rx="14" ry="48" fill="#1e293b" />
+    </g>
+
+    <!-- Right Thruster Pod Assembly -->
+    <g transform="translate(210, 0)">
+      <ellipse cx="0" cy="0" rx="42" ry="75" fill="url(#clayPod)" stroke="#94a3b8" stroke-width="1" />
+      <ellipse cx="20" cy="0" rx="14" ry="48" fill="#334155" />
+    </g>
+
+    <!-- Center Spherical Drone Body (Smooth Matte Clay) -->
+    <circle cx="0" cy="0" r="140" fill="url(#clayShade)" stroke="#94a3b8" stroke-width="1.5" />
+
+    <!-- Equator Panel Seam (Ambient Occlusion Crease) -->
+    <ellipse cx="0" cy="0" rx="140" ry="40" fill="none" stroke="#1e293b" stroke-width="3" />
+    <ellipse cx="0" cy="0" rx="140" ry="40" fill="none" stroke="#ffffff" stroke-width="0.75" opacity="0.4" />
+
+    <!-- Front Optical Lens Turret (Clay State) -->
+    <circle cx="0" cy="0" r="54" fill="#475569" stroke="#1e293b" stroke-width="2" />
+    <circle cx="0" cy="0" r="42" fill="#334155" />
+    <circle cx="0" cy="0" r="24" fill="#1e293b" />
+    <!-- Glass Lens Glint Specular -->
+    <ellipse cx="-8" cy="-8" rx="8" ry="5" fill="#ffffff" opacity="0.6" transform="rotate(-30 -8 -8)" />
+
+    <!-- Antennas -->
+    <line x1="0" y1="-140" x2="0" y2="-210" stroke="#64748b" stroke-width="4" stroke-linecap="round" />
+    <circle cx="0" cy="-210" r="8" fill="#94a3b8" />
+  </g>
+
+  <!-- Stage Label Badge -->
+  <g transform="translate(80, 80)" font-family="'Space Grotesk', sans-serif">
+    <rect x="0" y="0" width="230" height="34" rx="8" fill="#334155" stroke="#94a3b8" stroke-width="1" />
+    <text x="115" y="22" font-size="12" font-weight="700" fill="#f8fafc" text-anchor="middle" letter-spacing="2">STAGE 02 // CLAY &amp; MATERIAL</text>
+    <text x="0" y="58" font-size="12" fill="#94a3b8">Ambient occlusion pass • Form inspection • Surface normals</text>
+  </g>
+</svg>

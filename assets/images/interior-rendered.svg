@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <!-- Sunlight Beam Gradient -->
+    <linearGradient id="sunBeam" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fffbeb" stop-opacity="0.45" />
+      <stop offset="60%" stop-color="#fef3c7" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#fde68a" stop-opacity="0" />
+    </linearGradient>
+    <!-- Oak Wood Slats Texture -->
+    <linearGradient id="oakWood" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#854d0e" />
+      <stop offset="50%" stop-color="#a16207" />
+      <stop offset="100%" stop-color="#713f12" />
+    </linearGradient>
+    <!-- Microcement Wall Gradient -->
+    <linearGradient id="concreteWall" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#242733" />
+      <stop offset="100%" stop-color="#14161f" />
+    </linearGradient>
+    <!-- Polished Terrazzo / Concrete Floor -->
+    <linearGradient id="floorGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1a1c26" />
+      <stop offset="100%" stop-color="#0e1017" />
+    </linearGradient>
+    <!-- Soft Warm Ambient Glow -->
+    <radialGradient id="lampGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fed7aa" stop-opacity="0.8" />
+      <stop offset="40%" stop-color="#f97316" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#f97316" stop-opacity="0" />
+    </radialGradient>
+    <filter id="blurAtmosphere">
+      <feGaussianBlur stdDeviation="30" />
+    </filter>
+  </defs>
+
+  <!-- Ceiling & Walls (Room Geometry in One-Point Perspective) -->
+  <rect width="1200" height="800" fill="#0d0e14" />
+
+  <!-- Left Wall: Warm Slatted Oak Feature Wall -->
+  <polygon points="0,0 320,180 320,620 0,800" fill="url(#concreteWall)" />
+  <!-- Slatted Vertical Oak Battens -->
+  <g opacity="0.85">
+    <path d="M40,25 L50,31 L50,775 L40,775 Z" fill="url(#oakWood)" />
+    <path d="M70,42 L80,48 L80,755 L70,755 Z" fill="url(#oakWood)" />
+    <path d="M100,58 L110,64 L110,735 L100,735 Z" fill="url(#oakWood)" />
+    <path d="M130,75 L140,81 L140,715 L130,715 Z" fill="url(#oakWood)" />
+    <path d="M160,92 L170,98 L170,695 L160,695 Z" fill="url(#oakWood)" />
+    <path d="M190,108 L200,114 L200,675 L190,675 Z" fill="url(#oakWood)" />
+    <path d="M220,125 L230,131 L230,655 L220,655 Z" fill="url(#oakWood)" />
+    <path d="M250,141 L260,147 L260,635 L250,635 Z" fill="url(#oakWood)" />
+    <path d="M280,158 L290,164 L290,625 L280,625 Z" fill="url(#oakWood)" />
+  </g>
+
+  <!-- Back Main Wall: Textured Minimalist Charcoal Concrete -->
+  <polygon points="320,180 980,180 980,620 320,620" fill="url(#concreteWall)" />
+  <!-- Architectural Art Niche / Headboard Recess -->
+  <rect x="360" y="240" width="580" height="280" rx="4" fill="#181a24" stroke="#25293a" stroke-width="2" />
+  <!-- Recessed Warm LED Strip inside Niche -->
+  <line x1="362" y1="242" x2="938" y2="242" stroke="#fef08a" stroke-width="4" opacity="0.85" />
+  <rect x="362" y="244" width="576" height="40" fill="#fef08a" opacity="0.12" />
+
+  <!-- Right Wall: Huge Floor-to-Ceiling Panoramic Window Framing Morning City Sky -->
+  <polygon points="980,180 1200,0 1200,800 980,620" fill="#1e293b" />
+  <g transform="matrix(0.85 0 0 1 180 0)">
+    <!-- Sky & Soft Fog Outside -->
+    <polygon points="980,180 1200,0 1200,800 980,620" fill="#38bdf8" opacity="0.25" />
+    <polygon points="980,340 1200,240 1200,800 980,620" fill="#0284c7" opacity="0.3" />
+    <!-- Distant City Skyline Silhouettes -->
+    <polygon points="1000,450 1020,450 1020,620 1000,620" fill="#1e2230" opacity="0.6" />
+    <polygon points="1035,420 1065,420 1065,620 1035,620" fill="#1e2230" opacity="0.7" />
+    <polygon points="1080,390 1120,390 1120,620 1080,620" fill="#1e2230" opacity="0.8" />
+  </g>
+
+  <!-- Black Steel Window Mullions -->
+  <line x1="980" y1="180" x2="1200" y2="0" stroke="#0b0d13" stroke-width="12" />
+  <line x1="980" y1="620" x2="1200" y2="800" stroke="#0b0d13" stroke-width="12" />
+  <line x1="1080" y1="100" x2="1080" y2="700" stroke="#0b0d13" stroke-width="8" />
+
+  <!-- Floor: Seamless Microcement / Terrazzo with Sunlight Reflections -->
+  <polygon points="0,800 320,620 980,620 1200,800" fill="url(#floorGrad)" />
+
+  <!-- Sunlight Beam Shading across Floor & Bed -->
+  <polygon points="1080,100 1200,40 780,800 480,800" fill="url(#sunBeam)" />
+
+  <!-- Bespoke Low-Profile Platform Bed & Linen -->
+  <g transform="translate(420, 440)">
+    <!-- Dark Oak Platform Base -->
+    <polygon points="0,150 480,150 460,190 -20,190" fill="#5c3813" />
+    <polygon points="480,150 510,130 510,170 460,190" fill="#3b240c" />
+
+    <!-- Upholstered Mattress (Off-White Bouclé / Washed Linen) -->
+    <polygon points="10,120 470,120 450,165 -10,165" fill="#e2e8f0" />
+    <polygon points="470,120 495,105 495,150 450,165" fill="#cbd5e1" />
+
+    <!-- Linen Duvet Throw (Textured Warm Charcoal Grey) -->
+    <polygon points="40,120 470,120 445,165 20,165" fill="#334155" />
+    <polygon points="470,120 495,105 495,150 445,165" fill="#1e293b" />
+
+    <!-- Organic Creases & Folds in Bedding -->
+    <path d="M120,125 Q240,135 360,125" stroke="#1e293b" stroke-width="2" fill="none" opacity="0.4" />
+    <path d="M60,145 Q200,155 420,145" stroke="#0f172a" stroke-width="2" fill="none" opacity="0.5" />
+
+    <!-- Fluffy Pillows (Pair) -->
+    <polygon points="60,80 200,80 180,122 40,122" fill="#f8fafc" />
+    <polygon points="200,80 220,70 220,110 180,122" fill="#cbd5e1" />
+
+    <polygon points="250,80 390,80 370,122 230,122" fill="#f1f5f9" />
+    <polygon points="390,80 410,70 410,110 370,122" fill="#cbd5e1" />
+  </g>
+
+  <!-- Floating Nightstand & Modern Lamp -->
+  <g transform="translate(290, 520)">
+    <polygon points="0,0 70,0 55,40 -15,40" fill="#713f12" />
+    <polygon points="70,0 85,-10 85,30 55,40" fill="#452509" />
+    <!-- Sphere Glow Table Lamp -->
+    <circle cx="35" cy="-25" r="50" fill="url(#lampGlow)" />
+    <circle cx="35" cy="-25" r="16" fill="#fef08a" />
+  </g>
+
+  <!-- Architectural Olive Tree in Concrete Pot -->
+  <g transform="translate(980, 500)">
+    <!-- Concrete Cylinder Pot -->
+    <polygon points="0,90 70,90 60,190 10,190" fill="#334155" />
+    <ellipse cx="35" cy="90" rx="35" ry="12" fill="#1e293b" />
+    <!-- Slender Trunk & Delicate Foliage -->
+    <path d="M35,90 Q40,30 20,-40 Q10,-100 40,-160" stroke="#422006" stroke-width="5" fill="none" />
+    <circle cx="15" cy="-80" r="28" fill="#365314" opacity="0.8" />
+    <circle cx="45" cy="-140" r="32" fill="#4d7c0f" opacity="0.85" />
+    <circle cx="5" cy="-150" r="24" fill="#3f6212" opacity="0.75" />
+    <circle cx="65" cy="-90" r="25" fill="#65a30d" opacity="0.85" />
+  </g>
+
+  <!-- Subtle Studio Label Tag -->
+  <g fill="#94a3b8" font-family="'Space Grotesk', sans-serif" font-size="12">
+    <text x="80" y="80" fill="#ffffff" font-weight="700" letter-spacing="1">FINAL ARCHITECTURAL RENDER</text>
+    <text x="80" y="100" fill="#94a3b8">CYCLES RAYTRACING • 4096 SAMPLES • PBR DISPLACEMENT</text>
+  </g>
+</svg>

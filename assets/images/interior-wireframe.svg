@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <radialGradient id="cadBg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#0e1322" />
+      <stop offset="100%" stop-color="#060911" />
+    </radialGradient>
+  </defs>
+
+  <!-- Dark Blueprint / CAD Background -->
+  <rect width="1200" height="800" fill="url(#cadBg)" />
+
+  <!-- CAD Background Isometric Grid -->
+  <g stroke="#06b6d4" stroke-opacity="0.12" stroke-width="0.75">
+    <line x1="0" y1="100" x2="1200" y2="100" />
+    <line x1="0" y1="200" x2="1200" y2="200" />
+    <line x1="0" y1="300" x2="1200" y2="300" />
+    <line x1="0" y1="400" x2="1200" y2="400" />
+    <line x1="0" y1="500" x2="1200" y2="500" />
+    <line x1="0" y1="600" x2="1200" y2="600" />
+    <line x1="0" y1="700" x2="1200" y2="700" />
+    <line x1="150" y1="0" x2="150" y2="800" />
+    <line x1="300" y1="0" x2="300" y2="800" />
+    <line x1="450" y1="0" x2="450" y2="800" />
+    <line x1="600" y1="0" x2="600" y2="800" />
+    <line x1="750" y1="0" x2="750" y2="800" />
+    <line x1="900" y1="0" x2="900" y2="800" />
+    <line x1="1050" y1="0" x2="1050" y2="800" />
+  </g>
+
+  <!-- Architectural Room Wireframe Edges (Cyan & Electric Violet Wireframe) -->
+  <g stroke="#38bdf8" stroke-width="1.2" fill="none">
+    <!-- Perimeter Room Lines -->
+    <polygon points="0,0 320,180 320,620 0,800" stroke="#06b6d4" stroke-width="1.5" />
+    <polygon points="320,180 980,180 980,620 320,620" stroke="#06b6d4" stroke-width="1.5" />
+    <polygon points="980,180 1200,0 1200,800 980,620" stroke="#06b6d4" stroke-width="1.5" />
+    <polygon points="0,800 320,620 980,620 1200,800" stroke="#06b6d4" stroke-width="1.5" />
+
+    <!-- Slatted Wall Wireframe Segments -->
+    <line x1="50" y1="28" x2="50" y2="775" stroke="#8b5cf6" stroke-opacity="0.6" />
+    <line x1="80" y1="45" x2="80" y2="755" stroke="#8b5cf6" stroke-opacity="0.6" />
+    <line x1="110" y1="62" x2="110" y2="735" stroke="#8b5cf6" stroke-opacity="0.6" />
+    <line x1="140" y1="78" x2="140" y2="715" stroke="#8b5cf6" stroke-opacity="0.6" />
+    <line x1="170" y1="95" x2="170" y2="695" stroke="#8b5cf6" stroke-opacity="0.6" />
+    <line x1="200" y1="112" x2="200" y2="675" stroke="#8b5cf6" stroke-opacity="0.6" />
+    <line x1="230" y1="128" x2="230" y2="655" stroke="#8b5cf6" stroke-opacity="0.6" />
+    <line x1="260" y1="145" x2="260" y2="635" stroke="#8b5cf6" stroke-opacity="0.6" />
+    <line x1="290" y1="162" x2="290" y2="625" stroke="#8b5cf6" stroke-opacity="0.6" />
+
+    <!-- Headboard Recess Niche & Subdivisions -->
+    <rect x="360" y="240" width="580" height="280" stroke="#38bdf8" stroke-width="1.5" />
+    <line x1="360" y1="290" x2="940" y2="290" stroke="#06b6d4" stroke-dasharray="4,4" />
+    <line x1="360" y1="380" x2="940" y2="380" stroke="#06b6d4" stroke-dasharray="4,4" />
+    <line x1="650" y1="240" x2="650" y2="520" stroke="#06b6d4" stroke-dasharray="4,4" />
+
+    <!-- Window Structure & Mullions -->
+    <line x1="980" y1="180" x2="1200" y2="0" stroke="#38bdf8" stroke-width="2" />
+    <line x1="980" y1="620" x2="1200" y2="800" stroke="#38bdf8" stroke-width="2" />
+    <line x1="1080" y1="100" x2="1080" y2="700" stroke="#38bdf8" stroke-width="2" />
+    <line x1="980" y1="400" x2="1200" y2="380" stroke="#38bdf8" stroke-dasharray="3,3" />
+
+    <!-- Platform Bed Wireframe Polygon Mesh -->
+    <g transform="translate(420, 440)" stroke="#67e8f9" stroke-width="1.2">
+      <!-- Platform Base Wireframe -->
+      <polygon points="0,150 480,150 460,190 -20,190" />
+      <polygon points="480,150 510,130 510,170 460,190" />
+      <line x1="120" y1="150" x2="100" y2="190" stroke-dasharray="2,2" />
+      <line x1="240" y1="150" x2="220" y2="190" stroke-dasharray="2,2" />
+      <line x1="360" y1="150" x2="340" y2="190" stroke-dasharray="2,2" />
+
+      <!-- Mattress Wireframe -->
+      <polygon points="10,120 470,120 450,165 -10,165" stroke="#a78bfa" />
+      <polygon points="470,120 495,105 495,150 450,165" stroke="#a78bfa" />
+      
+      <!-- Bedding Mesh Triangulation -->
+      <line x1="10" y1="120" x2="100" y2="165" stroke="#8b5cf6" stroke-dasharray="2,4" />
+      <line x1="120" y1="120" x2="210" y2="165" stroke="#8b5cf6" stroke-dasharray="2,4" />
+      <line x1="230" y1="120" x2="320" y2="165" stroke="#8b5cf6" stroke-dasharray="2,4" />
+      <line x1="340" y1="120" x2="430" y2="165" stroke="#8b5cf6" stroke-dasharray="2,4" />
+
+      <!-- Pillows Wireframe -->
+      <polygon points="60,80 200,80 180,122 40,122" stroke="#e0e7ff" />
+      <polygon points="200,80 220,70 220,110 180,122" stroke="#e0e7ff" />
+      <polygon points="250,80 390,80 370,122 230,122" stroke="#e0e7ff" />
+      <polygon points="390,80 410,70 410,110 370,122" stroke="#e0e7ff" />
+    </g>
+
+    <!-- Nightstand Wireframe -->
+    <g transform="translate(290, 520)" stroke="#38bdf8">
+      <polygon points="0,0 70,0 55,40 -15,40" />
+      <polygon points="70,0 85,-10 85,30 55,40" />
+      <!-- Lamp Wireframe Sphere Rings -->
+      <ellipse cx="35" cy="-25" rx="16" ry="16" stroke="#fef08a" />
+      <ellipse cx="35" cy="-25" rx="16" ry="6" stroke="#fef08a" />
+      <ellipse cx="35" cy="-25" rx="6" ry="16" stroke="#fef08a" />
+    </g>
+
+    <!-- Olive Tree Wireframe Nodes -->
+    <g transform="translate(980, 500)" stroke="#22c55e">
+      <polygon points="0,90 70,90 60,190 10,190" />
+      <ellipse cx="35" cy="90" rx="35" ry="12" />
+      <line x1="35" y1="90" x2="30" y2="-40" stroke-dasharray="3,3" />
+      <line x1="30" y1="-40" x2="40" y2="-160" stroke-dasharray="3,3" />
+      <circle cx="15" cy="-80" r="28" stroke-dasharray="4,4" />
+      <circle cx="45" cy="-140" r="32" stroke-dasharray="4,4" />
+      <circle cx="5" cy="-150" r="24" stroke-dasharray="4,4" />
+      <circle cx="65" cy="-90" r="25" stroke-dasharray="4,4" />
+    </g>
+
+    <!-- Dimensioning Overlay Markers & Coordinates -->
+    <g stroke="#ffffff" stroke-width="0.8" opacity="0.7">
+      <line x1="360" y1="210" x2="940" y2="210" />
+      <line x1="360" y1="205" x2="360" y2="215" />
+      <line x1="940" y1="205" x2="940" y2="215" />
+    </g>
+  </g>
+
+  <!-- Blueprints Telemetry & Vertex Points -->
+  <g fill="#06b6d4" font-family="'Space Grotesk', monospace" font-size="11" letter-spacing="2">
+    <text x="650" y="200" text-anchor="middle" fill="#38bdf8">DIM: 3600 mm [HEADBOARD RECESS]</text>
+    <text x="80" y="80" fill="#38bdf8" font-weight="700">CAD 3D TOPOLOGY // WIREFRAME</text>
+    <text x="80" y="100" fill="#64748b">SCALE: 1:1 METRIC • POLYGONS: 18,940 • N-GONS: 0</text>
+    <text x="1100" y="80" text-anchor="end" fill="#8b5cf6">SCENE_ID: KVS_INT_04</text>
+    <text x="1100" y="100" text-anchor="end" fill="#64748b">CAMERA: 24mm FOCAL LENGTH</text>
+  </g>
+
+  <!-- Glowing Cad Vertices -->
+  <g fill="#ffffff">
+    <circle cx="320" cy="180" r="3" />
+    <circle cx="980" cy="180" r="3" />
+    <circle cx="980" cy="620" r="3" />
+    <circle cx="320" cy="620" r="3" />
+  </g>
+</svg>

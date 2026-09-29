@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Lost in the Virtual Space | Kani Vision Studio</title>
+  <meta name="description" content="The coordinate you are searching for does not exist in 3D coordinate space. Return to Kani Vision Studio.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    .not-found-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 24px;
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 40%, #151829 0%, #08090d 70%);
+    }
+
+    .nf-grid-lines {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      transform: perspective(600px) rotateX(60deg) translateY(100px);
+      transform-origin: center bottom;
+      pointer-events: none;
+    }
+
+    .nf-code {
+      font-family: var(--font-heading);
+      font-size: clamp(80px, 14vw, 180px);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -6px;
+      background: linear-gradient(135deg, #a855f7 0%, #6366f1 50%, #06b6d4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+      filter: drop-shadow(0 0 40px rgba(139, 92, 246, 0.4));
+    }
+
+    .nf-headline {
+      font-family: var(--font-heading);
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -1px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .nf-desc {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 520px;
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+
+    .nf-telemetry {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--accent-cyan);
+      margin-bottom: 24px;
+      letter-spacing: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="not-found-page">
+    <div class="nf-grid-lines"></div>
+
+    <div class="container" style="position: relative; z-index: 10;">
+      <div class="nf-telemetry">ERROR: 0x404 // NULL_TRANSFORM_MATRIX</div>
+      <div class="nf-code">404</div>
+      <h1 class="nf-headline">LOST IN THE VIRTUAL SPACE.</h1>
+      <p class="nf-desc">
+        The coordinate you are attempting to render does not exist or has been shifted in 3D space. Let's redirect you back to the active studio.
+      </p>
+
+      <a href="index.html" class="btn-primary">
+        <span>Back to Studio →</span>
+      </a>
+    </div>
+  </div>
+</body>
+</html>

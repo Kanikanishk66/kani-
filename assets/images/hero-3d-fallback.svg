@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#141522" />
+      <stop offset="60%" stop-color="#090a0f" />
+      <stop offset="100%" stop-color="#050608" />
+    </radialGradient>
+    <linearGradient id="cyberViolet" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a855f7" />
+      <stop offset="50%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+    <linearGradient id="metalChrome" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
+      <stop offset="25%" stop-color="#94a3b8" stop-opacity="0.6" />
+      <stop offset="50%" stop-color="#334155" stop-opacity="0.8" />
+      <stop offset="75%" stop-color="#64748b" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.95" />
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="25" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <filter id="coreGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="40" result="core" />
+      <feMerge>
+        <feMergeNode in="core" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Dark Cosmic Studio Background -->
+  <rect width="1200" height="800" fill="url(#bgGrad)" />
+
+  <!-- Grid Perspective Floor / Cyber Grid -->
+  <g opacity="0.12" stroke="#6366f1" stroke-width="1">
+    <line x1="100" y1="750" x2="600" y2="450" />
+    <line x1="250" y1="750" x2="600" y2="450" />
+    <line x1="400" y1="750" x2="600" y2="450" />
+    <line x1="550" y1="750" x2="600" y2="450" />
+    <line x1="650" y1="750" x2="600" y2="450" />
+    <line x1="800" y1="750" x2="600" y2="450" />
+    <line x1="950" y1="750" x2="600" y2="450" />
+    <line x1="1100" y1="750" x2="600" y2="450" />
+    <ellipse cx="600" cy="550" rx="420" ry="120" fill="none" stroke="#8b5cf6" stroke-dasharray="6,6" />
+    <ellipse cx="600" cy="620" rx="550" ry="150" fill="none" stroke="#06b6d4" stroke-dasharray="4,8" />
+  </g>
+
+  <!-- Ambient Light Blobs -->
+  <circle cx="600" cy="380" r="160" fill="#8b5cf6" opacity="0.18" filter="url(#coreGlow)" />
+  <circle cx="700" cy="340" r="120" fill="#06b6d4" opacity="0.15" filter="url(#coreGlow)" />
+
+  <!-- 3D Geometric Abstract Sculpture: Interlocking Icosahedron & Torus Ribs -->
+  <g transform="translate(600, 380)">
+    <!-- Outer Orbital Rings -->
+    <ellipse cx="0" cy="0" rx="280" ry="100" fill="none" stroke="url(#cyberViolet)" stroke-width="1.5" opacity="0.4" transform="rotate(-25)" />
+    <ellipse cx="0" cy="0" rx="250" ry="85" fill="none" stroke="#38bdf8" stroke-width="1" opacity="0.3" stroke-dasharray="8,12" transform="rotate(35)" />
+
+    <!-- Polyhedral Back Faces (Darker, Shaded) -->
+    <polygon points="-120,-60 -40,-160 80,-110 0,0" fill="#1e1b4b" opacity="0.7" stroke="#4338ca" stroke-width="1" />
+    <polygon points="80,-110 160,-20 90,90 0,0" fill="#0f172a" opacity="0.8" stroke="#334155" stroke-width="1" />
+    <polygon points="-120,-60 -150,50 -50,140 0,0" fill="#172554" opacity="0.75" stroke="#1d4ed8" stroke-width="1" />
+    <polygon points="-50,140 60,150 90,90 0,0" fill="#1e1b4b" opacity="0.85" stroke="#4338ca" stroke-width="1" />
+
+    <!-- Core Floating Gem / Crystalline Prism -->
+    <polygon points="0,-130 90,-40 0,90 -90,-40" fill="url(#cyberViolet)" opacity="0.45" filter="url(#glow)" />
+    <polygon points="0,-130 90,-40 0,20" fill="url(#metalChrome)" opacity="0.65" />
+    <polygon points="0,-130 -90,-40 0,20" fill="#a855f7" opacity="0.5" />
+    <polygon points="-90,-40 0,90 0,20" fill="#4338ca" opacity="0.7" />
+    <polygon points="90,-40 0,90 0,20" fill="#0284c7" opacity="0.6" />
+
+    <!-- Foreground Geometric Shards (Metallic / Glass Refraction) -->
+    <polygon points="-40,-160 0,-130 90,-40 80,-110" fill="url(#metalChrome)" opacity="0.9" stroke="#e0e7ff" stroke-width="1.5" />
+    <polygon points="80,-110 160,-20 120,40 90,-40" fill="#0f172a" opacity="0.85" stroke="#38bdf8" stroke-width="1" />
+    <polygon points="90,-40 120,40 60,150 0,90" fill="url(#metalChrome)" opacity="0.8" stroke="#ffffff" stroke-width="1" />
+    <polygon points="-90,-40 0,90 -50,140 -110,60" fill="#312e81" opacity="0.8" stroke="#818cf8" stroke-width="1" />
+    <polygon points="-120,-60 -40,-160 0,-130 -90,-40" fill="#1e1b4b" opacity="0.85" stroke="#c084fc" stroke-width="1.5" />
+
+    <!-- Crisp Highlight Vertices (Glowing Points) -->
+    <circle cx="0" cy="-130" r="4" fill="#ffffff" filter="url(#glow)" />
+    <circle cx="90" cy="-40" r="3.5" fill="#38bdf8" filter="url(#glow)" />
+    <circle cx="-90" cy="-40" r="3.5" fill="#c084fc" filter="url(#glow)" />
+    <circle cx="0" cy="90" r="4" fill="#67e8f9" filter="url(#glow)" />
+    <circle cx="-40" cy="-160" r="3" fill="#ffffff" />
+    <circle cx="80" cy="-110" r="3" fill="#e0e7ff" />
+    <circle cx="160" cy="-20" r="3" fill="#38bdf8" />
+    <circle cx="60" cy="150" r="3" fill="#a855f7" />
+    <circle cx="-50" cy="140" r="3" fill="#818cf8" />
+
+    <!-- Precision Wireframe Coordinate Overlays -->
+    <line x1="-180" y1="0" x2="180" y2="0" stroke="rgba(255,255,255,0.15)" stroke-dasharray="3,3" />
+    <line x1="0" y1="-190" x2="0" y2="190" stroke="rgba(255,255,255,0.15)" stroke-dasharray="3,3" />
+  </g>
+
+  <!-- Technical Telemetry & Studio Branding Markings -->
+  <g fill="#94a3b8" font-family="'Space Grotesk', 'Inter', monospace" font-size="11" letter-spacing="2" opacity="0.6">
+    <text x="70" y="80">KANI VISION STUDIO // R&amp;D LAB</text>
+    <text x="70" y="100">OBJECT: ABSTRACT 3D POLYHEDRON_v2.5</text>
+    <text x="1020" y="80" text-anchor="end">SYS // SHADER: PBR_METAL</text>
+    <text x="1020" y="100" text-anchor="end">RENDER: RAYTRACED 60FPS</text>
+    <text x="70" y="730">COORD: [X:+0.42 Y:-0.88 Z:+1.12]</text>
+    <text x="1020" y="730" text-anchor="end">FPS: 60.0 // VERTICES: 12,480</text>
+  </g>
+</svg>

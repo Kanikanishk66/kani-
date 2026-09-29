@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <radialGradient id="motionBg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#1e1333" />
+      <stop offset="60%" stop-color="#0e0a19" />
+      <stop offset="100%" stop-color="#040307" />
+    </radialGradient>
+    <linearGradient id="kineticGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a855f7" />
+      <stop offset="50%" stop-color="#ec4899" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="800" fill="url(#motionBg)" />
+
+  <!-- Background Scanlines -->
+  <g stroke="#ffffff" stroke-opacity="0.03" stroke-width="1">
+    <line x1="0" y1="100" x2="1200" y2="100" />
+    <line x1="0" y1="200" x2="1200" y2="200" />
+    <line x1="0" y1="300" x2="1200" y2="300" />
+    <line x1="0" y1="400" x2="1200" y2="400" />
+    <line x1="0" y1="500" x2="1200" y2="500" />
+    <line x1="0" y1="600" x2="1200" y2="600" />
+    <line x1="0" y1="700" x2="1200" y2="700" />
+  </g>
+
+  <!-- Kinetic 3D Type Slices / Waveform Distortion -->
+  <g transform="translate(600, 400)">
+    <!-- Layer -3 (Offset Purple Echo) -->
+    <text x="-40" y="-80" font-family="'Space Grotesk', sans-serif" font-size="110" font-weight="900" fill="none" stroke="#8b5cf6" stroke-width="2" opacity="0.3" text-anchor="middle" letter-spacing="6" transform="skewX(-18)">KINETIC</text>
+    <!-- Layer -2 (Offset Cyan Echo) -->
+    <text x="35" y="-5" font-family="'Space Grotesk', sans-serif" font-size="110" font-weight="900" fill="none" stroke="#06b6d4" stroke-width="2" opacity="0.45" text-anchor="middle" letter-spacing="6" transform="skewX(12)">KINETIC</text>
+    <!-- Main Center Bold Text with Gradient Fill -->
+    <text x="0" y="-40" font-family="'Space Grotesk', sans-serif" font-size="124" font-weight="900" fill="url(#kineticGrad)" text-anchor="middle" letter-spacing="4">KINETIC</text>
+
+    <!-- Subtitle: TYPOGRAPHY REEL -->
+    <text x="0" y="80" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="16">TYPOGRAPHY</text>
+    <text x="0" y="130" font-family="'Space Grotesk', monospace" font-size="14" fill="#a855f7" text-anchor="middle" letter-spacing="8">AUDIO REACTIVE 3D MOTION // 60 FPS</text>
+
+    <!-- Waveform Frequency Lines -->
+    <g transform="translate(-300, 160)" stroke="#06b6d4" stroke-width="2" opacity="0.7">
+      <line x1="0" y1="0" x2="600" y2="0" stroke-dasharray="2,6" />
+      <!-- Frequency Bars -->
+      <line x1="60" y1="0" x2="60" y2="-24" />
+      <line x1="120" y1="0" x2="120" y2="-45" stroke="#8b5cf6" stroke-width="3" />
+      <line x1="180" y1="0" x2="180" y2="-18" />
+      <line x1="240" y1="0" x2="240" y2="-60" stroke="#ec4899" stroke-width="3" />
+      <line x1="300" y1="0" x2="300" y2="-85" stroke="#ffffff" stroke-width="4" />
+      <line x1="360" y1="0" x2="360" y2="-55" stroke="#06b6d4" stroke-width="3" />
+      <line x1="420" y1="0" x2="420" y2="-20" />
+      <line x1="480" y1="0" x2="480" y2="-40" stroke="#8b5cf6" />
+      <line x1="540" y1="0" x2="540" y2="-12" />
+    </g>
+
+    <!-- Floating Circular Particles -->
+    <circle cx="-320" cy="-140" r="4" fill="#06b6d4" opacity="0.8" />
+    <circle cx="280" cy="-120" r="3" fill="#a855f7" opacity="0.8" />
+    <circle cx="380" cy="40" r="5" fill="#ec4899" opacity="0.8" />
+    <circle cx="-260" cy="90" r="3" fill="#ffffff" opacity="0.6" />
+  </g>
+
+  <!-- Studio Header -->
+  <g fill="#94a3b8" font-family="'Space Grotesk', sans-serif">
+    <text x="80" y="90" fill="#f8fafc" font-size="13" font-weight="700" letter-spacing="1">PROJECT 08 // MOTION &amp; VFX</text>
+    <text x="80" y="112" fill="#64748b" font-size="12">KINETIC TYPOGRAPHY • AUDIO DISPLACEMENT • AFTER EFFECTS</text>
+    <rect x="1000" y="75" width="120" height="28" rx="6" fill="#1e2230" stroke="#a855f7" stroke-width="1" />
+    <text x="1060" y="94" fill="#c084fc" font-size="11" text-anchor="middle" font-weight="600" letter-spacing="1">CONCEPT</text>
+  </g>
+</svg>

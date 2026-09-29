@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 1280" width="100%" height="100%">
+  <defs>
+    <radialGradient id="tokyoBg" cx="45%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#141724" />
+      <stop offset="60%" stop-color="#0a0c13" />
+      <stop offset="100%" stop-color="#030406" />
+    </radialGradient>
+    <linearGradient id="tokyoRed" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ef4444" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="1280" fill="url(#tokyoBg)" />
+
+  <!-- Japanese-Swiss Strict Architectural Grid Lines -->
+  <g stroke="#ffffff" stroke-opacity="0.08" stroke-width="1">
+    <line x1="80" y1="0" x2="80" y2="1280" />
+    <line x1="880" y1="0" x2="880" y2="1280" />
+    <line x1="0" y1="140" x2="960" y2="140" />
+    <line x1="0" y1="1040" x2="960" y2="1040" />
+  </g>
+
+  <!-- Bilingual Japanese / English Typographic Header -->
+  <g font-family="'Space Grotesk', sans-serif">
+    <text x="80" y="80" font-family="'Space Grotesk', monospace" font-size="12" fill="#ef4444" letter-spacing="4">BIENNALE 2026 // 第14回 建築ビエンナーレ</text>
+    <text x="880" y="80" font-family="'Space Grotesk', monospace" font-size="12" fill="#94a3b8" text-anchor="end">TOKYO METROPOLIS</text>
+  </g>
+
+  <!-- Massive Kanji Character + English Typographic Overlap -->
+  <g transform="translate(80, 240)">
+    <!-- Faint Atmospheric Architectural Structure -->
+    <text x="540" y="240" font-family="'Noto Sans JP', sans-serif" font-size="340" font-weight="900" fill="rgba(255,255,255,0.03)" text-anchor="middle">構</text>
+    
+    <text x="0" y="0" font-size="80" font-weight="900" fill="#ffffff" letter-spacing="-2">NEO-TOKYO</text>
+    <text x="0" y="70" font-size="54" font-weight="700" fill="url(#tokyoRed)" letter-spacing="2">ARCHITECTURE</text>
+    <text x="0" y="110" font-size="16" font-family="'Space Grotesk', monospace" fill="#94a3b8" letter-spacing="3">VERTICAL URBANISM &amp; TIMBER MEGA-STRUCTURES</text>
+  </g>
+
+  <!-- Central Visual: Isometric Architectural Mega-Structure Wireframe -->
+  <g transform="translate(480, 680)">
+    <!-- Isometric Tower 1 -->
+    <polygon points="-80,0 0,-46 0,-240 -80,-194" fill="rgba(239, 68, 68, 0.08)" stroke="#ef4444" stroke-width="2" />
+    <polygon points="0,-46 80,0 80,-194 0,-240" fill="rgba(139, 92, 246, 0.08)" stroke="#8b5cf6" stroke-width="2" />
+    <polygon points="-80,-194 0,-240 80,-194 0,-148" fill="#1e293b" stroke="#ffffff" stroke-width="1.5" />
+
+    <!-- Isometric Tower 2 (Taller, Center) -->
+    <polygon points="-40,60 40,14 40,-320 -40,-274" fill="rgba(239, 68, 68, 0.12)" stroke="#ef4444" stroke-width="2" />
+    <polygon points="40,14 120,60 120,-274 40,-320" fill="rgba(139, 92, 246, 0.12)" stroke="#8b5cf6" stroke-width="2" />
+    <polygon points="-40,-274 40,-320 120,-274 40,-228" fill="#334155" stroke="#ffffff" stroke-width="2" />
+
+    <!-- Skybridge Connector -->
+    <polygon points="-120,-100 -40,-146 160,-30 80,16" fill="rgba(6, 182, 212, 0.15)" stroke="#06b6d4" stroke-width="2" stroke-dasharray="4,4" />
+
+    <!-- Ground Footprint Grid -->
+    <line x1="-240" y1="120" x2="240" y2="-120" stroke="rgba(255,255,255,0.15)" stroke-dasharray="3,3" />
+    <line x1="-240" y1="-120" x2="240" y2="120" stroke="rgba(255,255,255,0.15)" stroke-dasharray="3,3" />
+  </g>
+
+  <!-- Exhibition Details Columns -->
+  <g transform="translate(80, 1080)" font-family="'Space Grotesk', monospace" font-size="12" fill="#94a3b8">
+    <g transform="translate(0, 0)">
+      <text x="0" y="0" font-weight="700" fill="#ffffff">LOCATION</text>
+      <text x="0" y="24" fill="#cbd5e1">MORI ARTS CENTER GALLERY</text>
+      <text x="0" y="44" fill="#64748b">ROPPONGI HILLS, TOKYO</text>
+    </g>
+    <g transform="translate(300, 0)">
+      <text x="0" y="0" font-weight="700" fill="#ffffff">DATES</text>
+      <text x="0" y="24" fill="#cbd5e1">NOV 01 — DEC 20, 2026</text>
+      <text x="0" y="44" fill="#64748b">CURATED WITH TOKYO UNIV</text>
+    </g>
+    <g transform="translate(600, 0)">
+      <text x="0" y="0" font-weight="700" fill="#ffffff">IDENTITY DESIGN</text>
+      <text x="0" y="24" fill="#ef4444">KANI VISION STUDIO</text>
+      <text x="0" y="44" fill="#64748b">BRANDING POSTER 05</text>
+    </g>
+  </g>
+</svg>

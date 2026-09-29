@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <radialGradient id="stageRenBg" cx="50%" cy="45%" r="75%">
+      <stop offset="0%" stop-color="#14182b" />
+      <stop offset="50%" stop-color="#090b14" />
+      <stop offset="100%" stop-color="#030408" />
+    </radialGradient>
+    <radialGradient id="carbonMetal" cx="30%" cy="25%" r="75%">
+      <stop offset="0%" stop-color="#475569" />
+      <stop offset="35%" stop-color="#1e293b" />
+      <stop offset="70%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#020617" />
+    </radialGradient>
+    <linearGradient id="neonLaser" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="50%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+    <filter id="thrusterGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="16" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="800" fill="url(#stageRenBg)" />
+
+  <!-- Studio Ambient Lighting / Rim Light Blobs -->
+  <circle cx="360" cy="340" r="160" fill="#06b6d4" opacity="0.12" filter="blur(50px)" />
+  <circle cx="840" cy="340" r="160" fill="#8b5cf6" opacity="0.12" filter="blur(50px)" />
+
+  <!-- Ground Pedestal Shadow & Reflective Pool -->
+  <ellipse cx="600" cy="580" rx="340" ry="45" fill="#000000" opacity="0.8" filter="url(#thrusterGlow)" />
+  <ellipse cx="600" cy="580" rx="180" ry="18" fill="#06b6d4" opacity="0.18" filter="url(#thrusterGlow)" />
+
+  <!-- Stage 3: Final Raytraced Drone Render -->
+  <g transform="translate(600, 380)">
+    <!-- Thruster Struts (Anodized Dark Metal) -->
+    <rect x="-200" y="-12" width="100" height="24" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5" />
+    <rect x="100" y="-12" width="100" height="24" rx="6" fill="#1e293b" stroke="#a855f7" stroke-width="1.5" />
+
+    <!-- Left Thruster Pod Assembly with Ion Propulsion Exhaust -->
+    <g transform="translate(-210, 0)">
+      <!-- Ion Exhaust Glow -->
+      <ellipse cx="-24" cy="0" rx="20" ry="32" fill="#06b6d4" opacity="0.75" filter="url(#thrusterGlow)" />
+      <ellipse cx="-20" cy="0" rx="8" ry="16" fill="#ffffff" filter="url(#thrusterGlow)" />
+      <!-- Housing -->
+      <ellipse cx="0" cy="0" rx="42" ry="75" fill="url(#carbonMetal)" stroke="#64748b" stroke-width="1.5" />
+      <!-- Intake Seam -->
+      <ellipse cx="14" cy="0" rx="8" ry="42" fill="#0f172a" stroke="#06b6d4" stroke-width="1" />
+    </g>
+
+    <!-- Right Thruster Pod Assembly with Ion Propulsion Exhaust -->
+    <g transform="translate(210, 0)">
+      <!-- Ion Exhaust Glow -->
+      <ellipse cx="24" cy="0" rx="20" ry="32" fill="#8b5cf6" opacity="0.75" filter="url(#thrusterGlow)" />
+      <ellipse cx="20" cy="0" rx="8" ry="16" fill="#ffffff" filter="url(#thrusterGlow)" />
+      <!-- Housing -->
+      <ellipse cx="0" cy="0" rx="42" ry="75" fill="url(#carbonMetal)" stroke="#64748b" stroke-width="1.5" />
+      <!-- Intake Seam -->
+      <ellipse cx="-14" cy="0" rx="8" ry="42" fill="#0f172a" stroke="#8b5cf6" stroke-width="1" />
+    </g>
+
+    <!-- Center Spherical Drone Body (Deep Matte Carbon & Specular Curvature) -->
+    <circle cx="0" cy="0" r="140" fill="url(#carbonMetal)" stroke="#334155" stroke-width="2" />
+    <!-- Specular Highlight Arc on Sphere -->
+    <path d="M-80,-100 C-20,-130 50,-120 100,-70" stroke="#ffffff" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.7" />
+
+    <!-- Equator Laser Strip (Active Power Core) -->
+    <ellipse cx="0" cy="0" rx="140" ry="40" fill="none" stroke="url(#neonLaser)" stroke-width="4" filter="url(#thrusterGlow)" />
+    <ellipse cx="0" cy="0" rx="140" ry="40" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.9" />
+
+    <!-- Front Optical Sensor Array (Deep Crystal Glass + Cyan Reticle) -->
+    <circle cx="0" cy="0" r="54" fill="#030712" stroke="#475569" stroke-width="2" />
+    <circle cx="0" cy="0" r="44" fill="#0f172a" stroke="#06b6d4" stroke-width="2" />
+    <!-- Glowing Sensor Iris -->
+    <circle cx="0" cy="0" r="26" fill="#06b6d4" opacity="0.9" filter="url(#thrusterGlow)" />
+    <circle cx="0" cy="0" r="14" fill="#ffffff" />
+    <!-- Reticle Crosshair -->
+    <line x1="-36" y1="0" x2="-20" y2="0" stroke="#ffffff" stroke-width="2" />
+    <line x1="20" y1="0" x2="36" y2="0" stroke="#ffffff" stroke-width="2" />
+    <line x1="0" y1="-36" x2="0" y2="-20" stroke="#ffffff" stroke-width="2" />
+    <line x1="0" y1="20" x2="0" y2="36" stroke="#ffffff" stroke-width="2" />
+
+    <!-- High-Gloss Optical Glint -->
+    <ellipse cx="-16" cy="-16" rx="10" ry="6" fill="#ffffff" opacity="0.8" transform="rotate(-30 -16 -16)" />
+
+    <!-- Carbon Antenna with Transceiver Beacon -->
+    <line x1="0" y1="-140" x2="0" y2="-210" stroke="#475569" stroke-width="4" stroke-linecap="round" />
+    <circle cx="0" cy="-210" r="8" fill="#8b5cf6" filter="url(#thrusterGlow)" />
+    <circle cx="0" cy="-210" r="4" fill="#ffffff" />
+  </g>
+
+  <!-- Stage Label Badge -->
+  <g transform="translate(80, 80)" font-family="'Space Grotesk', sans-serif">
+    <rect x="0" y="0" width="240" height="34" rx="8" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="1" />
+    <text x="120" y="22" font-size="12" font-weight="700" fill="#c084fc" text-anchor="middle" letter-spacing="2">STAGE 03 // FINAL RENDER</text>
+    <text x="0" y="58" font-size="12" fill="#94a3b8">PBR Raytracing • 4K Samples • Volumetric lighting &amp; bloom</text>
+  </g>
+</svg>
