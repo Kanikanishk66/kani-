@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Case Study Details | Kani Vision Studio</title>
   <meta name="description" content="Detailed case study, design process, 3D topology, and deliverables by Kani Vision Studio.">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%2308090d'/><polygon points='16,4 27,10 27,22 16,28 5,22 5,10' fill='none' stroke='%238b5cf6' stroke-width='2'/></svg>">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23213a30'/><polygon points='16,4 27,10 27,22 16,28 5,22 5,10' fill='none' stroke='%23396b56' stroke-width='2'/></svg>">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/responsive.css">
@@ -56,6 +56,7 @@
       border: 1px solid rgba(255,255,255,0.1);
     }
   </style>
+  <link rel="stylesheet" href="css/studio-theme.css">
 </head>
 <body>
   <div class="case-standalone-page">
@@ -101,13 +102,13 @@
             <span class="badge badge-accent">${project.categoryLabel || project.category}</span>
             <span class="badge badge-outline">${project.projectType}</span>
             <span style="font-family: var(--font-mono); font-size: 12px; color: var(--text-muted);">${project.year}</span>
-            <span class="badge" style="background: rgba(6, 182, 212, 0.15); color: #38bdf8; border: 1px solid #06b6d4;">STANDALONE TAB ↗</span>
+            <span class="badge" style="background: rgba(57, 107, 86, 0.09); color: #396b56; border: 1px solid rgba(57, 107, 86, 0.25);">STANDALONE TAB ↗</span>
           </div>
           <h1 class="cs-title" style="font-size: clamp(38px, 6vw, 70px);">${project.title}</h1>
           <p class="cs-idea-lead" style="color: var(--text-secondary); margin-bottom: 24px;">${project.shortDesc}</p>
         </div>
 
-        <div class="cs-hero-frame" style="box-shadow: 0 0 50px rgba(139, 92, 246, 0.25);">
+        <div class="cs-hero-frame" style="box-shadow: 0 16px 46px rgba(32, 42, 37, 0.12);">
           <img src="${project.heroImage}" alt="${project.title}" />
         </div>
 

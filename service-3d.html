@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3D Modeling & Visualization — Kani Vision Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #070a0f;
+      --bg2: #0c1018;
+      --card: rgba(14,18,28,0.75);
+      --border: rgba(255,255,255,0.07);
+      --text: #f1f5f9;
+      --muted: #64748b;
+      --soft: #94a3b8;
+      --amber: #f59e0b;
+      --orange: #fb923c;
+      --violet: #8b5cf6;
+      --glow: rgba(245,158,11,0.22);
+      --font: 'Space Grotesk', sans-serif;
+      --body: 'Inter', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--body);
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px;
+      height: 72px;
+      background: rgba(7,10,15,0.82);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-family: var(--font); font-weight: 800; font-size: 16px; letter-spacing: 0.04em; color: var(--text); text-decoration: none; }
+    .nav-logo span { color: var(--amber); }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links a { font-family: var(--font); font-size: 13px; font-weight: 500; color: var(--soft); text-decoration: none; letter-spacing: 0.05em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--amber); }
+    .nav-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font); font-size: 13px; font-weight: 600;
+      color: var(--amber); border: 1px solid rgba(245,158,11,0.35);
+      background: rgba(245,158,11,0.08); border-radius: 100px;
+      padding: 8px 20px; text-decoration: none; transition: all 0.25s;
+    }
+    .nav-back:hover { background: rgba(245,158,11,0.18); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 48px 80px;
+    }
+    #hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
+    .hero-content { position: relative; z-index: 2; max-width: 700px; }
+    .hero-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.15em; color: var(--amber);
+      border: 1px solid rgba(245,158,11,0.4); background: rgba(245,158,11,0.08);
+      border-radius: 100px; padding: 6px 18px; margin-bottom: 28px;
+    }
+    .hero-pill::before { content: '◆'; font-size: 8px; }
+    .hero-title {
+      font-family: var(--font); font-weight: 900;
+      font-size: clamp(48px, 7vw, 96px); line-height: 0.95;
+      letter-spacing: -0.03em; margin-bottom: 28px;
+    }
+    .hero-title .grad {
+      background: linear-gradient(135deg, #f59e0b 0%, #fb923c 50%, #ef4444 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero-desc { font-size: 18px; line-height: 1.7; color: var(--soft); max-width: 560px; margin-bottom: 40px; }
+    .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--font); font-weight: 700; font-size: 14px;
+      color: #000; background: var(--amber); border: none;
+      border-radius: 100px; padding: 14px 32px; cursor: pointer;
+      text-decoration: none; transition: all 0.3s; letter-spacing: 0.04em;
+    }
+    .btn-primary:hover { background: var(--orange); transform: translateY(-2px); box-shadow: 0 16px 48px rgba(245,158,11,0.35); }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--font); font-weight: 600; font-size: 14px;
+      color: var(--text); background: transparent;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 100px; padding: 14px 32px; cursor: pointer;
+      text-decoration: none; transition: all 0.3s;
+    }
+    .btn-ghost:hover { border-color: var(--amber); color: var(--amber); }
+
+    /* SECTIONS */
+    section { padding: 100px 48px; }
+    .section-label {
+      font-family: var(--font); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.2em; color: var(--amber); text-transform: uppercase; margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: var(--font); font-weight: 800;
+      font-size: clamp(34px, 4.5vw, 62px); line-height: 1.05;
+      letter-spacing: -0.02em; margin-bottom: 20px;
+    }
+    .section-sub { font-size: 17px; color: var(--soft); line-height: 1.7; max-width: 640px; margin-bottom: 60px; }
+    .container { max-width: 1280px; margin: 0 auto; }
+
+    /* CAPABILITIES */
+    .caps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    @media(max-width:900px) { .caps-grid { grid-template-columns: 1fr 1fr; } }
+    @media(max-width:600px) { .caps-grid { grid-template-columns: 1fr; } }
+    .cap-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 32px;
+      transition: all 0.35s; position: relative; overflow: hidden;
+    }
+    .cap-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--amber), var(--orange));
+      opacity: 0; transition: opacity 0.35s;
+    }
+    .cap-card:hover { border-color: rgba(245,158,11,0.35); transform: translateY(-6px); box-shadow: 0 24px 64px rgba(245,158,11,0.12); }
+    .cap-card:hover::before { opacity: 1; }
+    .cap-icon { font-size: 32px; margin-bottom: 16px; }
+    .cap-title { font-family: var(--font); font-weight: 700; font-size: 18px; margin-bottom: 10px; }
+    .cap-desc { font-size: 14px; color: var(--soft); line-height: 1.65; }
+
+    /* PROCESS — STAGES */
+    .stages-section { background: var(--bg2); }
+    .stages-wrap { display: flex; gap: 16px; justify-content: center; margin-bottom: 48px; flex-wrap: wrap; }
+    .stage-btn {
+      font-family: var(--font); font-size: 13px; font-weight: 600;
+      padding: 10px 24px; border-radius: 100px; border: 1px solid var(--border);
+      background: transparent; color: var(--soft); cursor: pointer; transition: all 0.25s;
+    }
+    .stage-btn.active, .stage-btn:hover { background: var(--amber); color: #000; border-color: var(--amber); }
+    .stage-display {
+      border-radius: 24px; overflow: hidden; border: 1px solid var(--border);
+      background: var(--card); max-width: 900px; margin: 0 auto;
+      aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center;
+    }
+    .stage-visual {
+      width: 100%; height: 100%; display: none;
+      align-items: center; justify-content: center;
+    }
+    .stage-visual.active { display: flex; }
+    .stage-svg-wrap { width: 100%; height: 100%; }
+
+    /* GALLERY */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    @media(max-width:900px) { .gallery-grid { grid-template-columns: 1fr 1fr; } }
+    @media(max-width:560px) { .gallery-grid { grid-template-columns: 1fr; } }
+    .gallery-card {
+      border-radius: 18px; overflow: hidden; position: relative;
+      background: var(--card); border: 1px solid var(--border);
+      aspect-ratio: 4/3; cursor: pointer; transition: transform 0.35s, box-shadow 0.35s;
+    }
+    .gallery-card:hover { transform: scale(1.03); box-shadow: 0 20px 60px rgba(245,158,11,0.18); }
+    .gallery-card:nth-child(1) { grid-row: span 2; aspect-ratio: auto; }
+    .gallery-vis {
+      width: 100%; height: 100%; min-height: 220px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font); font-size: 12px; font-weight: 700;
+      letter-spacing: 0.1em; color: var(--muted);
+    }
+    .gallery-label {
+      position: absolute; bottom: 16px; left: 16px; right: 16px;
+      font-family: var(--font); font-size: 13px; font-weight: 600;
+      color: var(--text); background: rgba(7,10,15,0.82); border-radius: 10px;
+      padding: 8px 14px; backdrop-filter: blur(10px);
+    }
+
+    /* SOFTWARE TOOLS */
+    .tools-row { display: flex; flex-wrap: wrap; gap: 16px; }
+    .tool-badge {
+      display: flex; align-items: center; gap: 12px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 14px 22px;
+      font-family: var(--font); font-size: 14px; font-weight: 600;
+      transition: all 0.25s;
+    }
+    .tool-badge:hover { border-color: rgba(245,158,11,0.4); color: var(--amber); transform: translateY(-3px); }
+    .tool-icon { font-size: 22px; }
+
+    /* FINAL CTA */
+    .cta-section {
+      text-align: center;
+      padding: 120px 48px;
+      background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(245,158,11,0.12) 0%, transparent 70%);
+    }
+    .cta-title { font-family: var(--font); font-weight: 900; font-size: clamp(40px,5.5vw,80px); letter-spacing: -0.03em; line-height: 1.0; margin-bottom: 24px; }
+    .cta-desc { font-size: 18px; color: var(--soft); max-width: 520px; margin: 0 auto 48px; line-height: 1.7; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      font-family: var(--font); font-size: 12px; color: var(--muted); flex-wrap: wrap; gap: 12px;
+    }
+    .footer-logo { font-weight: 800; font-size: 14px; color: var(--text); letter-spacing: 0.05em; }
+    .footer-logo span { color: var(--amber); }
+
+    /* SCROLL REVEAL */
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    @media(max-width:768px) {
+      nav { padding: 0 24px; }
+      .hero { padding: 100px 24px 60px; }
+      section { padding: 70px 24px; }
+      footer { padding: 24px; }
+    }
+  </style>
+  <link rel="stylesheet" href="css/studio-theme.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html">KANI <span>VISION</span> STUDIO</a>
+  <div class="nav-links">
+    <a href="index.html#work">Work</a>
+    <a href="index.html#services">Services</a>
+    <a href="index.html#contact">Contact</a>
+    <a class="nav-back" href="index.html">← Back to Studio</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-content">
+    <div class="hero-pill">SERVICE 01 — 3D MODELING</div>
+    <h1 class="hero-title">
+      BUILDING<br><span class="grad">WORLDS</span><br>IN 3D.
+    </h1>
+    <p class="hero-desc">From simple objects to complex environments — we transform concepts into realistic 3D assets, renders, and visualizations that feel physically real.</p>
+    <div class="hero-cta">
+      <a class="btn-primary" href="index.html#contact">Start a 3D Project →</a>
+      <a class="btn-ghost" href="viewer-3d.html" target="_blank">Launch 3D Viewer ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section>
+  <div class="container">
+    <div class="section-label reveal">WHAT WE DO IN 3D</div>
+    <h2 class="section-title reveal">Full-Spectrum 3D<br>Creation Pipeline.</h2>
+    <p class="section-sub reveal">Every stage of 3D production — from concept to final render — handled with precision and craftsmanship.</p>
+    <div class="caps-grid">
+      <div class="cap-card reveal">
+        <div class="cap-icon">🧊</div>
+        <div class="cap-title">Product Visualization</div>
+        <div class="cap-desc">Photorealistic product renders for e-commerce, packaging, marketing, and presentations. Perfect surface detail, materials, and lighting.</div>
+      </div>
+      <div class="cap-card reveal">
+        <div class="cap-icon">🏛️</div>
+        <div class="cap-title">Architectural Models</div>
+        <div class="cap-desc">Exterior and interior 3D architectural models for concepts, proposals, and client visualization before construction.</div>
+      </div>
+      <div class="cap-card reveal">
+        <div class="cap-icon">👾</div>
+        <div class="cap-title">Character & Creature Design</div>
+        <div class="cap-desc">Conceptual characters, game-ready meshes, and stylized or realistic creature models with full UV and material setups.</div>
+      </div>
+      <div class="cap-card reveal">
+        <div class="cap-icon">🌍</div>
+        <div class="cap-title">Environment & Scene</div>
+        <div class="cap-desc">Complete 3D environments — from sci-fi spaces to natural landscapes. Designed for renders, animation, and game engines.</div>
+      </div>
+      <div class="cap-card reveal">
+        <div class="cap-icon">💎</div>
+        <div class="cap-title">Material & Shading</div>
+        <div class="cap-desc">PBR materials, procedural textures, subsurface scattering, metals, glass, fabric — every surface crafted with physical accuracy.</div>
+      </div>
+      <div class="cap-card reveal">
+        <div class="cap-icon">💡</div>
+        <div class="cap-title">Lighting & Rendering</div>
+        <div class="cap-desc">Studio lighting, HDRI, physical sun/sky, cinematic lighting setups. Final renders in Cycles, EEVEE, or Arnold.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STAGES PROCESS -->
+<section class="stages-section">
+  <div class="container">
+    <div class="section-label reveal">THE 3D PIPELINE</div>
+    <h2 class="section-title reveal">Wireframe → Material<br>→ Final Render.</h2>
+    <p class="section-sub reveal">See exactly how a 3D model evolves through each stage of the production pipeline.</p>
+
+    <div class="stages-wrap">
+      <button class="stage-btn active" data-stage="wireframe">01 — Wireframe</button>
+      <button class="stage-btn" data-stage="blockout">02 — Block-out</button>
+      <button class="stage-btn" data-stage="material">03 — Materials</button>
+      <button class="stage-btn" data-stage="lighting">04 — Lighting</button>
+      <button class="stage-btn" data-stage="render">05 — Final Render</button>
+    </div>
+
+    <div class="stage-display">
+      <!-- WIREFRAME -->
+      <div class="stage-visual active" id="stage-wireframe">
+        <svg viewBox="0 0 900 506" xmlns="http://www.w3.org/2000/svg" class="stage-svg-wrap">
+          <rect width="900" height="506" fill="#0a0d14"/>
+          <!-- Wireframe sphere -->
+          <g transform="translate(450,253)">
+            <circle r="140" fill="none" stroke="#f59e0b" stroke-width="1" opacity="0.6"/>
+            <ellipse rx="140" ry="40" fill="none" stroke="#f59e0b" stroke-width="0.8" opacity="0.4"/>
+            <ellipse rx="100" ry="30" fill="none" stroke="#f59e0b" stroke-width="0.8" opacity="0.35" transform="rotate(-30)"/>
+            <ellipse rx="60" ry="20" fill="none" stroke="#fb923c" stroke-width="0.8" opacity="0.4" transform="rotate(60)"/>
+            <ellipse rx="140" ry="50" fill="none" stroke="#f59e0b" stroke-width="0.8" opacity="0.3" transform="rotate(90)"/>
+            <line x1="-140" y1="0" x2="140" y2="0" stroke="#f59e0b" stroke-width="0.5" opacity="0.3"/>
+            <line x1="0" y1="-140" x2="0" y2="140" stroke="#f59e0b" stroke-width="0.5" opacity="0.3"/>
+            <!-- Lattice lines -->
+            <line x1="-99" y1="-99" x2="99" y2="99" stroke="#fb923c" stroke-width="0.5" opacity="0.2"/>
+            <line x1="99" y1="-99" x2="-99" y2="99" stroke="#fb923c" stroke-width="0.5" opacity="0.2"/>
+          </g>
+          <text x="450" y="430" text-anchor="middle" fill="#f59e0b" font-family="Space Grotesk" font-size="13" font-weight="700" letter-spacing="0.2em">WIREFRAME</text>
+          <text x="450" y="450" text-anchor="middle" fill="#64748b" font-family="Space Grotesk" font-size="11">Topology &amp; Edge Flow</text>
+        </svg>
+      </div>
+      <!-- BLOCK-OUT -->
+      <div class="stage-visual" id="stage-blockout">
+        <svg viewBox="0 0 900 506" xmlns="http://www.w3.org/2000/svg" class="stage-svg-wrap">
+          <rect width="900" height="506" fill="#0a0d14"/>
+          <g transform="translate(450,253)">
+            <circle r="140" fill="rgba(245,158,11,0.08)" stroke="#f59e0b" stroke-width="1.5"/>
+            <ellipse cx="-30" cy="-40" rx="70" ry="70" fill="rgba(251,146,60,0.12)" stroke="#fb923c" stroke-width="1"/>
+            <rect x="-50" y="-20" width="100" height="60" rx="8" fill="rgba(245,158,11,0.06)" stroke="#f59e0b" stroke-width="0.8"/>
+          </g>
+          <text x="450" y="430" text-anchor="middle" fill="#fb923c" font-family="Space Grotesk" font-size="13" font-weight="700" letter-spacing="0.2em">BLOCK-OUT</text>
+          <text x="450" y="450" text-anchor="middle" fill="#64748b" font-family="Space Grotesk" font-size="11">Basic Volumes &amp; Proportions</text>
+        </svg>
+      </div>
+      <!-- MATERIAL -->
+      <div class="stage-visual" id="stage-material">
+        <svg viewBox="0 0 900 506" xmlns="http://www.w3.org/2000/svg" class="stage-svg-wrap">
+          <defs>
+            <radialGradient id="matGrad" cx="35%" cy="35%">
+              <stop offset="0%" stop-color="#fbbf24"/>
+              <stop offset="40%" stop-color="#d97706"/>
+              <stop offset="100%" stop-color="#78350f"/>
+            </radialGradient>
+          </defs>
+          <rect width="900" height="506" fill="#0a0d14"/>
+          <circle cx="450" cy="253" r="140" fill="url(#matGrad)" opacity="0.9"/>
+          <circle cx="450" cy="253" r="140" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
+          <ellipse cx="400" cy="200" rx="30" ry="20" fill="rgba(255,255,255,0.18)" transform="rotate(-25 400 200)"/>
+          <text x="450" y="430" text-anchor="middle" fill="#fbbf24" font-family="Space Grotesk" font-size="13" font-weight="700" letter-spacing="0.2em">MATERIALS</text>
+          <text x="450" y="450" text-anchor="middle" fill="#64748b" font-family="Space Grotesk" font-size="11">PBR Textures &amp; Shaders</text>
+        </svg>
+      </div>
+      <!-- LIGHTING -->
+      <div class="stage-visual" id="stage-lighting">
+        <svg viewBox="0 0 900 506" xmlns="http://www.w3.org/2000/svg" class="stage-svg-wrap">
+          <defs>
+            <radialGradient id="lightGrad" cx="35%" cy="32%">
+              <stop offset="0%" stop-color="#fef3c7"/>
+              <stop offset="35%" stop-color="#fbbf24"/>
+              <stop offset="70%" stop-color="#b45309"/>
+              <stop offset="100%" stop-color="#1c0a00"/>
+            </radialGradient>
+            <radialGradient id="rimLight" cx="90%" cy="60%">
+              <stop offset="0%" stop-color="rgba(139,92,246,0.4)"/>
+              <stop offset="100%" stop-color="transparent"/>
+            </radialGradient>
+          </defs>
+          <rect width="900" height="506" fill="#04060a"/>
+          <!-- Shadow ground -->
+          <ellipse cx="450" cy="420" rx="160" ry="28" fill="rgba(0,0,0,0.7)"/>
+          <circle cx="450" cy="250" r="140" fill="url(#lightGrad)"/>
+          <circle cx="450" cy="250" r="140" fill="url(#rimLight)"/>
+          <!-- key light rays -->
+          <line x1="200" y1="50" x2="380" y2="180" stroke="rgba(254,243,199,0.12)" stroke-width="30"/>
+          <text x="450" y="430" text-anchor="middle" fill="#fef3c7" font-family="Space Grotesk" font-size="13" font-weight="700" letter-spacing="0.2em">LIGHTING</text>
+          <text x="450" y="450" text-anchor="middle" fill="#64748b" font-family="Space Grotesk" font-size="11">Key, Fill &amp; Rim Lighting</text>
+        </svg>
+      </div>
+      <!-- FINAL RENDER -->
+      <div class="stage-visual" id="stage-render">
+        <svg viewBox="0 0 900 506" xmlns="http://www.w3.org/2000/svg" class="stage-svg-wrap">
+          <defs>
+            <radialGradient id="finalGrad" cx="35%" cy="32%">
+              <stop offset="0%" stop-color="#fef9c3"/>
+              <stop offset="25%" stop-color="#fcd34d"/>
+              <stop offset="60%" stop-color="#92400e"/>
+              <stop offset="100%" stop-color="#1c0900"/>
+            </radialGradient>
+            <radialGradient id="bgGlow" cx="50%" cy="50%">
+              <stop offset="0%" stop-color="rgba(245,158,11,0.15)"/>
+              <stop offset="100%" stop-color="transparent"/>
+            </radialGradient>
+            <filter id="blur4"><feGaussianBlur stdDeviation="4"/></filter>
+          </defs>
+          <rect width="900" height="506" fill="#04060a"/>
+          <ellipse cx="450" cy="253" rx="280" ry="240" fill="url(#bgGlow)"/>
+          <!-- Shadow -->
+          <ellipse cx="450" cy="420" rx="150" ry="22" fill="rgba(0,0,0,0.85)" filter="url(#blur4)"/>
+          <circle cx="450" cy="250" r="140" fill="url(#finalGrad)"/>
+          <!-- Specular highlight -->
+          <ellipse cx="396" cy="192" rx="28" ry="18" fill="rgba(255,255,255,0.55)" transform="rotate(-30 396 192)" filter="url(#blur4)"/>
+          <!-- Rim -->
+          <circle cx="450" cy="250" r="140" fill="none" stroke="rgba(139,92,246,0.35)" stroke-width="1.5"/>
+          <!-- Reflection floor -->
+          <ellipse cx="450" cy="415" rx="140" ry="18" fill="rgba(245,158,11,0.06)"/>
+          <text x="450" y="430" text-anchor="middle" fill="#fcd34d" font-family="Space Grotesk" font-size="13" font-weight="700" letter-spacing="0.2em">FINAL RENDER</text>
+          <text x="450" y="450" text-anchor="middle" fill="#64748b" font-family="Space Grotesk" font-size="11">Cycles / EEVEE · Production Quality</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section>
+  <div class="container">
+    <div class="section-label reveal">3D GALLERY</div>
+    <h2 class="section-title reveal">Renders &amp; Models</h2>
+    <p class="section-sub reveal">A showcase of 3D work spanning products, environments, characters, and visualizations.</p>
+
+    <div class="gallery-grid">
+      <div class="gallery-card reveal" style="background: linear-gradient(135deg,#1a0f02,#2d1a05);">
+        <div class="gallery-vis" style="color:#f59e0b; flex-direction:column; gap:8px;">
+          <svg width="80" height="80" viewBox="0 0 80 80"><polygon points="40,8 72,60 8,60" fill="none" stroke="#f59e0b" stroke-width="1.5" opacity="0.7"/><circle cx="40" cy="40" r="22" fill="rgba(245,158,11,0.1)" stroke="#fb923c" stroke-width="1"/></svg>
+          <span>PRODUCT CONCEPT</span>
+        </div>
+        <div class="gallery-label">Futuristic Speaker Model · 3D Render</div>
+      </div>
+      <div class="gallery-card reveal" style="background: linear-gradient(135deg,#050d1a,#0d1f3a);">
+        <div class="gallery-vis" style="color:#3b82f6;">
+          <svg width="64" height="64" viewBox="0 0 64 64"><rect x="12" y="24" width="40" height="28" rx="3" fill="none" stroke="#3b82f6" stroke-width="1.5"/><rect x="20" y="16" width="24" height="14" rx="2" fill="none" stroke="#60a5fa" stroke-width="1"/><line x1="8" x2="56" y1="52" y2="52" stroke="#3b82f6" stroke-width="1.5" opacity="0.5"/></svg>
+        </div>
+        <div class="gallery-label">Architectural Interior · Living Room</div>
+      </div>
+      <div class="gallery-card reveal" style="background: linear-gradient(135deg,#0a0215,#1a0830);">
+        <div class="gallery-vis" style="color:#8b5cf6;">
+          <svg width="64" height="64" viewBox="0 0 64 64"><circle cx="32" cy="32" r="20" fill="rgba(139,92,246,0.12)" stroke="#8b5cf6" stroke-width="1.5"/><polygon points="32,14 46,44 18,44" fill="none" stroke="#a78bfa" stroke-width="1"/></svg>
+        </div>
+        <div class="gallery-label">Sci-Fi Character Concept · 3D</div>
+      </div>
+      <div class="gallery-card reveal" style="background: linear-gradient(135deg,#001a0d,#003320);">
+        <div class="gallery-vis" style="color:#10b981;">
+          <svg width="64" height="64" viewBox="0 0 64 64"><ellipse cx="32" cy="32" rx="22" ry="14" fill="rgba(16,185,129,0.1)" stroke="#10b981" stroke-width="1.5"/><ellipse cx="32" cy="32" rx="14" ry="22" fill="none" stroke="#34d399" stroke-width="1"/><circle cx="32" cy="32" r="5" fill="#10b981" opacity="0.8"/></svg>
+        </div>
+        <div class="gallery-label">Abstract Organic Form · Experimental</div>
+      </div>
+      <div class="gallery-card reveal" style="background: linear-gradient(135deg,#1a0a00,#331500);">
+        <div class="gallery-vis" style="color:#fb923c;">
+          <svg width="64" height="64" viewBox="0 0 64 64"><rect x="16" y="16" width="32" height="32" rx="4" fill="none" stroke="#fb923c" stroke-width="1.5" transform="rotate(45 32 32)"/><rect x="22" y="22" width="20" height="20" rx="2" fill="rgba(251,146,60,0.15)" stroke="#f59e0b" stroke-width="1"/></svg>
+        </div>
+        <div class="gallery-label">Product Packaging · Material Study</div>
+      </div>
+      <div class="gallery-card reveal" style="background: linear-gradient(135deg,#050a1a,#0c1a3a);">
+        <div class="gallery-vis" style="color:#06b6d4;">
+          <svg width="64" height="64" viewBox="0 0 64 64"><polygon points="32,8 56,20 56,44 32,56 8,44 8,20" fill="rgba(6,182,212,0.08)" stroke="#06b6d4" stroke-width="1.5"/><circle cx="32" cy="32" r="10" fill="rgba(6,182,212,0.2)" stroke="#22d3ee" stroke-width="1"/></svg>
+        </div>
+        <div class="gallery-label">Crystal Environment · Scene</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section style="background:var(--bg2);">
+  <div class="container">
+    <div class="section-label reveal">SOFTWARE STACK</div>
+    <h2 class="section-title reveal">Tools We Use</h2>
+    <div class="tools-row reveal">
+      <div class="tool-badge"><span class="tool-icon">🟠</span> Blender</div>
+      <div class="tool-badge"><span class="tool-icon">🎬</span> Maya</div>
+      <div class="tool-badge"><span class="tool-icon">🎮</span> Unreal Engine</div>
+      <div class="tool-badge"><span class="tool-icon">🖼️</span> Adobe Photoshop</div>
+      <div class="tool-badge"><span class="tool-icon">🎨</span> Substance Painter</div>
+      <div class="tool-badge"><span class="tool-icon">💡</span> HDRI Haven</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="section-label" style="display:inline-block; margin-bottom:20px;">START A PROJECT</div>
+    <h2 class="cta-title">Have a 3D<br><span style="background:linear-gradient(135deg,#f59e0b,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Vision?</span></h2>
+    <p class="cta-desc">Let's build it in 3D. Tell us about your project and we'll bring it to life with precision and artistry.</p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+      <a class="btn-primary" href="index.html#contact">Start a 3D Project →</a>
+      <a class="btn-ghost" href="index.html#work">View All Work</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">KANI <span>VISION</span> STUDIO</div>
+  <div>3D Modeling &amp; Visualization · Design. Model. Visualize.</div>
+  <div>© 2026 All rights reserved.</div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const ro = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => ro.observe(el));
+
+  // Stage buttons
+  document.querySelectorAll('.stage-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.stage-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.stage-visual').forEach(v => v.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('stage-' + btn.dataset.stage).classList.add('active');
+    });
+  });
+
+  // Three.js hero canvas
+  (function() {
+    const canvas = document.getElementById('hero-canvas');
+    const ctx = canvas.getContext('2d');
+    let w, h, particles = [];
+    function resize() { w = canvas.width = canvas.offsetWidth; h = canvas.height = canvas.offsetHeight; }
+    resize(); window.addEventListener('resize', resize);
+    for (let i = 0; i < 80; i++) {
+      particles.push({
+        x: Math.random() * 2000, y: Math.random() * 1200,
+        vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4,
+        r: Math.random() * 2 + 0.5,
+        c: Math.random() > 0.6 ? '#f59e0b' : Math.random() > 0.5 ? '#fb923c' : '#8b5cf6',
+        a: Math.random() * 0.5 + 0.1
+      });
+    }
+    function draw() {
+      ctx.clearRect(0, 0, w, h);
+      ctx.fillStyle = 'rgba(7,10,15,0)'; ctx.fillRect(0, 0, w, h);
+      particles.forEach(p => {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0) p.x = w; if (p.x > w) p.x = 0;
+        if (p.y < 0) p.y = h; if (p.y > h) p.y = 0;
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = p.c; ctx.globalAlpha = p.a; ctx.fill(); ctx.globalAlpha = 1;
+      });
+      // Connect nearby
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx*dx + dy*dy);
+          if (dist < 140) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = '#f59e0b';
+            ctx.globalAlpha = (1 - dist / 140) * 0.12;
+            ctx.lineWidth = 0.5;
+            ctx.stroke(); ctx.globalAlpha = 1;
+          }
+        }
+      }
+      requestAnimationFrame(draw);
+    }
+    draw();
+  })();
+</script>
+</body>
+</html>

@@ -1,1100 +1,179 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- Primary Meta Tags -->
-  <title>Kani Vision Studio | 3D Modeling, UI/UX &amp; Visual Design</title>
-  <meta name="title" content="Kani Vision Studio | 3D Modeling, UI/UX &amp; Visual Design">
-  <meta name="description" content="Kani Vision Studio creates 3D models, UI/UX designs, posters, interior visualizations, animation and digital experiences.">
-  <meta name="keywords" content="3D Modeling, UI/UX Design, Interior Visualization, Poster Design, Animation, VFX, Creative Studio, Blender, Figma">
-  <meta name="author" content="Kani Vision Studio">
-  <meta name="robots" content="index, follow">
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://kanivisionstudio.com/">
-  <meta property="og:title" content="Kani Vision Studio | 3D Modeling, UI/UX &amp; Visual Design">
-  <meta property="og:description" content="Kani Vision Studio creates 3D models, UI/UX designs, posters, interior visualizations, animation and digital experiences.">
-  <meta property="og:image" content="assets/images/hero-3d-fallback.svg">
-
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://kanivisionstudio.com/">
-  <meta property="twitter:title" content="Kani Vision Studio | 3D Modeling, UI/UX &amp; Visual Design">
-  <meta property="twitter:description" content="Kani Vision Studio creates 3D models, UI/UX designs, posters, interior visualizations, animation and digital experiences.">
-  <meta property="twitter:image" content="assets/images/hero-3d-fallback.svg">
-
-  <!-- Favicon (Inline SVG 3D Cube Monogram) -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%2308090d'/><polygon points='16,4 27,10 27,22 16,28 5,22 5,10' fill='none' stroke='%238b5cf6' stroke-width='2'/><polygon points='16,4 27,10 16,16 5,10' fill='%236366f1' opacity='0.7'/><polygon points='16,16 27,10 27,22 16,28' fill='%238b5cf6' opacity='0.5'/><polygon points='16,16 5,10 5,22 16,28' fill='%2306b6d4' opacity='0.6'/></svg>">
-
-  <!-- Google Fonts: Space Grotesk, Inter, Sora -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#f5f3ee">
+  <title>Sign in | Kani Vision Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/responsive.css">
-
-  <!-- Three.js CDN for interactive 3D WebGL sculptures & sandbox -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <link rel="stylesheet" href="css/portal.css">
+  <link rel="stylesheet" href="css/experience.css">
+  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/depth-effects.css">
+  <script type="module" src="js/depth-effects.js"></script>
+  <script type="module" src="js/login.js"></script>
 </head>
-<body>
-
-  <!-- Custom Glowing Cursor for Desktop -->
-  <div id="custom-cursor"></div>
-  <div id="custom-cursor-dot"></div>
-
-  <!-- ================= 3. NAVIGATION ================= -->
-  <header class="navbar" id="navbar">
-    <div class="container navbar-inner">
-      <!-- Left: Logo & Brand -->
-      <a href="#hero" class="brand-logo" aria-label="Kani Vision Studio Home">
-        <div class="logo-badge">
-          <svg class="logo-icon-svg" viewBox="0 0 24 24" fill="none">
-            <polygon points="12,2 21,7 21,17 12,22 3,17 3,7" stroke="url(#navLogoGrad)" stroke-width="2" />
-            <polygon points="12,2 21,7 12,12 3,7" fill="#6366f1" opacity="0.6" />
-            <polygon points="12,12 21,7 21,17 12,22" fill="#8b5cf6" opacity="0.5" />
-            <polygon points="12,12 3,7 3,17 12,22" fill="#06b6d4" opacity="0.6" />
-            <defs>
-              <linearGradient id="navLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#a855f7" />
-                <stop offset="100%" stop-color="#06b6d4" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
-        <div class="logo-text">
-          <span class="logo-name">KANI VISION STUDIO</span>
-          <span class="logo-tag">Design. Model. Visualize.</span>
-        </div>
-      </a>
-
-      <!-- Center: Navigation Links -->
-      <nav aria-label="Main Navigation">
-        <ul class="nav-menu">
-          <li><a href="#hero" class="nav-link active">Home</a></li>
-          <li><a href="#work" class="nav-link">Work</a></li>
-          <li><a href="#3d-modeling" class="nav-link">3D</a></li>
-          <li><a href="#ui-ux" class="nav-link">UI/UX</a></li>
-          <li><a href="#posters" class="nav-link">Posters</a></li>
-          <li><a href="#interior" class="nav-link">Interior</a></li>
-          <li><a href="#services" class="nav-link">Services</a></li>
-          <li><a href="#process" class="nav-link">Process</a></li>
-          <li><a href="#about" class="nav-link">About</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
-        </ul>
-      </nav>
-
-      <!-- Right: Availability & CTA -->
-      <div class="nav-actions">
-        <a href="viewer-3d.html" target="_blank" rel="noopener noreferrer" class="btn-nav-3d" title="Launch interactive 3D WebGL Studio in a new tab">
-          <span style="color: var(--accent-cyan);">✦</span>
-          <span>3D Studio ↗</span>
-        </a>
-        <div class="availability-pill" title="Current studio booking status">
-          <span class="status-dot"></span>
-          <span>Available for selected projects</span>
-        </div>
-        <a href="#contact" class="btn-nav-cta">
-          <span>Start a Project</span>
-          <span class="arrow">→</span>
-        </a>
-
-        <!-- Mobile Hamburger Toggle -->
-        <button class="hamburger-btn" id="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- Mobile Navigation Drawer -->
-  <div class="mobile-menu-drawer" id="mobile-menu" aria-label="Mobile Navigation">
-    <ul class="mobile-nav-links">
-      <li><a href="#hero">Home</a></li>
-      <li><a href="#work">Work</a></li>
-      <li><a href="#3d-modeling">3D Modeling</a></li>
-      <li><a href="#ui-ux">UI/UX Design</a></li>
-      <li><a href="#posters">Poster Design</a></li>
-      <li><a href="#interior">Interior Visualization</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#process">Process</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="viewer-3d.html" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan);">3D Studio ↗</a></li>
-    </ul>
-
-    <div class="availability-pill" style="margin-bottom: 24px;">
-      <span class="status-dot"></span>
-      <span>Available for selected projects</span>
-    </div>
-
-    <a href="#contact" class="btn-primary">
-      <span>Start a Project →</span>
+<body class="login-gateway">
+  <main class="login-frame">
+    <a class="login-brand" href="/" aria-label="Kani Vision Studio">
+      <span class="login-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" fill="none">
+          <path d="M16 2.8 27.4 9.4v13.2L16 29.2 4.6 22.6V9.4L16 2.8Z" stroke="currentColor" stroke-width="1.4"/>
+          <path d="m16 5.8 8.8 5.1v10.2L16 26.2l-8.8-5.1V10.9L16 5.8Z" fill="currentColor" fill-opacity=".12" stroke="currentColor" stroke-width=".8"/>
+          <path d="m16 5.8 8.8 5.1L16 16l-8.8-5.1L16 5.8Z" fill="#C58A5A" fill-opacity=".66"/>
+          <path d="M16 16v10.2l8.8-5.1V10.9L16 16Z" fill="#476F55" fill-opacity=".76"/>
+        </svg>
+      </span>
+      <span class="login-brand-copy"><strong>KANI VISION</strong><span>PRIVATE STUDIO ACCESS</span></span>
     </a>
-  </div>
 
-  <main>
-    <!-- ================= 4. HERO SECTION ================= -->
-    <section class="hero-section" id="hero">
-      <div class="container">
-        <div class="hero-grid">
-          <!-- Left Column: Typography & CTAs -->
-          <div class="hero-content">
-            <div class="hero-badge-wrap">
-              <span class="section-label violet">
-                <span class="status-dot" style="background: var(--accent-violet);"></span>
-                CREATIVE DESIGN STUDIO // 2026
-              </span>
-            </div>
-
-            <h1 class="hero-headline">
-              WE TURN IDEAS<br>
-              INTO <span class="text-gradient">VISUAL EXPERIENCES.</span>
-            </h1>
-
-            <p class="hero-supporting">
-              3D Modeling • UI/UX Design • Poster Design • Interior Visualization • Animation &amp; VFX
-            </p>
-
-            <p class="hero-desc">
-              From digital products to realistic 3D environments, we create visual experiences that combine creativity, technology and design.
-            </p>
-
-            <div class="hero-cta-group">
-              <a href="#work" class="btn-primary">
-                <span>View Our Work →</span>
-              </a>
-              <a href="viewer-3d.html" target="_blank" rel="noopener noreferrer" class="btn-secondary" title="Open interactive WebGL Studio in a new tab">
-                <span style="color: var(--accent-cyan);">✦</span>
-                <span>Launch 3D Studio ↗</span>
-              </a>
-              <a href="#contact" class="btn-secondary">
-                <span>Start a Project</span>
-              </a>
-            </div>
-
-            <!-- Interactive 3D Sculpture Controls -->
-            <div class="hero-3d-controls" aria-label="3D Sculpture controls">
-              <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); margin-right: 4px;">3D MESH:</span>
-              <button class="hero-control-btn active" data-hero-mode="sculpture">Sculpture</button>
-              <button class="hero-control-btn" data-hero-mode="torus">Torus Knot</button>
-              <button class="hero-control-btn" data-hero-mode="wireframe">Wireframe</button>
-              <button class="hero-control-btn" data-hero-mode="hologram">Hologram</button>
-              <button class="hero-control-btn" id="hero-rotate-toggle" title="Toggle 3D auto rotation">
-                <span class="icon">⟳</span>
-              </button>
-            </div>
+    <section class="login-layout" aria-labelledby="login-title">
+      <div class="login-story">
+        <p class="login-eyebrow"><span></span> A PRIVATE CREATIVE WORKSPACE</p>
+        <h1 id="login-title">Good work<br>starts <em>within.</em></h1>
+        <p class="login-story-copy">Sign in to continue to your studio. Your workspace, projects, and account details are protected.</p>
+        <div class="login-3d-stage" aria-hidden="true">
+          <div class="login-3d-object">
+            <span class="login-3d-orbit login-3d-orbit-one"></span>
+            <span class="login-3d-orbit login-3d-orbit-two"></span>
+            <span class="login-3d-orbit login-3d-orbit-three"></span>
+            <span class="login-3d-core"></span>
+            <span class="login-3d-shard login-3d-shard-one"></span>
+            <span class="login-3d-shard login-3d-shard-two"></span>
+            <span class="login-3d-shard login-3d-shard-three"></span>
           </div>
-
-          <!-- Right Column: Interactive 3D WebGL Canvas -->
-          <div class="hero-3d-wrap">
-            <div id="hero-3d-canvas" title="Drag with mouse or touch to rotate 3D sculpture">
-              <!-- Fallback Image if WebGL is disabled/unsupported -->
-              <img src="assets/images/hero-3d-fallback.svg" alt="Futuristic 3D geometric sculpture" class="hero-3d-fallback" />
-            </div>
-          </div>
+          <span class="login-3d-caption">FORM / LIGHT / DETAIL</span>
         </div>
+        <div class="login-assurance"><span class="login-lock" aria-hidden="true">✳</span><span><strong>Private by design</strong><small>Verified sign-in · Protected workspace</small></span></div>
+      </div>
+
+      <div class="login-panel">
+        <div class="login-panel-top">
+          <p class="login-eyebrow">SECURE ACCESS</p>
+          <h2>Welcome back</h2>
+          <p>Choose your account type to sign in.</p>
+        </div>
+
+        <div class="login-switch" role="tablist" aria-label="Choose account type">
+          <button class="login-switch-option is-active" id="customer-tab" type="button" role="tab" aria-selected="true" aria-controls="customer-access" data-account="customer">
+            <span aria-hidden="true">◉</span> Customer
+          </button>
+          <button class="login-switch-option" id="employee-tab" type="button" role="tab" aria-selected="false" aria-controls="employee-access" data-account="employee">
+            <span aria-hidden="true">⌘</span> Employee
+          </button>
+        </div>
+
+        <section id="customer-access" class="login-access" role="tabpanel" aria-labelledby="customer-tab">
+          <form class="login-form" id="customer-login-form">
+            <label>Email address<input name="email" type="email" autocomplete="username" placeholder="you@example.com" required></label>
+            <label>Password<input name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required></label>
+            <div class="login-form-row"><span>Secure customer access</span><button class="login-text-button" type="button" data-view="customer-forgot">Forgot password?</button></div>
+            <button class="login-submit" type="submit">Sign in to your account <span aria-hidden="true">↗</span></button>
+            <p class="login-error" id="customer-login-error" role="alert"></p>
+            <p class="login-register-prompt">New to the studio? <button class="login-text-button" type="button" data-view="customer-register">Create an account</button></p>
+          </form>
+
+          <form class="login-form" id="customer-register-form" hidden>
+            <p class="login-step-label">CREATE YOUR STUDIO ACCOUNT</p>
+            <label>Full name<input name="name" autocomplete="name" placeholder="Your name" required maxlength="120"></label>
+            <label>Email address<input name="email" type="email" autocomplete="email" placeholder="you@example.com" required></label>
+            <label>Password<input name="password" type="password" autocomplete="new-password" placeholder="At least 12 characters" required minlength="12"></label>
+            <p class="login-hint">Use uppercase and lowercase letters, a number, and a symbol.</p>
+            <button class="login-submit" type="submit">Create account <span aria-hidden="true">↗</span></button>
+            <p class="login-error" id="customer-register-error" role="alert"></p>
+            <button class="login-text-button login-back" type="button" data-view="customer-login">Back to sign in</button>
+          </form>
+
+          <form class="login-form" id="customer-verify-form" hidden>
+            <p class="login-step-label">VERIFY YOUR EMAIL</p>
+            <p class="login-step-copy">Enter the verification code sent to <strong id="verification-email">your email</strong>. You must verify before accessing the studio.</p>
+            <label>Verification code<input name="token" autocomplete="one-time-code" placeholder="Enter email code" required></label>
+            <button class="login-submit" type="submit">Verify email <span aria-hidden="true">↗</span></button>
+            <p class="login-error" id="customer-verify-error" role="alert"></p>
+          </form>
+
+          <form class="login-form" id="customer-forgot-form" hidden>
+            <p class="login-step-label">ACCOUNT RECOVERY</p>
+            <label>Email address<input name="email" type="email" autocomplete="email" placeholder="you@example.com" required></label>
+            <button class="login-submit" type="submit">Send reset instructions <span aria-hidden="true">↗</span></button>
+            <p class="login-error" id="customer-forgot-error" role="alert"></p>
+            <button class="login-text-button login-back" type="button" data-view="customer-login">Back to sign in</button>
+          </form>
+
+          <form class="login-form" id="customer-reset-form" hidden>
+            <p class="login-step-label">CHOOSE A NEW PASSWORD</p>
+            <input name="token" type="hidden">
+            <label>New password<input name="password" type="password" autocomplete="new-password" required minlength="12"></label>
+            <button class="login-submit" type="submit">Reset password <span aria-hidden="true">↗</span></button>
+            <p class="login-error" id="customer-reset-error" role="alert"></p>
+          </form>
+        </section>
+
+        <section id="employee-access" class="login-access" role="tabpanel" aria-labelledby="employee-tab" hidden>
+          <div class="login-setup-notice" id="employee-setup-notice" role="status" hidden>
+            <strong>First-time setup required</strong>
+            <span>No employee administrator has been created for this site yet.</span>
+            <code>node .\setup-admin.js</code>
+            <span>Run that command from the project folder in a PowerShell terminal. Choose an employee ID and a new password, then follow the authenticator setup prompts.</span>
+          </div>
+          <form class="login-form" id="employee-login-form">
+            <label>Employee ID or email<input name="login" autocomplete="username" placeholder="Employee ID or email" required></label>
+            <label>Password<input name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required></label>
+            <div class="login-form-row"><span>Authorized team members</span><button class="login-text-button" type="button" data-view="employee-forgot">Forgot password?</button></div>
+            <button class="login-submit" type="submit">Continue to secure verification <span aria-hidden="true">↗</span></button>
+            <p class="login-error" id="employee-login-error" role="alert"></p>
+          </form>
+
+          <form class="login-form" id="employee-2fa-form" hidden>
+            <p class="login-step-label" id="employee-2fa-title">AUTHENTICATOR VERIFICATION</p>
+            <p class="login-step-copy" id="employee-2fa-copy">Enter the current six-digit code from your authenticator app.</p>
+            <div class="login-provisioning" id="employee-provisioning" hidden>
+              <p>Scan this QR code with your authenticator app. This one-time setup expires in five minutes.</p>
+              <img class="login-totp-qr" id="employee-totp-qr" alt="One-time authenticator setup QR code" width="240" height="240" hidden>
+              <details class="login-manual-setup">
+                <summary>Can't scan? Enter the setup link manually</summary>
+                <code id="employee-totp-uri"></code>
+                <button class="login-text-button" id="copy-totp-uri" type="button">Copy setup link</button>
+              </details>
+            </div>
+            <label>Six-digit code<input name="code" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" required></label>
+            <button class="login-submit" type="submit">Verify and continue <span aria-hidden="true">↗</span></button>
+            <p class="login-error" id="employee-2fa-error" role="alert"></p>
+          </form>
+
+          <form class="login-form" id="employee-forgot-form" hidden>
+            <p class="login-step-label">ACCOUNT RECOVERY</p>
+            <label>Employee email<input name="email" type="email" autocomplete="email" placeholder="you@company.com" required></label>
+            <button class="login-submit" type="submit">Send reset instructions <span aria-hidden="true">↗</span></button>
+            <p class="login-error" id="employee-forgot-error" role="alert"></p>
+            <button class="login-text-button login-back" type="button" data-view="employee-login">Back to sign in</button>
+          </form>
+
+          <form class="login-form" id="employee-reset-form" hidden>
+            <p class="login-step-label">CHOOSE A NEW PASSWORD</p>
+            <input name="token" type="hidden">
+            <label>New password<input name="password" type="password" autocomplete="new-password" required minlength="12"></label>
+            <button class="login-submit" type="submit">Reset password <span aria-hidden="true">↗</span></button>
+            <p class="login-error" id="employee-reset-error" role="alert"></p>
+          </form>
+
+          <form class="login-form" id="employee-invite-form" hidden>
+            <p class="login-step-label">ACTIVATE YOUR TEAM ACCOUNT</p>
+            <input name="token" type="hidden">
+            <label>Create password<input name="password" type="password" autocomplete="new-password" required minlength="12"></label>
+            <label>Confirm password<input name="confirmPassword" type="password" autocomplete="new-password" required minlength="12"></label>
+            <p class="login-hint">Your invitation verifies your employee email. Two-factor setup is required next.</p>
+            <button class="login-submit" type="submit">Activate and secure account <span aria-hidden="true">↗</span></button>
+            <p class="login-error" id="employee-invite-error" role="alert"></p>
+          </form>
+        </section>
+
+        <div class="login-panel-foot"><span class="login-status-dot"></span><span id="login-status" role="status">Your session is encrypted and protected.</span></div>
       </div>
     </section>
-
-    <!-- ================= 5. QUICK STATS ================= -->
-    <section class="stats-section" aria-label="Studio Statistics">
-      <div class="container">
-        <div class="stats-grid">
-          <div class="stat-item">
-            <div class="stat-number">04+</div>
-            <div class="stat-label">Creative Services</div>
-            <div class="stat-sub">Specialized multi-disciplinary focus</div>
-          </div>
-
-          <div class="stat-item">
-            <div class="stat-number">3D</div>
-            <div class="stat-label">Design &amp; Visualization</div>
-            <div class="stat-sub">Hard surface, lighting &amp; environments</div>
-          </div>
-
-          <div class="stat-item">
-            <div class="stat-number">UI/UX</div>
-            <div class="stat-label">Digital Experiences</div>
-            <div class="stat-sub">Human-centered intuitive interfaces</div>
-          </div>
-
-          <div class="stat-item">
-            <div class="stat-number">∞</div>
-            <div class="stat-label">Creative Possibilities</div>
-            <div class="stat-sub">Turning concepts into visual reality</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= 6. FEATURED WORK ================= -->
-    <section class="work-section" id="work">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label">PORTFOLIO</span>
-          <h2 class="section-title">SELECTED WORK</h2>
-          <p class="section-desc">
-            A collection of visual experiments, designs and digital experiences.
-          </p>
-        </div>
-
-        <!-- Filter Buttons -->
-        <div class="portfolio-filter-bar" role="tablist" aria-label="Portfolio categories">
-          <button class="portfolio-filter-btn active" data-filter="All">All</button>
-          <button class="portfolio-filter-btn" data-filter="3D">3D</button>
-          <button class="portfolio-filter-btn" data-filter="UI/UX">UI/UX</button>
-          <button class="portfolio-filter-btn" data-filter="Posters">Posters</button>
-          <button class="portfolio-filter-btn" data-filter="Interior">Interior</button>
-          <button class="portfolio-filter-btn" data-filter="Motion">Motion</button>
-        </div>
-
-        <!-- Dynamic Portfolio Grid -->
-        <div class="portfolio-grid" id="portfolio-grid">
-          <!-- Rendered dynamically by app.js from projectsData -->
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= 7. 3D MODELING SECTION ================= -->
-    <section class="modeling-section" id="3d-modeling">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label violet">3D PIPELINE &amp; ASSETS</span>
-          <h2 class="section-title">BUILDING WORLDS IN 3D.</h2>
-          <p class="section-desc">
-            From simple objects to detailed environments, we transform concepts into realistic 3D assets and visualizations.
-          </p>
-
-          <!-- Capabilities Tags -->
-          <div class="capabilities-strip">
-            <span class="cap-chip">• Product Models</span>
-            <span class="cap-chip">• Hard Surface CAD</span>
-            <span class="cap-chip">• Architecture</span>
-            <span class="cap-chip">• Characters</span>
-            <span class="cap-chip">• Environments</span>
-            <span class="cap-chip">• Procedural Materials</span>
-            <span class="cap-chip">• Studio Lighting</span>
-            <span class="cap-chip">• Photorealistic Cycles Renders</span>
-          </div>
-        </div>
-
-        <!-- Interactive 3-Stage Switcher (Wireframe -> Material -> Final Render) -->
-        <div class="stage-switcher-box" id="stages-switcher-container">
-          <div class="stage-nav-bar" role="tablist" aria-label="3D pipeline stage switcher">
-            <button class="stage-btn active" data-stage-btn="wireframe" role="tab" aria-selected="true">
-              <span>01. WIREFRAME</span>
-            </button>
-            <button class="stage-btn" data-stage-btn="material" role="tab" aria-selected="false">
-              <span>02. MATERIAL &amp; CLAY</span>
-            </button>
-            <button class="stage-btn" data-stage-btn="render" role="tab" aria-selected="false">
-              <span>03. FINAL RENDER</span>
-            </button>
-          </div>
-
-          <div class="stage-display-viewport">
-            <img src="assets/images/3d-stages-wireframe.svg" alt="3D Wireframe Topology" class="stage-img-layer active" data-stage-img="wireframe" />
-            <img src="assets/images/3d-stages-material.svg" alt="3D Material and Clay Shader" class="stage-img-layer" data-stage-img="material" />
-            <img src="assets/images/3d-stages-render.svg" alt="3D Photorealistic Final Render" class="stage-img-layer" data-stage-img="render" />
-          </div>
-
-          <!-- Dynamic Stage Info -->
-          <div style="margin-top: 24px;">
-            <div data-stage-info="wireframe" class="active">
-              <h4 style="font-family: var(--font-heading); font-size: 18px; margin-bottom: 6px; color: var(--accent-cyan);">Topology &amp; Edge Flow</h4>
-              <p style="font-size: 14px; color: var(--text-secondary);">Subdivision surface modeling with clean quad-dominant geometry, curvature continuity, and strict bevel weighting for seamless specular glints.</p>
-            </div>
-            <div data-stage-info="material" style="display: none;">
-              <h4 style="font-family: var(--font-heading); font-size: 18px; margin-bottom: 6px; color: #ffffff;">Clay Form &amp; Ambient Occlusion</h4>
-              <p style="font-size: 14px; color: var(--text-secondary);">Validating mechanical balance, massing silhouettes, and micro-surface bevels before committing to complex PBR shader networks.</p>
-            </div>
-            <div data-stage-info="render" style="display: none;">
-              <h4 style="font-family: var(--font-heading); font-size: 18px; margin-bottom: 6px; color: var(--accent-violet);">Photorealistic Raytracing</h4>
-              <p style="font-size: 14px; color: var(--text-secondary);">Full physical lighting simulation featuring anodized titanium, optical dispersion crystals, volumetric ion thrusters, and 4K EXR passes.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Interactive 3D Model Viewer Sandbox -->
-        <div class="sandbox-card">
-          <div class="sandbox-canvas-wrap">
-            <div id="model-viewer-canvas" title="Orbit with mouse or touch, zoom with wheel">
-              <img src="assets/images/3d-stages-render.svg" alt="3D Drone Asset" class="viewer-fallback" style="display: none; width: 100%; height: 100%; object-fit: contain;" />
-            </div>
-          </div>
-
-          <div class="sandbox-sidebar">
-            <div>
-              <div class="section-label" style="margin-bottom: 12px;">INTERACTIVE 3D VIEWER</div>
-              <h3 class="sandbox-title">AEGIS DRONE UNIT</h3>
-              <p class="sandbox-desc">
-                Orbit, inspect geometry, rotate 360°, and toggle real-time shader modes directly in your browser.
-              </p>
-
-              <!-- Controls -->
-              <div class="sandbox-control-group">
-                <div class="sandbox-control-title">Surface &amp; Mesh</div>
-                <div class="sandbox-btn-row">
-                  <button class="sandbox-btn" id="viewer-wireframe-toggle">Toggle Wireframe</button>
-                  <button class="sandbox-btn active" id="viewer-rotate-toggle">Auto Rotate</button>
-                </div>
-              </div>
-
-              <div class="sandbox-control-group">
-                <div class="sandbox-control-title">Studio Lighting Scheme</div>
-                <div class="sandbox-btn-row">
-                  <button class="sandbox-btn active" data-viewer-light="cyber">Cyber Violet</button>
-                  <button class="sandbox-btn" data-viewer-light="cyan">Electric Cyan</button>
-                  <button class="sandbox-btn" data-viewer-light="studio">Daylight White</button>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <button class="btn-secondary" id="viewer-reset-btn" style="width: 100%; justify-content: center; margin-bottom: 14px;">
-                <span>Reset Camera View</span>
-              </button>
-              <a href="#work" class="btn-primary" style="width: 100%; justify-content: center;">
-                <span>Explore 3D Work →</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= 8. UI/UX SECTION ================= -->
-    <section class="uiux-section" id="ui-ux">
-      <div class="container">
-        <div class="uiux-grid">
-          <!-- Left Column: Methodology & Process -->
-          <div>
-            <span class="section-label">DIGITAL PRODUCTS</span>
-            <h2 class="section-title">DESIGNING DIGITAL EXPERIENCES.</h2>
-            <p class="section-desc">
-              Simple, intuitive and visually engaging interfaces designed around the people who use them.
-            </p>
-
-            <!-- 5-Step UI/UX Process Accordion -->
-            <div class="process-step-accordion">
-              <div class="step-row-item">
-                <div class="step-num-badge">01</div>
-                <div class="step-info">
-                  <h4>Research &amp; Discovery</h4>
-                  <p>User journey mapping, cognitive ergonomics, and competitor product audits.</p>
-                </div>
-              </div>
-
-              <div class="step-row-item">
-                <div class="step-num-badge">02</div>
-                <div class="step-info">
-                  <h4>Wireframes &amp; Architecture</h4>
-                  <p>Information hierarchy, spatial zoning, and low-fidelity interactive flow testing.</p>
-                </div>
-              </div>
-
-              <div class="step-row-item">
-                <div class="step-num-badge">03</div>
-                <div class="step-info">
-                  <h4>UI Design &amp; Systems</h4>
-                  <p>Pixel-perfect component libraries, dark mode tokens, and accessible WCAG contrast.</p>
-                </div>
-              </div>
-
-              <div class="step-row-item">
-                <div class="step-num-badge">04</div>
-                <div class="step-info">
-                  <h4>Prototype &amp; Micro-Interactions</h4>
-                  <p>Tactile haptic feedback, fluid easing curves, and smart-animate transitions.</p>
-                </div>
-              </div>
-
-              <div class="step-row-item">
-                <div class="step-num-badge">05</div>
-                <div class="step-info">
-                  <h4>Final Experience &amp; Handoff</h4>
-                  <p>Clean developer specs, responsive layout behaviors, and asset packages.</p>
-                </div>
-              </div>
-            </div>
-
-            <div style="margin-top: 36px;">
-              <a href="#work" class="btn-primary">
-                <span>View UI/UX Projects →</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- Right Column: Interactive Device Mockup -->
-          <div class="uiux-device-wrap">
-            <div class="uiux-tab-bar" role="tablist" aria-label="Device screen preview tabs">
-              <button class="uiux-tab-btn active" data-ui-tab="mobile">Mobile App</button>
-              <button class="uiux-tab-btn" data-ui-tab="dashboard">SaaS Dashboard</button>
-              <button class="uiux-tab-btn" data-ui-tab="landing">Landing Page</button>
-              <button class="uiux-tab-btn" data-ui-tab="designsystem">Design System</button>
-            </div>
-
-            <div class="uiux-screen-viewport">
-              <img src="assets/images/project-02-mobile.svg" alt="Lumina Spatial OS Mobile Interface" class="uiux-screen-img active" data-ui-screen="mobile" />
-              <img src="assets/images/project-01-product.svg" alt="SaaS 3D Cloud Dashboard" class="uiux-screen-img" data-ui-screen="dashboard" />
-              <img src="assets/images/project-08-motion.svg" alt="Agency Landing Page Interface" class="uiux-screen-img" data-ui-screen="landing" />
-              <img src="assets/images/project-06-brand.svg" alt="Design Token System" class="uiux-screen-img" data-ui-screen="designsystem" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= 9. POSTER & GRAPHIC DESIGN ================= -->
-    <section class="posters-section" id="posters">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label violet">GRAPHIC ART &amp; IDENTITY</span>
-          <h2 class="section-title">DESIGN THAT GETS ATTENTION.</h2>
-          <p class="section-desc">
-            Bold visual storytelling, typographic hierarchy, and balanced compositions for cultural events, branding, and print.
-          </p>
-        </div>
-
-        <!-- Poster Filters -->
-        <div class="portfolio-filter-bar" role="tablist" aria-label="Poster categories">
-          <button class="poster-filter-btn active" data-filter="All">All</button>
-          <button class="poster-filter-btn" data-filter="Events">Events</button>
-          <button class="poster-filter-btn" data-filter="Education">Education</button>
-          <button class="poster-filter-btn" data-filter="Advertising">Advertising</button>
-          <button class="poster-filter-btn" data-filter="Social Media">Social Media</button>
-          <button class="poster-filter-btn" data-filter="Branding">Branding</button>
-        </div>
-
-        <!-- Masonry Poster Gallery with Varied Aspect Ratios -->
-        <div class="posters-masonry" id="posters-gallery">
-          <!-- Rendered dynamically by app.js from postersData -->
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= 10. INTERIOR VISUALIZATION ================= -->
-    <section class="interior-section" id="interior">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label">ARCHITECTURAL RENDERING</span>
-          <h2 class="section-title">SPACES BEFORE THEY EXIST.</h2>
-          <p class="section-desc">
-            Visualize interiors, layouts, materials and lighting before the physical space is built.
-          </p>
-        </div>
-
-        <!-- Interactive Before/After Split Comparison Slider -->
-        <div class="ba-slider-container" id="interior-ba-slider" title="Drag slider handle left or right to compare Wireframe vs Final Render">
-          <!-- Rendered Image (Bottom Layer) -->
-          <div class="ba-bottom-image">
-            <img src="assets/images/interior-rendered.svg" alt="Photorealistic Contemporary Bedroom Render" />
-          </div>
-
-          <!-- Wireframe Image (Top Clipped Layer) -->
-          <div class="ba-top-image">
-            <img src="assets/images/interior-wireframe.svg" alt="CAD 3D Wireframe Bedroom Structure" />
-          </div>
-
-          <!-- Draggable Split Handle -->
-          <div class="ba-handle">
-            <div class="ba-handle-button">↔</div>
-          </div>
-
-          <span class="ba-label-left">WIREFRAME CAD</span>
-          <span class="ba-label-right">FINAL CYCLES RENDER</span>
-        </div>
-
-        <!-- Architectural Visual Pipeline -->
-        <div class="interior-process-bar">
-          <div class="pipe-step">
-            <span class="pipe-badge">01</span>
-            <span class="pipe-name">Floor Plan</span>
-          </div>
-          <span class="pipe-arrow">→</span>
-
-          <div class="pipe-step">
-            <span class="pipe-badge">02</span>
-            <span class="pipe-name">3D Model</span>
-          </div>
-          <span class="pipe-arrow">→</span>
-
-          <div class="pipe-step">
-            <span class="pipe-badge">03</span>
-            <span class="pipe-name">Materials</span>
-          </div>
-          <span class="pipe-arrow">→</span>
-
-          <div class="pipe-step">
-            <span class="pipe-badge">04</span>
-            <span class="pipe-name">Lighting</span>
-          </div>
-          <span class="pipe-arrow">→</span>
-
-          <div class="pipe-step">
-            <span class="pipe-badge" style="background: rgba(6, 182, 212, 0.2); color: var(--accent-cyan);">05</span>
-            <span class="pipe-name" style="color: var(--accent-cyan);">Final Render</span>
-          </div>
-        </div>
-
-        <div style="margin-top: 40px; text-align: center;">
-          <a href="#work" class="btn-primary">
-            <span>Explore Interior Work →</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= 11. SERVICES SECTION ================= -->
-    <section class="services-section" id="services">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label violet">WHAT WE DO</span>
-          <h2 class="section-title">CREATIVE SERVICES</h2>
-          <p class="section-desc">
-            End-to-end design, 3D modeling, and visualization services engineered to elevate brands and digital experiences.
-          </p>
-        </div>
-
-        <div class="services-grid">
-          <!-- Service 01 -->
-          <div class="service-card">
-            <div>
-              <div class="service-top">
-                <span class="service-num">01 // 3D</span>
-                <div class="service-icon">
-                  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-                </div>
-              </div>
-              <h3 class="service-title">3D MODELING</h3>
-              <p class="service-desc">
-                3D assets, product models, environments and realistic renders built with precision topology and cinematic lighting.
-              </p>
-            </div>
-            <div class="service-footer">
-              <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);">Hard Surface • Cycles • PBR</span>
-              <a href="#contact" class="service-action-link">Inquire →</a>
-            </div>
-          </div>
-
-          <!-- Service 02 -->
-          <div class="service-card">
-            <div>
-              <div class="service-top">
-                <span class="service-num">02 // UI/UX</span>
-                <div class="service-icon">
-                  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-                </div>
-              </div>
-              <h3 class="service-title">UI/UX DESIGN</h3>
-              <p class="service-desc">
-                Mobile apps, websites, dashboards and digital interfaces designed with ergonomic flow and clean modern aesthetic.
-              </p>
-            </div>
-            <div class="service-footer">
-              <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);">Figma • Design Systems • Web</span>
-              <a href="#contact" class="service-action-link">Inquire →</a>
-            </div>
-          </div>
-
-          <!-- Service 03 -->
-          <div class="service-card">
-            <div>
-              <div class="service-top">
-                <span class="service-num">03 // GRAPHIC</span>
-                <div class="service-icon">
-                  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                </div>
-              </div>
-              <h3 class="service-title">POSTER DESIGN</h3>
-              <p class="service-desc">
-                Event posters, promotional graphics, educational designs and social media creatives with magnetic typography.
-              </p>
-            </div>
-            <div class="service-footer">
-              <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);">Print • Billboard • Social</span>
-              <a href="#contact" class="service-action-link">Inquire →</a>
-            </div>
-          </div>
-
-          <!-- Service 04 -->
-          <div class="service-card">
-            <div>
-              <div class="service-top">
-                <span class="service-num">04 // ARCHVIZ</span>
-                <div class="service-icon">
-                  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                </div>
-              </div>
-              <h3 class="service-title">INTERIOR VISUALIZATION</h3>
-              <p class="service-desc">
-                3D rooms, interior concepts, materials, lighting and architectural visualization that bring physical spaces to life.
-              </p>
-            </div>
-            <div class="service-footer">
-              <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);">Residential • Commercial • Retail</span>
-              <a href="#contact" class="service-action-link">Inquire →</a>
-            </div>
-          </div>
-
-          <!-- Service 05 -->
-          <div class="service-card">
-            <div>
-              <div class="service-top">
-                <span class="service-num">05 // MOTION</span>
-                <div class="service-icon">
-                  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
-                </div>
-              </div>
-              <h3 class="service-title">MOTION &amp; VFX</h3>
-              <p class="service-desc">
-                Motion graphics, visual effects, compositing and animation to bring static designs into energetic motion.
-              </p>
-            </div>
-            <div class="service-footer">
-              <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);">After Effects • 3D Motion • Reels</span>
-              <a href="#contact" class="service-action-link">Inquire →</a>
-            </div>
-          </div>
-
-          <!-- Service 06 -->
-          <div class="service-card">
-            <div>
-              <div class="service-top">
-                <span class="service-num">06 // BRANDING</span>
-                <div class="service-icon">
-                  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><line x1="2" y1="12" x2="22" y2="12"></line></svg>
-                </div>
-              </div>
-              <h3 class="service-title">BRAND &amp; DIGITAL DESIGN</h3>
-              <p class="service-desc">
-                Visual identity, social media graphics and digital creative systems that stand out with cohesive elegance.
-              </p>
-            </div>
-            <div class="service-footer">
-              <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);">Logomarks • Guidelines • Tokens</span>
-              <a href="#contact" class="service-action-link">Inquire →</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= 12. DESIGN PROCESS ================= -->
-    <section class="process-section" id="process">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label">WORKFLOW</span>
-          <h2 class="section-title">FROM IDEA TO FINAL VISUAL.</h2>
-          <p class="section-desc">
-            A clear, disciplined 5-stage process ensuring technical precision and creative impact at every milestone.
-          </p>
-        </div>
-
-        <div class="process-timeline">
-          <!-- Step 1 -->
-          <div class="process-card">
-            <div class="process-step-header">
-              <div class="process-circle-num">01</div>
-              <h3 class="process-step-title">DISCOVER</h3>
-            </div>
-            <p class="process-step-desc">
-              Understand the idea, requirements and goals. We analyze project specifications and define visual benchmarks.
-            </p>
-          </div>
-
-          <!-- Step 2 -->
-          <div class="process-card">
-            <div class="process-step-header">
-              <div class="process-circle-num">02</div>
-              <h3 class="process-step-title">PLAN</h3>
-            </div>
-            <p class="process-step-desc">
-              Research, references, moodboards and visual direction. We establish architectural styles, lighting palettes, and references.
-            </p>
-          </div>
-
-          <!-- Step 3 -->
-          <div class="process-card">
-            <div class="process-step-header">
-              <div class="process-circle-num">03</div>
-              <h3 class="process-step-title">CREATE</h3>
-            </div>
-            <p class="process-step-desc">
-              Build the design, model, interface or visual concept. Clean topology, interface wireframing, and initial blockouts.
-            </p>
-          </div>
-
-          <!-- Step 4 -->
-          <div class="process-card">
-            <div class="process-step-header">
-              <div class="process-circle-num">04</div>
-              <h3 class="process-step-title">REFINE</h3>
-            </div>
-            <p class="process-step-desc">
-              Improve composition, details, lighting, typography and usability. Fine-tuning shaders, bevels, and micro-interactions.
-            </p>
-          </div>
-
-          <!-- Step 5 -->
-          <div class="process-card">
-            <div class="process-step-header">
-              <div class="process-circle-num">05</div>
-              <h3 class="process-step-title">DELIVER</h3>
-            </div>
-            <p class="process-step-desc">
-              Prepare optimized final files and assets. Delivering high-res 4K renders, source files, and developer documentation.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= 13. TOOLS SECTION ================= -->
-    <section class="tools-section" id="tools">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label violet">STACK &amp; INSTRUMENTS</span>
-          <h2 class="section-title">TOOLS I WORK WITH</h2>
-          <p class="section-desc">
-            Industry software and creative instruments actively utilized in our modeling, interface, and rendering workflows.
-          </p>
-        </div>
-
-        <div class="tools-grid" id="tools-grid">
-          <!-- Rendered dynamically by app.js from toolsData -->
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= 14. ABOUT SECTION ================= -->
-    <section class="about-section" id="about">
-      <div class="container">
-        <div class="about-grid">
-          <div>
-            <span class="section-label">STUDIO PHILOSOPHY</span>
-            <h2 class="section-title">ABOUT KANI VISION STUDIO</h2>
-            <div class="about-text">
-              <p style="margin-bottom: 16px;">
-                “Kani Vision Studio is a creative design space focused on 3D modeling, digital interfaces, graphic design and visual storytelling.”
-              </p>
-              <p>
-                “The goal is simple: take an idea and turn it into something people can see, understand and experience.”
-              </p>
-            </div>
-
-            <!-- 4 Core Pillars -->
-            <div class="about-pillars">
-              <div class="pillar-item">
-                <span class="pillar-dot"></span>
-                <span>Creative Direction</span>
-              </div>
-              <div class="pillar-item">
-                <span class="pillar-dot"></span>
-                <span>3D &amp; Visual Design</span>
-              </div>
-              <div class="pillar-item">
-                <span class="pillar-dot"></span>
-                <span>UI/UX Architecture</span>
-              </div>
-              <div class="pillar-item">
-                <span class="pillar-dot"></span>
-                <span>Animation &amp; VFX</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right Column: Abstract Studio Visual -->
-          <div class="about-visual-frame">
-            <img src="assets/images/studio-about.svg" alt="Kani Vision Studio Abstract Space" loading="lazy" />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= 16. CONTACT SECTION ================= -->
-    <section class="contact-section" id="contact">
-      <div class="container">
-        <div class="contact-grid">
-          <!-- Left: Pitch & Quick Channels -->
-          <div>
-            <div class="availability-pill" style="margin-bottom: 20px; display: inline-flex;">
-              <span class="status-dot"></span>
-              <span>Available for selected projects</span>
-            </div>
-
-            <h2 class="contact-headline">
-              HAVE AN IDEA?<br>
-              <span class="text-gradient">LET'S BUILD IT.</span>
-            </h2>
-
-            <p class="contact-desc">
-              Whether you need a 3D model, interface, poster, interior visualization or visual concept, let's turn your idea into something real.
-            </p>
-
-            <div style="display: grid; gap: 12px; margin: 20px 0 26px; max-width: 520px;">
-              <a href="mailto:kanikanishk66@gmail.com" style="display: inline-flex; align-items: center; gap: 10px; color: var(--text-primary); text-decoration: none; font-weight: 600;">
-                <span style="color: #7ed7ff;">✉</span>
-                <span>kanikanishk66@gmail.com</span>
-              </a>
-              <a href="tel:+919500899152" style="display: inline-flex; align-items: center; gap: 10px; color: var(--text-primary); text-decoration: none; font-weight: 600;">
-                <span style="color: #25d366;">📞</span>
-                <span>+91 95008 99152</span>
-              </a>
-              <div style="display: inline-flex; align-items: center; gap: 10px; color: var(--text-secondary); font-size: 14px;">
-                <span style="color: #f7c948;">📍</span>
-                <span>Visit by appointment</span>
-              </div>
-            </div>
-
-            <div class="contact-direct-buttons">
-              <button class="btn-contact-channel" id="quick-whatsapp-btn" type="button">
-                <span>Direct WhatsApp Inquiry</span>
-                <span style="color: #25d366;">WhatsApp →</span>
-              </button>
-              <a href="mailto:kanikanishk66@gmail.com" class="btn-contact-channel">
-                <span>Email the Studio</span>
-                <span style="color: #7ed7ff;">Email →</span>
-              </a>
-              <a href="tel:+919500899152" class="btn-contact-channel">
-                <span>Call the Studio</span>
-                <span style="color: #ffb86c;">Call →</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- Right: Project Request Form -->
-          <div class="contact-form-wrap">
-            <form id="project-inquiry-form" novalidate>
-              <div class="form-group">
-                <label for="form-name" class="form-label">Your Name *</label>
-                <input type="text" id="form-name" class="form-input" placeholder="e.g. Alex Mercer" required />
-              </div>
-
-              <div class="form-group">
-                <label for="form-email" class="form-label">Email Address *</label>
-                <input type="email" id="form-email" class="form-input" placeholder="name@company.com" required />
-              </div>
-
-              <div class="form-group">
-                <label for="form-phone" class="form-label">Phone / WhatsApp (Optional)</label>
-                <input type="tel" id="form-phone" class="form-input" placeholder="+91 98765 43210" />
-              </div>
-
-              <div class="form-group">
-                <label for="form-service" class="form-label">Service Required *</label>
-                <select id="form-service" class="form-select" required>
-                  <option value="" disabled selected>Select a creative service...</option>
-                  <option value="3D Modeling">3D Modeling</option>
-                  <option value="UI/UX Design">UI/UX Design</option>
-                  <option value="Poster Design">Poster Design</option>
-                  <option value="Interior Visualization">Interior Visualization</option>
-                  <option value="Animation / VFX">Animation / VFX</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-
-              <!-- Budget Range Selector -->
-              <div class="form-group">
-                <label class="form-label">Budget Range</label>
-                <input type="hidden" id="selected-budget-input" value="Not decided" />
-                <div class="budget-chips-group">
-                  <button type="button" class="budget-chip" data-budget="Under ₹5,000">Under ₹5,000</button>
-                  <button type="button" class="budget-chip" data-budget="₹5,000–₹10,000">₹5,000–₹10,000</button>
-                  <button type="button" class="budget-chip" data-budget="₹10,000–₹25,000">₹10,000–₹25,000</button>
-                  <button type="button" class="budget-chip" data-budget="₹25,000+">₹25,000+</button>
-                  <button type="button" class="budget-chip active" data-budget="Not decided">Not decided</button>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="form-details" class="form-label">Project Details *</label>
-                <textarea id="form-details" class="form-textarea" placeholder="Tell us about the project goals, deliverables, timeline, or visual references..." required></textarea>
-              </div>
-
-              <button type="submit" class="btn-submit-inquiry">
-                <span>SEND PROJECT REQUEST</span>
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
+    <footer class="login-footer"><span>© 2026 Kani Vision Studio</span><span>Authenticated access only</span></footer>
   </main>
-
-  <!-- ================= 17. FOOTER ================= -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <h3>KANI VISION STUDIO</h3>
-          <div class="footer-tagline">Design. Model. Visualize.</div>
-          <p style="font-size: 13px; color: var(--text-muted); max-width: 320px;">
-            A professional creative design space crafting 3D models, digital interfaces, and cinematic visuals.
-          </p>
-        </div>
-
-        <nav aria-label="Footer Quick Links">
-          <ul class="footer-links">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#work">Work</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="404.html" style="opacity: 0.6;">404 Page</a></li>
-          </ul>
-        </nav>
-
-        <ul class="footer-socials" aria-label="Social media channels">
-          <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-          <li><a href="https://behance.net" target="_blank" rel="noopener noreferrer">Behance</a></li>
-          <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-          <li><a href="https://youtube.com" target="_blank" rel="noopener noreferrer">YouTube</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-bottom">
-        <div>&copy; 2026 Kani Vision Studio. All rights reserved.</div>
-        <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);">
-          BUILT FOR HIGH PERFORMANCE • THREE.JS &amp; WEBGL
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Floating Scroll-To-Top Button -->
-  <button class="scroll-to-top" id="scroll-to-top-btn" aria-label="Scroll back to top">
-    ↑
-  </button>
-
-  <!-- ================= 15. CASE STUDY DETAIL MODAL ================= -->
-  <div class="case-study-modal" id="case-study-modal" role="dialog" aria-modal="true" aria-labelledby="cs-title">
-    <button class="modal-close-btn" id="case-study-close" aria-label="Close Case Study">&times;</button>
-    <div class="cs-container">
-      <div class="cs-header">
-        <div class="cs-badges-row">
-          <span class="badge badge-accent" id="cs-category-badge">3D MODELING</span>
-          <span class="badge badge-outline" id="cs-type-badge">Concept Project</span>
-          <span style="font-family: var(--font-mono); font-size: 12px; color: var(--text-muted);" id="cs-year">2025</span>
-        </div>
-        <h2 class="cs-title" id="cs-title">Project Title</h2>
-        <p class="cs-idea-lead" id="cs-short-desc" style="color: var(--text-secondary);"></p>
-      </div>
-
-      <div class="cs-hero-frame">
-        <img id="cs-hero-img" src="" alt="Project Hero Render" />
-      </div>
-
-      <!-- THE IDEA -->
-      <div class="cs-section-block">
-        <div class="cs-block-label">01 // THE IDEA</div>
-        <p class="cs-idea-lead" id="cs-idea-text"></p>
-      </div>
-
-      <!-- THE PROCESS -->
-      <div class="cs-section-block">
-        <div class="cs-block-label">02 // THE PROCESS</div>
-        <div class="cs-process-steps-list" id="cs-process-steps"></div>
-      </div>
-
-      <!-- TOOLS & DELIVERABLES -->
-      <div class="cs-specs-row">
-        <div>
-          <div class="cs-block-label">03 // TOOLS USED</div>
-          <div class="cs-chips-wrap" id="cs-tools-list"></div>
-        </div>
-        <div>
-          <div class="cs-block-label">04 // DELIVERABLES</div>
-          <ul class="cs-deliv-list" id="cs-deliverables-list"></ul>
-        </div>
-      </div>
-
-      <!-- FINAL RESULT GALLERY -->
-      <div class="cs-section-block">
-        <div class="cs-block-label">05 // FINAL RESULT &amp; GALLERY</div>
-        <div class="cs-gallery-grid" id="cs-gallery-grid"></div>
-      </div>
-
-      <!-- NEXT PROJECT BUTTON -->
-      <div class="cs-next-wrap">
-        <button class="cs-next-btn" id="cs-next-btn"></button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ================= POSTER LIGHTBOX MODAL ================= -->
-  <div class="poster-lightbox-modal" id="poster-lightbox-modal" role="dialog" aria-modal="true" aria-labelledby="pl-title">
-    <button class="modal-close-btn" id="poster-lightbox-close" aria-label="Close Poster Lightbox">&times;</button>
-    <div class="pl-container">
-      <div class="pl-image-column">
-        <img id="pl-img" src="" alt="Poster artwork preview" />
-      </div>
-      <div class="pl-info-column">
-        <div>
-          <div class="pl-meta">
-            <span id="pl-category">EVENTS</span>
-            <span>•</span>
-            <span id="pl-client">Concept Project</span>
-            <span>•</span>
-            <span id="pl-year">2025</span>
-          </div>
-          <h3 class="pl-title" id="pl-title">Poster Title</h3>
-          
-          <div class="pl-block-title">Design Objective</div>
-          <p class="pl-block-text" id="pl-objective"></p>
-
-          <div class="pl-block-title">Artwork Description</div>
-          <p class="pl-block-text" id="pl-desc"></p>
-
-          <div class="pl-block-title">Tools Used</div>
-          <div class="cs-chips-wrap" id="pl-tools" style="margin-bottom: 24px;"></div>
-        </div>
-
-        <div style="padding-top: 16px; border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);">
-          <span>DIMENSIONS: <strong id="pl-dimensions" style="color: #ffffff;"></strong></span>
-          <span>TYPE: <strong id="pl-typography" style="color: var(--accent-cyan);"></strong></span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ================= CONTACT SUCCESS MODAL ================= -->
-  <div class="contact-success-modal" id="contact-success-modal" role="dialog" aria-modal="true" aria-labelledby="sm-title">
-    <div class="sm-card">
-      <div class="sm-icon-wrap">✓</div>
-      <h3 class="sm-title" id="sm-title">Request Received!</h3>
-      <p class="sm-desc">
-        Thank you <strong id="sm-name" style="color: #ffffff;"></strong>. Your project request has been prepared. You can send it directly to WhatsApp for instant connection or copy the details.
-      </p>
-
-      <div class="sm-details-box">
-        <div><strong>Service:</strong> <span id="sm-service"></span></div>
-        <div><strong>Budget:</strong> <span id="sm-budget"></span></div>
-      </div>
-
-      <div class="sm-actions">
-        <button class="btn-sm-whatsapp" id="sm-wa-send-btn">
-          Send via WhatsApp ↗
-        </button>
-        <button class="btn-sm-copy" id="sm-copy-btn">
-          Copy Inquiry Details
-        </button>
-        <button class="btn-secondary" id="contact-success-close" style="width: 100%; justify-content: center; margin-top: 4px;">
-          Close
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- JavaScript ES Modules -->
-  <script type="module" src="js/app.js"></script>
 </body>
 </html>

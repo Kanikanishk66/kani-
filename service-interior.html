@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interior Visualization — Kani Vision Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #080a08;
+      --bg2: #0c100c;
+      --card: rgba(14,18,14,0.8);
+      --border: rgba(255,255,255,0.07);
+      --text: #f1f5f9;
+      --muted: #64748b;
+      --soft: #94a3b8;
+      --green: #10b981;
+      --teal: #14b8a6;
+      --lime: #84cc16;
+      --font: 'Space Grotesk', sans-serif;
+      --body: 'Inter', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--body); background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px; height: 72px;
+      background: rgba(8,10,8,0.85); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-family: var(--font); font-weight: 800; font-size: 16px; color: var(--text); text-decoration: none; }
+    .nav-logo span { color: var(--green); }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { font-family: var(--font); font-size: 13px; font-weight: 500; color: var(--soft); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--green); }
+    .nav-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font); font-size: 13px; font-weight: 600;
+      color: var(--green); border: 1px solid rgba(16,185,129,0.35);
+      background: rgba(16,185,129,0.08); border-radius: 100px;
+      padding: 8px 20px; text-decoration: none; transition: all 0.25s;
+    }
+    .nav-back:hover { background: rgba(16,185,129,0.18); }
+
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 120px 48px 80px; position: relative; overflow: hidden;
+      background: radial-gradient(ellipse 70% 60% at 100% 50%, rgba(16,185,129,0.07) 0%, transparent 60%);
+    }
+    .hero-content { max-width: 660px; }
+    .hero-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.15em; color: var(--green);
+      border: 1px solid rgba(16,185,129,0.4); background: rgba(16,185,129,0.08);
+      border-radius: 100px; padding: 6px 18px; margin-bottom: 28px;
+    }
+    .hero-title {
+      font-family: var(--font); font-weight: 900;
+      font-size: clamp(44px, 6.5vw, 92px); line-height: 0.92;
+      letter-spacing: -0.03em; margin-bottom: 28px;
+    }
+    .hero-title .grad {
+      background: linear-gradient(135deg, #10b981 0%, #14b8a6 50%, #06b6d4 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero-desc { font-size: 18px; line-height: 1.75; color: var(--soft); max-width: 560px; margin-bottom: 40px; }
+    .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--font); font-weight: 700; font-size: 14px;
+      color: #000; background: var(--green);
+      border: none; border-radius: 100px; padding: 14px 32px;
+      text-decoration: none; transition: all 0.3s;
+    }
+    .btn-primary:hover { background: var(--teal); transform: translateY(-2px); box-shadow: 0 16px 48px rgba(16,185,129,0.3); }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--font); font-weight: 600; font-size: 14px;
+      color: var(--text); background: transparent;
+      border: 1px solid rgba(255,255,255,0.15); border-radius: 100px;
+      padding: 14px 32px; text-decoration: none; transition: all 0.3s;
+    }
+    .btn-ghost:hover { border-color: var(--green); color: var(--green); }
+
+    section { padding: 100px 48px; }
+    .container { max-width: 1280px; margin: 0 auto; }
+    .section-label { font-family: var(--font); font-size: 11px; font-weight: 700; letter-spacing: 0.2em; color: var(--green); margin-bottom: 16px; }
+    .section-title { font-family: var(--font); font-weight: 800; font-size: clamp(34px, 4.5vw, 62px); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 20px; }
+    .section-sub { font-size: 17px; color: var(--soft); line-height: 1.7; max-width: 640px; margin-bottom: 60px; }
+
+    /* PROCESS VERTICAL */
+    .process-vert { display: flex; flex-direction: column; gap: 0; max-width: 700px; }
+    .pv-step { display: flex; gap: 28px; align-items: flex-start; padding-bottom: 48px; position: relative; }
+    .pv-step:not(:last-child)::after {
+      content: ''; position: absolute; left: 24px; top: 52px; bottom: 0; width: 1px;
+      background: linear-gradient(to bottom, rgba(16,185,129,0.4), rgba(16,185,129,0.05));
+    }
+    .pv-num {
+      width: 48px; height: 48px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font); font-weight: 800; font-size: 15px;
+      background: rgba(16,185,129,0.12); border: 1.5px solid rgba(16,185,129,0.4); color: var(--green);
+    }
+    .pv-body { padding-top: 10px; }
+    .pv-title { font-family: var(--font); font-weight: 700; font-size: 18px; margin-bottom: 8px; }
+    .pv-desc { font-size: 14px; color: var(--soft); line-height: 1.7; }
+
+    /* BEFORE/AFTER SLIDER */
+    .ba-container {
+      position: relative; border-radius: 24px; overflow: hidden;
+      border: 1px solid rgba(16,185,129,0.2);
+      max-width: 800px; margin: 0 auto;
+      box-shadow: 0 32px 80px rgba(16,185,129,0.1);
+    }
+    .ba-img { width: 100%; display: block; }
+    .ba-before, .ba-after {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .ba-after { clip-path: inset(0 50% 0 0); transition: clip-path 0s; }
+    .ba-label {
+      position: absolute; bottom: 20px; font-family: var(--font); font-size: 11px;
+      font-weight: 700; letter-spacing: 0.2em; padding: 6px 14px; border-radius: 100px;
+    }
+    .ba-label-before { left: 20px; background: rgba(0,0,0,0.7); color: rgba(255,255,255,0.7); }
+    .ba-label-after { right: 20px; background: rgba(16,185,129,0.2); color: var(--green); border: 1px solid rgba(16,185,129,0.4); }
+    .ba-handle {
+      position: absolute; top: 0; bottom: 0; left: 50%; width: 2px;
+      background: white; cursor: ew-resize; transform: translateX(-50%);
+    }
+    .ba-handle::before {
+      content: '↔'; position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 36px; height: 36px; border-radius: 50%;
+      background: white; color: #000; display: flex; align-items: center; justify-content: center;
+      font-size: 14px; box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    }
+
+    /* SPACES GRID */
+    .spaces-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    @media(max-width:900px) { .spaces-grid { grid-template-columns: 1fr 1fr; } }
+    @media(max-width:560px) { .spaces-grid { grid-template-columns: 1fr; } }
+    .space-card {
+      border-radius: 18px; overflow: hidden; position: relative;
+      border: 1px solid var(--border); aspect-ratio: 4/3;
+      transition: transform 0.35s, box-shadow 0.35s; cursor: pointer;
+    }
+    .space-card:hover { transform: scale(1.03); box-shadow: 0 20px 60px rgba(16,185,129,0.15); border-color: rgba(16,185,129,0.25); }
+    .space-vis { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+    .space-label { position: absolute; bottom: 16px; left: 16px; right: 16px; font-family: var(--font); font-size: 14px; font-weight: 700; background: rgba(8,10,8,0.85); border-radius: 10px; padding: 10px 14px; backdrop-filter: blur(10px); display: flex; justify-content: space-between; align-items: center; }
+    .space-cat { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; color: var(--green); }
+
+    /* TOOLS */
+    .tools-row { display: flex; flex-wrap: wrap; gap: 14px; }
+    .tool-badge {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 12px 20px;
+      font-family: var(--font); font-size: 14px; font-weight: 600;
+      transition: all 0.25s;
+    }
+    .tool-badge:hover { border-color: rgba(16,185,129,0.4); color: var(--green); transform: translateY(-2px); }
+
+    .cta-section { text-align: center; padding: 120px 48px; background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(16,185,129,0.1) 0%, transparent 70%); }
+    .cta-title { font-family: var(--font); font-weight: 900; font-size: clamp(40px,5.5vw,80px); letter-spacing: -0.03em; margin-bottom: 24px; }
+    .cta-desc { font-size: 18px; color: var(--soft); max-width: 520px; margin: 0 auto 48px; line-height: 1.7; }
+
+    footer { border-top: 1px solid var(--border); padding: 32px 48px; display: flex; align-items: center; justify-content: space-between; font-family: var(--font); font-size: 12px; color: var(--muted); flex-wrap: wrap; gap: 12px; }
+    .footer-logo { font-weight: 800; font-size: 14px; color: var(--text); }
+    .footer-logo span { color: var(--green); }
+
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    @media(max-width:768px) { nav, section, footer { padding-left: 24px; padding-right: 24px; } .hero { padding: 100px 24px 60px; } }
+  </style>
+  <link rel="stylesheet" href="css/studio-theme.css">
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">KANI <span>VISION</span> STUDIO</a>
+  <div class="nav-links">
+    <a href="index.html#work">Work</a>
+    <a href="index.html#services">Services</a>
+    <a href="index.html#contact">Contact</a>
+    <a class="nav-back" href="index.html">← Back to Studio</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-pill">SERVICE 04 — INTERIOR VISUALIZATION</div>
+    <h1 class="hero-title">SPACES<br><span class="grad">BEFORE</span><br>THEY EXIST.</h1>
+    <p class="hero-desc">Visualize interiors, layouts, materials, and lighting before the physical space is built. See your dream space in stunning 3D reality.</p>
+    <div class="hero-cta">
+      <a class="btn-primary" href="index.html#contact">Start a Viz Project →</a>
+      <a class="btn-ghost" href="index.html#work">View Interior Work</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section style="background:var(--bg2);">
+  <div class="container">
+    <div class="section-label reveal">THE VISUALIZATION PIPELINE</div>
+    <h2 class="section-title reveal">Floor Plan to<br>Final Render.</h2>
+    <p class="section-sub reveal">Every interior project follows a structured pipeline — from concept to photorealistic render.</p>
+    <div class="process-vert reveal">
+      <div class="pv-step">
+        <div class="pv-num">01</div>
+        <div class="pv-body"><div class="pv-title">Floor Plan Analysis</div><div class="pv-desc">We start with your floor plan, architectural drawings, or sketch. Understanding the space dimensions, layout, and flow.</div></div>
+      </div>
+      <div class="pv-step">
+        <div class="pv-num">02</div>
+        <div class="pv-body"><div class="pv-title">3D Model Construction</div><div class="pv-desc">Building the full 3D model of the space — walls, windows, doors, ceiling heights, structural elements and furniture placement.</div></div>
+      </div>
+      <div class="pv-step">
+        <div class="pv-num">03</div>
+        <div class="pv-body"><div class="pv-title">Materials & Textures</div><div class="pv-desc">Applying PBR materials — wood finishes, stone, concrete, fabric, glass, metals. Every surface feels physically real.</div></div>
+      </div>
+      <div class="pv-step">
+        <div class="pv-num">04</div>
+        <div class="pv-body"><div class="pv-title">Lighting Setup</div><div class="pv-desc">Natural daylight through windows, artificial ambient lighting, accent lamps, and mood-specific light scenarios.</div></div>
+      </div>
+      <div class="pv-step" style="padding-bottom:0;">
+        <div class="pv-num">05</div>
+        <div class="pv-body"><div class="pv-title">Final High-Resolution Render</div><div class="pv-desc">Production-quality final renders — print-ready resolution, multiple angles, and optional walkthrough animation.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPACES GALLERY -->
+<section>
+  <div class="container">
+    <div class="section-label reveal">SPACES WE VISUALIZE</div>
+    <h2 class="section-title reveal">Every Type of<br>Interior Space.</h2>
+    <div class="spaces-grid">
+      <div class="space-card reveal" style="background:linear-gradient(160deg,#050e08,#091809);">
+        <div class="space-vis">
+          <svg width="80%" height="80%" viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+            <!-- Simple bedroom viz -->
+            <rect x="20" y="100" width="280" height="120" rx="4" fill="rgba(16,185,129,0.06)" stroke="rgba(16,185,129,0.2)" stroke-width="1"/>
+            <rect x="60" y="80" width="120" height="80" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+            <rect x="40" y="160" width="60" height="40" rx="3" fill="rgba(16,185,129,0.1)"/>
+            <rect x="220" y="160" width="60" height="40" rx="3" fill="rgba(16,185,129,0.1)"/>
+            <line x1="20" x2="300" y1="220" y2="220" stroke="rgba(16,185,129,0.3)" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="space-label"><span>Bedroom Suite</span><div><div class="space-cat">RESIDENTIAL</div></div></div>
+      </div>
+      <div class="space-card reveal" style="background:linear-gradient(160deg,#080e08,#0f1a0f);">
+        <div class="space-vis">
+          <svg width="80%" height="80%" viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="80" width="280" height="140" rx="4" fill="none" stroke="rgba(20,184,166,0.2)" stroke-width="1"/>
+            <rect x="40" y="100" width="100" height="60" rx="4" fill="rgba(20,184,166,0.08)"/>
+            <rect x="160" y="100" width="120" height="60" rx="4" fill="rgba(20,184,166,0.05)"/>
+            <line x1="20" x2="300" y1="220" y2="220" stroke="rgba(20,184,166,0.3)" stroke-width="1"/>
+            <line x1="160" x2="160" y1="80" y2="220" stroke="rgba(255,255,255,0.05)" stroke-width="1" stroke-dasharray="4,4"/>
+          </svg>
+        </div>
+        <div class="space-label"><span>Living Room</span><div><div class="space-cat">RESIDENTIAL</div></div></div>
+      </div>
+      <div class="space-card reveal" style="background:linear-gradient(160deg,#060a08,#0a120a);">
+        <div class="space-vis">
+          <svg width="80%" height="80%" viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+            <rect x="30" y="60" width="260" height="160" rx="4" fill="none" stroke="rgba(132,204,22,0.2)" stroke-width="1"/>
+            <rect x="50" y="80" width="220" height="12" rx="2" fill="rgba(132,204,22,0.12)"/>
+            <rect x="50" y="104" width="140" height="8" rx="2" fill="rgba(255,255,255,0.06)"/>
+            <rect x="50" y="130" width="80" height="80" rx="4" fill="rgba(132,204,22,0.06)"/>
+            <rect x="150" y="130" width="120" height="80" rx="4" fill="rgba(132,204,22,0.04)"/>
+          </svg>
+        </div>
+        <div class="space-label"><span>Office / Studio</span><div><div class="space-cat">COMMERCIAL</div></div></div>
+      </div>
+      <div class="space-card reveal" style="background:linear-gradient(160deg,#050d09,#071410);">
+        <div class="space-vis">
+          <svg width="80%" height="80%" viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="160,20 300,200 20,200" fill="none" stroke="rgba(16,185,129,0.15)" stroke-width="1"/>
+            <rect x="60" y="140" width="200" height="60" rx="4" fill="rgba(6,182,212,0.06)"/>
+            <line x1="60" x2="260" y1="200" y2="200" stroke="rgba(16,185,129,0.3)" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="space-label"><span>Modern Kitchen</span><div><div class="space-cat">RESIDENTIAL</div></div></div>
+      </div>
+      <div class="space-card reveal" style="background:linear-gradient(160deg,#060d08,#0a1a0c);">
+        <div class="space-vis">
+          <svg width="80%" height="80%" viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+            <rect x="30" y="40" width="260" height="180" rx="8" fill="rgba(16,185,129,0.04)"/>
+            <circle cx="100" cy="130" r="40" fill="none" stroke="rgba(16,185,129,0.2)" stroke-width="1"/>
+            <circle cx="220" cy="130" r="40" fill="none" stroke="rgba(20,184,166,0.2)" stroke-width="1"/>
+            <rect x="130" y="100" width="60" height="60" rx="4" fill="rgba(255,255,255,0.04)"/>
+          </svg>
+        </div>
+        <div class="space-label"><span>Modern Apartment</span><div><div class="space-cat">RESIDENTIAL</div></div></div>
+      </div>
+      <div class="space-card reveal" style="background:linear-gradient(160deg,#050c06,#081408);">
+        <div class="space-vis">
+          <svg width="80%" height="80%" viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="60" width="280" height="160" rx="4" fill="none" stroke="rgba(132,204,22,0.15)" stroke-width="1"/>
+            <rect x="40" y="80" width="100" height="120" rx="4" fill="rgba(132,204,22,0.05)"/>
+            <rect x="160" y="80" width="120" height="55" rx="4" fill="rgba(16,185,129,0.06)"/>
+            <rect x="160" y="145" width="120" height="55" rx="4" fill="rgba(16,185,129,0.04)"/>
+          </svg>
+        </div>
+        <div class="space-label"><span>Restaurant Interior</span><div><div class="space-cat">COMMERCIAL</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section style="background:var(--bg2);">
+  <div class="container">
+    <div class="section-label reveal">SOFTWARE STACK</div>
+    <h2 class="section-title reveal">Tools Used</h2>
+    <div class="tools-row reveal">
+      <div class="tool-badge">🟠 Blender</div>
+      <div class="tool-badge">🏛️ SketchUp</div>
+      <div class="tool-badge">🎮 Unreal Engine</div>
+      <div class="tool-badge">🖼️ Adobe Photoshop</div>
+      <div class="tool-badge">💡 HDRI Haven</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="section-label" style="display:inline-block; margin-bottom:20px;">START A PROJECT</div>
+    <h2 class="cta-title">Have a Space to<br><span style="background:linear-gradient(135deg,#10b981,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Visualize?</span></h2>
+    <p class="cta-desc">Share your floor plan or concept and we'll bring your interior to life before a single brick is laid.</p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+      <a class="btn-primary" href="index.html#contact">Start an Interior Project →</a>
+      <a class="btn-ghost" href="index.html#work">View Interior Gallery</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">KANI <span>VISION</span> STUDIO</div>
+  <div>Interior Visualization · Design. Model. Visualize.</div>
+  <div>© 2026 All rights reserved.</div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const ro = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => ro.observe(el));
+</script>
+</body>
+</html>

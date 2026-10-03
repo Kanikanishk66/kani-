@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Poster & Graphic Design — Kani Vision Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0710;
+      --bg2: #0d0a14;
+      --card: rgba(16,12,26,0.8);
+      --border: rgba(255,255,255,0.07);
+      --text: #f1f5f9;
+      --muted: #64748b;
+      --soft: #94a3b8;
+      --magenta: #ec4899;
+      --violet: #8b5cf6;
+      --rose: #f43f5e;
+      --font: 'Space Grotesk', sans-serif;
+      --body: 'Inter', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--body); background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px; height: 72px;
+      background: rgba(10,7,16,0.85); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-family: var(--font); font-weight: 800; font-size: 16px; color: var(--text); text-decoration: none; }
+    .nav-logo span { color: var(--magenta); }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { font-family: var(--font); font-size: 13px; font-weight: 500; color: var(--soft); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--magenta); }
+    .nav-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font); font-size: 13px; font-weight: 600;
+      color: var(--magenta); border: 1px solid rgba(236,72,153,0.35);
+      background: rgba(236,72,153,0.08); border-radius: 100px;
+      padding: 8px 20px; text-decoration: none; transition: all 0.25s;
+    }
+    .nav-back:hover { background: rgba(236,72,153,0.18); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding: 120px 48px 80px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background: radial-gradient(ellipse 60% 50% at 80% 30%, rgba(236,72,153,0.1) 0%, transparent 55%),
+                  radial-gradient(ellipse 40% 40% at 20% 70%, rgba(139,92,246,0.08) 0%, transparent 55%);
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 680px; }
+    .hero-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.15em; color: var(--magenta);
+      border: 1px solid rgba(236,72,153,0.4); background: rgba(236,72,153,0.08);
+      border-radius: 100px; padding: 6px 18px; margin-bottom: 28px;
+    }
+    .hero-title {
+      font-family: var(--font); font-weight: 900;
+      font-size: clamp(48px, 7vw, 96px); line-height: 0.95;
+      letter-spacing: -0.03em; margin-bottom: 28px;
+    }
+    .hero-title .grad {
+      background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 60%, #6366f1 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero-desc { font-size: 18px; line-height: 1.75; color: var(--soft); max-width: 560px; margin-bottom: 40px; }
+    .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--font); font-weight: 700; font-size: 14px;
+      color: #fff; background: linear-gradient(135deg, #ec4899, #8b5cf6);
+      border: none; border-radius: 100px; padding: 14px 32px;
+      text-decoration: none; transition: all 0.3s;
+    }
+    .btn-primary:hover { opacity: 0.85; transform: translateY(-2px); box-shadow: 0 16px 48px rgba(236,72,153,0.35); }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--font); font-weight: 600; font-size: 14px;
+      color: var(--text); background: transparent;
+      border: 1px solid rgba(255,255,255,0.15); border-radius: 100px;
+      padding: 14px 32px; text-decoration: none; transition: all 0.3s;
+    }
+    .btn-ghost:hover { border-color: var(--magenta); color: var(--magenta); }
+
+    /* FILTERS */
+    .filter-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
+    .filter-btn {
+      font-family: var(--font); font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+      padding: 8px 20px; border-radius: 100px;
+      border: 1px solid var(--border); background: transparent;
+      color: var(--soft); cursor: pointer; transition: all 0.25s;
+    }
+    .filter-btn.active, .filter-btn:hover { background: var(--magenta); color: #fff; border-color: var(--magenta); }
+
+    /* POSTER GRID */
+    .poster-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    @media(max-width:900px) { .poster-grid { grid-template-columns: 1fr 1fr; } }
+    @media(max-width:560px) { .poster-grid { grid-template-columns: 1fr; } }
+    .poster-card {
+      border-radius: 18px; overflow: hidden;
+      position: relative; cursor: pointer;
+      border: 1px solid var(--border);
+      transition: transform 0.35s, box-shadow 0.35s;
+    }
+    .poster-card:hover { transform: scale(1.03) translateY(-4px); box-shadow: 0 24px 72px rgba(236,72,153,0.2); border-color: rgba(236,72,153,0.3); }
+    .poster-vis {
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font); font-size: 13px; font-weight: 700;
+      letter-spacing: 0.15em; color: rgba(255,255,255,0.3);
+      position: relative; overflow: hidden;
+    }
+    .poster-card:nth-child(1) .poster-vis { height: 420px; background: linear-gradient(160deg,#1a0a1a,#2d1040,#0a0316); }
+    .poster-card:nth-child(2) .poster-vis { height: 300px; background: linear-gradient(160deg,#0d0020,#1a0535,#06001a); }
+    .poster-card:nth-child(3) .poster-vis { height: 360px; background: linear-gradient(160deg,#1a0010,#320030,#0a0020); }
+    .poster-card:nth-child(4) .poster-vis { height: 340px; background: linear-gradient(160deg,#00101a,#001c35,#00050f); }
+    .poster-card:nth-child(5) .poster-vis { height: 280px; background: linear-gradient(160deg,#1a1000,#2d1c00,#0d0800); }
+    .poster-card:nth-child(6) .poster-vis { height: 400px; background: linear-gradient(160deg,#0a1a00,#162d00,#030a00); }
+    .poster-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 55%);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 24px; opacity: 0; transition: opacity 0.35s;
+    }
+    .poster-card:hover .poster-overlay { opacity: 1; }
+    .po-cat { font-family: var(--font); font-size: 10px; font-weight: 700; letter-spacing: 0.2em; color: var(--magenta); margin-bottom: 6px; }
+    .po-title { font-family: var(--font); font-weight: 800; font-size: 18px; }
+    .po-action {
+      display: inline-flex; align-items: center; gap: 6px; margin-top: 12px;
+      font-family: var(--font); font-size: 12px; font-weight: 700;
+      color: #000; background: var(--magenta); border-radius: 100px; padding: 8px 18px; width: fit-content;
+    }
+
+    /* Poster SVG decorations */
+    .p-deco { position: absolute; opacity: 0.6; }
+
+    /* SECTION */
+    section { padding: 100px 48px; }
+    .container { max-width: 1280px; margin: 0 auto; }
+    .section-label {
+      font-family: var(--font); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.2em; color: var(--magenta); margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: var(--font); font-weight: 800;
+      font-size: clamp(34px, 4.5vw, 62px); line-height: 1.05;
+      letter-spacing: -0.02em; margin-bottom: 20px;
+    }
+    .section-sub { font-size: 17px; color: var(--soft); line-height: 1.7; max-width: 640px; margin-bottom: 60px; }
+
+    /* CAPS */
+    .caps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    @media(max-width:800px) { .caps-grid { grid-template-columns: 1fr 1fr; } }
+    .cap-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 18px; padding: 28px;
+      transition: all 0.3s;
+    }
+    .cap-card:hover { border-color: rgba(236,72,153,0.35); transform: translateY(-4px); }
+    .cap-icon { font-size: 28px; margin-bottom: 14px; }
+    .cap-title { font-family: var(--font); font-weight: 700; font-size: 16px; margin-bottom: 8px; }
+    .cap-desc { font-size: 13px; color: var(--soft); line-height: 1.6; }
+
+    /* TOOLS */
+    .tools-row { display: flex; flex-wrap: wrap; gap: 14px; }
+    .tool-badge {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 12px 20px;
+      font-family: var(--font); font-size: 14px; font-weight: 600;
+      transition: all 0.25s;
+    }
+    .tool-badge:hover { border-color: rgba(236,72,153,0.4); color: var(--magenta); transform: translateY(-2px); }
+
+    /* CTA */
+    .cta-section {
+      text-align: center; padding: 120px 48px;
+      background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(236,72,153,0.1) 0%, transparent 70%);
+    }
+    .cta-title { font-family: var(--font); font-weight: 900; font-size: clamp(40px,5.5vw,80px); letter-spacing: -0.03em; margin-bottom: 24px; }
+    .cta-desc { font-size: 18px; color: var(--soft); max-width: 520px; margin: 0 auto 48px; line-height: 1.7; }
+
+    footer { border-top: 1px solid var(--border); padding: 32px 48px; display: flex; align-items: center; justify-content: space-between; font-family: var(--font); font-size: 12px; color: var(--muted); flex-wrap: wrap; gap: 12px; }
+    .footer-logo { font-weight: 800; font-size: 14px; color: var(--text); }
+    .footer-logo span { color: var(--magenta); }
+
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    @media(max-width:768px) { nav, section, footer { padding-left: 24px; padding-right: 24px; } .hero { padding: 100px 24px 60px; } }
+  </style>
+  <link rel="stylesheet" href="css/studio-theme.css">
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">KANI <span>VISION</span> STUDIO</a>
+  <div class="nav-links">
+    <a href="index.html#work">Work</a>
+    <a href="index.html#services">Services</a>
+    <a href="index.html#contact">Contact</a>
+    <a class="nav-back" href="index.html">← Back to Studio</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-pill">SERVICE 03 — POSTER & GRAPHIC DESIGN</div>
+    <h1 class="hero-title">DESIGN THAT<br><span class="grad">GETS</span><br>ATTENTION.</h1>
+    <p class="hero-desc">Posters, event graphics, educational designs, social media creatives — visual communication that's bold, clear, and impossible to ignore.</p>
+    <div class="hero-cta">
+      <a class="btn-primary" href="index.html#contact">Start a Design Project →</a>
+      <a class="btn-ghost" href="index.html#posters">Browse Posters</a>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section>
+  <div class="container">
+    <div class="section-label reveal">POSTER GALLERY</div>
+    <h2 class="section-title reveal">Selected Works</h2>
+    <div class="filter-row reveal">
+      <button class="filter-btn active">All</button>
+      <button class="filter-btn">Events</button>
+      <button class="filter-btn">Education</button>
+      <button class="filter-btn">Advertising</button>
+      <button class="filter-btn">Social Media</button>
+      <button class="filter-btn">Branding</button>
+    </div>
+    <div class="poster-grid">
+      <div class="poster-card reveal">
+        <div class="poster-vis">
+          <svg width="100%" height="100%" viewBox="0 0 400 420" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;">
+            <circle cx="200" cy="180" r="120" fill="none" stroke="rgba(236,72,153,0.3)" stroke-width="60"/>
+            <circle cx="200" cy="180" r="60" fill="rgba(139,92,246,0.25)"/>
+            <text x="200" y="330" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="Space Grotesk" font-weight="900" font-size="28" letter-spacing="0.1em">NEXUS</text>
+            <text x="200" y="358" text-anchor="middle" fill="rgba(236,72,153,0.8)" font-family="Space Grotesk" font-size="12" letter-spacing="0.3em">MUSIC FESTIVAL</text>
+          </svg>
+          POSTER
+        </div>
+        <div class="poster-overlay">
+          <div class="po-cat">EVENTS</div>
+          <div class="po-title">Nexus Music Festival</div>
+          <div class="po-action">View Design ↗</div>
+        </div>
+      </div>
+      <div class="poster-card reveal">
+        <div class="poster-vis">
+          <svg width="100%" height="100%" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;">
+            <rect x="40" y="40" width="320" height="220" rx="8" fill="none" stroke="rgba(139,92,246,0.3)" stroke-width="1"/>
+            <text x="200" y="130" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-family="Space Grotesk" font-weight="900" font-size="36">LEARN.</text>
+            <text x="200" y="170" text-anchor="middle" fill="rgba(139,92,246,0.8)" font-family="Space Grotesk" font-size="14" letter-spacing="0.2em">DESIGN WORKSHOP 2026</text>
+          </svg>
+          POSTER
+        </div>
+        <div class="poster-overlay">
+          <div class="po-cat">EDUCATION</div>
+          <div class="po-title">Design Workshop 2026</div>
+          <div class="po-action">View Design ↗</div>
+        </div>
+      </div>
+      <div class="poster-card reveal">
+        <div class="poster-vis">
+          <svg width="100%" height="100%" viewBox="0 0 400 360" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;">
+            <polygon points="200,30 370,300 30,300" fill="none" stroke="rgba(244,63,94,0.4)" stroke-width="2"/>
+            <text x="200" y="200" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-family="Space Grotesk" font-weight="900" font-size="30">LAUNCH</text>
+            <text x="200" y="228" text-anchor="middle" fill="rgba(244,63,94,0.8)" font-family="Space Grotesk" font-size="11" letter-spacing="0.25em">PRODUCT CAMPAIGN</text>
+          </svg>
+          POSTER
+        </div>
+        <div class="poster-overlay">
+          <div class="po-cat">ADVERTISING</div>
+          <div class="po-title">Product Launch Campaign</div>
+          <div class="po-action">View Design ↗</div>
+        </div>
+      </div>
+      <div class="poster-card reveal">
+        <div class="poster-vis">
+          <svg width="100%" height="100%" viewBox="0 0 400 340" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;">
+            <circle cx="200" cy="170" r="80" fill="none" stroke="rgba(6,182,212,0.3)" stroke-width="1.5"/>
+            <circle cx="200" cy="170" r="50" fill="rgba(6,182,212,0.1)"/>
+            <text x="200" y="178" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-family="Space Grotesk" font-weight="900" font-size="22">EXPLORE</text>
+            <text x="200" y="280" text-anchor="middle" fill="rgba(6,182,212,0.6)" font-family="Space Grotesk" font-size="10" letter-spacing="0.3em">SOCIAL MEDIA SERIES</text>
+          </svg>
+          POSTER
+        </div>
+        <div class="poster-overlay">
+          <div class="po-cat">SOCIAL MEDIA</div>
+          <div class="po-title">Explore Series — Social Pack</div>
+          <div class="po-action">View Design ↗</div>
+        </div>
+      </div>
+      <div class="poster-card reveal">
+        <div class="poster-vis">
+          <svg width="100%" height="100%" viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;">
+            <rect x="0" y="0" width="400" height="280" fill="rgba(245,158,11,0.03)"/>
+            <text x="200" y="140" text-anchor="middle" fill="rgba(245,158,11,0.85)" font-family="Space Grotesk" font-weight="900" font-size="52">KV</text>
+            <text x="200" y="178" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="Space Grotesk" font-size="10" letter-spacing="0.4em">BRAND IDENTITY</text>
+          </svg>
+          POSTER
+        </div>
+        <div class="poster-overlay">
+          <div class="po-cat">BRANDING</div>
+          <div class="po-title">KV Brand Identity System</div>
+          <div class="po-action">View Design ↗</div>
+        </div>
+      </div>
+      <div class="poster-card reveal">
+        <div class="poster-vis">
+          <svg width="100%" height="100%" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;">
+            <rect x="40" y="60" width="320" height="280" rx="4" fill="none" stroke="rgba(16,185,129,0.25)" stroke-width="1"/>
+            <rect x="60" y="80" width="100" height="80" rx="4" fill="rgba(16,185,129,0.08)"/>
+            <rect x="180" y="80" width="160" height="38" rx="4" fill="rgba(255,255,255,0.05)"/>
+            <text x="200" y="260" text-anchor="middle" fill="rgba(16,185,129,0.8)" font-family="Space Grotesk" font-size="11" letter-spacing="0.2em">TECH CONFERENCE</text>
+            <text x="200" y="290" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Space Grotesk" font-weight="700" font-size="24">INNOVATE '26</text>
+          </svg>
+          POSTER
+        </div>
+        <div class="poster-overlay">
+          <div class="po-cat">EVENTS</div>
+          <div class="po-title">Innovate 2026 Conference</div>
+          <div class="po-action">View Design ↗</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section style="background:var(--bg2);">
+  <div class="container">
+    <div class="section-label reveal">WHAT WE CREATE</div>
+    <h2 class="section-title reveal">Visual Communications<br>That Work.</h2>
+    <div class="caps-grid">
+      <div class="cap-card reveal"><div class="cap-icon">🎭</div><div class="cap-title">Event Posters</div><div class="cap-desc">Concert, festival, exhibition, conference, and launch event poster design that commands attention in print and digital formats.</div></div>
+      <div class="cap-card reveal"><div class="cap-icon">🎓</div><div class="cap-title">Educational Design</div><div class="cap-desc">Infographics, workshop flyers, seminar banners, and educational material designed for clarity and visual engagement.</div></div>
+      <div class="cap-card reveal"><div class="cap-icon">📢</div><div class="cap-title">Advertising Graphics</div><div class="cap-desc">Product ads, promotional banners, billboard concepts, and marketing collateral built around persuasion and brand voice.</div></div>
+      <div class="cap-card reveal"><div class="cap-icon">📱</div><div class="cap-title">Social Media Creatives</div><div class="cap-desc">Instagram posts, story templates, LinkedIn graphics, YouTube thumbnails — consistent and scroll-stopping content.</div></div>
+      <div class="cap-card reveal"><div class="cap-icon">🔠</div><div class="cap-title">Typography Design</div><div class="cap-desc">Expressive type-driven compositions, editorial layouts, and text-based visual art that's as beautiful as any illustration.</div></div>
+      <div class="cap-card reveal"><div class="cap-icon">🎨</div><div class="cap-title">Brand Collateral</div><div class="cap-desc">Business cards, letterheads, brochures, and brand kit elements that create a cohesive visual identity across touchpoints.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section>
+  <div class="container">
+    <div class="section-label reveal">SOFTWARE USED</div>
+    <h2 class="section-title reveal">Design Tools</h2>
+    <div class="tools-row reveal">
+      <div class="tool-badge">🖼️ Adobe Photoshop</div>
+      <div class="tool-badge">📐 Adobe Illustrator</div>
+      <div class="tool-badge">🎨 Figma</div>
+      <div class="tool-badge">📋 Canva</div>
+      <div class="tool-badge">🎬 Adobe InDesign</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="section-label" style="display:inline-block; margin-bottom:20px;">START A PROJECT</div>
+    <h2 class="cta-title">Need a Design<br><span style="background:linear-gradient(135deg,#ec4899,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">That Pops?</span></h2>
+    <p class="cta-desc">Tell us what you're promoting and we'll design something visually striking — in print or digital.</p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+      <a class="btn-primary" href="index.html#contact">Start a Design Project →</a>
+      <a class="btn-ghost" href="index.html#work">Browse Portfolio</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">KANI <span>VISION</span> STUDIO</div>
+  <div>Poster & Graphic Design · Design. Model. Visualize.</div>
+  <div>© 2026 All rights reserved.</div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const ro = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => ro.observe(el));
+
+  // Filter buttons (visual only)
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>

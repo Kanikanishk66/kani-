@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Staff Console | Kani Vision Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/portal.css?v=4">
+  <link rel="stylesheet" href="css/experience.css">
+  <link rel="stylesheet" href="css/depth-effects.css">
+  <script type="module" src="js/depth-effects.js"></script>
+  <script type="module" src="js/staff.js?v=3"></script>
+</head>
+<body class="staff-page">
+  <section class="auth-screen" id="staff-auth-shell" aria-labelledby="staff-auth-title">
+    <a class="auth-brand" href="index.html"><span class="brand-mark">KV</span><span>KANI VISION<span class="brand-muted"> / STAFF</span></span></a>
+    <div class="auth-layout">
+      <div class="auth-intro">
+        <p class="eyebrow">STUDIO OPERATIONS</p>
+        <h1>Work flows<br><span>from here.</span></h1>
+        <p class="auth-copy">A secure workspace for products, content, customers, and approvals.</p>
+        <div class="auth-note"><span class="signal-dot"></span><span>Employee access only</span></div>
+      </div>
+      <form class="auth-form" id="staff-login-form">
+        <p class="eyebrow">EMPLOYEE ACCESS</p>
+        <h2 id="staff-auth-title">Sign in</h2>
+        <label id="staff-identity-field">Employee ID or email<input name="login" autocomplete="username" required></label>
+        <label id="staff-password-field">Password<input name="password" type="password" autocomplete="current-password" required></label>
+        <label id="staff-2fa-field" hidden>Authenticator code<input name="code" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6"></label>
+        <button class="button button-primary" type="submit" id="staff-login-submit">Sign in <span aria-hidden="true">→</span></button>
+        <button class="text-button" type="button" id="staff-forgot">Forgot password?</button>
+        <p class="form-error" id="staff-auth-error" role="alert"></p>
+      </form>
+      <form class="auth-form" id="staff-reset-form" hidden>
+        <p class="eyebrow">ACCOUNT RECOVERY</p>
+        <h2>Reset password</h2>
+        <label>Reset code<input name="token" required></label>
+        <label>New password<input name="password" type="password" minlength="12" autocomplete="new-password" required></label>
+        <button class="button button-primary" type="submit">Set new password</button>
+        <p class="form-error" id="staff-reset-error" role="alert"></p>
+      </form>
+      <form class="auth-form" id="staff-invite-form" hidden>
+        <p class="eyebrow">EMPLOYEE INVITATION</p>
+        <h2>Activate account</h2>
+        <input type="hidden" name="token">
+        <label>New password<input name="password" type="password" minlength="12" autocomplete="new-password" required></label>
+        <label>Confirm password<input name="confirmPassword" type="password" minlength="12" autocomplete="new-password" required></label>
+        <p class="form-hint">Use at least 12 characters with uppercase, lowercase, a number, and a symbol.</p>
+        <button class="button button-primary" type="submit">Activate account</button>
+        <p class="form-error" id="staff-invite-error" role="alert"></p>
+      </form>
+    </div>
+    <p class="auth-footnote"><a href="index.html">← Back to the public website</a><span>Protected employee workspace</span></p>
+  </section>
+
+  <div class="app-shell" id="staff-app" hidden>
+    <aside class="app-sidebar" id="staff-sidebar">
+      <a class="sidebar-brand" href="index.html"><span class="brand-mark">KV</span><span>KANI VISION<small>OPERATIONS</small></span></a>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav class="side-nav" id="staff-nav" aria-label="Staff workspace">
+        <button data-view="overview" class="side-link active"><span>◫</span> Overview</button>
+        <button data-view="products" data-permission="product.view" class="side-link"><span>▤</span> Products</button>
+        <button data-view="categories" data-permission="category.view" class="side-link"><span>▥</span> Categories</button>
+        <button data-view="brands" data-permission="brand.manage" class="side-link"><span>▦</span> Brands</button>
+        <button data-view="inventory" data-permission="product.view" class="side-link"><span>▦</span> Inventory</button>
+        <button data-view="roles" data-permission="employee.role.manage" class="side-link"><span>♧</span> Roles &amp; access</button>
+        <button data-view="approvals" data-permission="approval.view" class="side-link"><span>◇</span> Approvals <i id="approval-count"></i></button>
+        <button data-view="customers" data-permission="customer.view" class="side-link"><span>◎</span> Customers</button>
+        <button data-view="enquiries" data-permission="order.view" class="side-link"><span>↗</span> Enquiries</button>
+        <button data-view="orders" data-permission="order.view" class="side-link"><span>▣</span> Orders</button>
+        <button data-view="content" data-permission="content.edit" class="side-link"><span>▧</span> Website content</button>
+        <button data-view="employees" data-permission="employee.view" class="side-link"><span>♧</span> Employees</button>
+        <button data-view="sessions" data-permission="employee.session.manage" class="side-link"><span>◷</span> Sessions</button>
+        <button data-view="analytics" data-permission="analytics.view" class="side-link"><span>⌁</span> Analytics</button>
+        <button data-view="reports" data-permission="reports.view" class="side-link"><span>▤</span> Reports</button>
+        <button data-view="backups" data-permission="backup.manage" class="side-link"><span>◌</span> Backups</button>
+        <button data-view="audit" data-permission="audit.view" class="side-link"><span>≡</span> Audit log</button>
+        <button data-view="settings" data-permission="settings.manage" class="side-link"><span>⚙</span> Settings</button>
+      </nav>
+      <div class="sidebar-bottom"><a href="index.html">↗ View public website</a><span>SECURE STAFF AREA</span></div>
+    </aside>
+
+    <div class="workspace">
+      <header class="workspace-header">
+        <button class="icon-button mobile-nav-toggle" id="sidebar-toggle" aria-label="Open navigation">☰</button>
+        <div><span class="header-kicker">KANI VISION STUDIO</span><strong id="workspace-section-label">Overview</strong></div>
+        <div class="header-actions"><button class="icon-button notification-button" id="staff-notifications" aria-label="Notifications">♧<i id="notification-count"></i></button><div class="account-menu"><span class="account-avatar" id="employee-avatar">KV</span><span><strong id="employee-name">Staff</strong><small id="employee-role">Role</small></span><button class="text-button" id="staff-logout">Log out</button></div></div>
+      </header>
+      <main class="workspace-main">
+        <section class="workspace-heading"><div><p class="eyebrow" id="view-eyebrow">STUDIO OVERVIEW</p><h1 id="view-title">Overview</h1><p id="view-description">A current view of the work your role can access.</p></div><div id="view-actions"></div></section>
+        <section id="view-body" aria-live="polite"></section>
+      </main>
+    </div>
+  </div>
+  <dialog class="portal-dialog" id="staff-dialog"><form method="dialog" class="dialog-form" id="staff-dialog-form"><div class="dialog-heading"><div><p class="eyebrow" id="dialog-eyebrow">STUDIO</p><h2 id="dialog-title">Details</h2></div><button class="icon-button" value="cancel" aria-label="Close dialog">×</button></div><div class="dialog-content" id="dialog-content"></div><div class="dialog-actions" id="dialog-actions"></div></form></dialog>
+  <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

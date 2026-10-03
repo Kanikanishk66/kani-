@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Customer Studio | Kani Vision Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="css/portal.css?v=4">
+  <link rel="stylesheet" href="css/experience.css">
+  <link rel="stylesheet" href="css/depth-effects.css">
+  <script type="module" src="js/depth-effects.js"></script>
+  <script type="module" src="js/customer.js?v=4"></script>
+</head>
+<body class="customer-page">
+  <header class="shop-header">
+    <a class="sidebar-brand" href="index.html"><span class="brand-mark">KV</span><span>KANI VISION<small>DESIGN. MODEL. VISUALIZE.</small></span></a>
+    <button class="shop-menu-toggle" id="shop-menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="customer-navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="shop-nav" id="customer-navigation" aria-label="Main navigation">
+      <button data-shop-view="catalog" class="active">Work</button>
+      <button data-shop-view="about-services" data-scroll-target="studio-services">Services</button>
+      <button data-shop-view="about-process" data-scroll-target="studio-process">Process</button>
+      <button data-shop-view="about">About</button>
+      <a class="shop-nav-contact" href="mailto:kanikanishk66@gmail.com">Contact</a>
+      <button data-shop-view="wishlist">Wishlist <span id="wishlist-count"></span></button>
+      <button data-shop-view="orders">Orders</button>
+      <button data-shop-view="profile">Profile</button>
+      <a class="shop-studio-link" href="viewer-3d.html">✦ 3D Studio <span aria-hidden="true">↗</span></a>
+    </nav>
+    <div class="shop-auth-actions" id="customer-auth-actions"><button class="button button-quiet" id="customer-open-login">Sign in</button><button class="button button-primary" id="customer-open-register">Create account <span aria-hidden="true">→</span></button></div>
+    <div class="customer-account" id="customer-account" hidden><span id="customer-name">Customer</span><button class="text-button" id="customer-logout">Sign out</button></div>
+  </header>
+  <main class="shop-main">
+    <section class="shop-intro" id="shop-intro"><div><p class="eyebrow">KANI VISION / OBJECTS & SERVICES</p><h1>Designed to<br><span>make an impression.</span></h1><p>Explore selected studio work, product editions, and visual services.</p></div><div class="shop-search"><label for="catalog-search">Search products</label><div><input id="catalog-search" type="search" placeholder="Name, collection, or keyword"><button class="button button-primary" id="catalog-search-button" aria-label="Search">⌕</button></div></div></section>
+    <section class="catalog-toolbar" id="catalog-toolbar"><div class="catalog-categories" id="catalog-categories"></div><div class="catalog-controls"><label>BRAND<select id="brand-filter"><option value="">All brands</option></select></label><label>SORT BY<select id="product-sort"><option value="featured">Featured</option><option value="newest">Newest</option><option value="price_asc">Price: low to high</option><option value="price_desc">Price: high to low</option><option value="name">Name</option></select></label><label class="price-filter">PRICE RANGE <span><input id="min-price" type="number" min="0" placeholder="Min"><i>to</i><input id="max-price" type="number" min="0" placeholder="Max"></span></label><button class="button button-quiet" id="apply-filters">Apply filters</button></div></section>
+    <section class="catalog-view" id="catalog-view"><div class="section-heading"><div><p class="eyebrow">THE COLLECTION</p><h2 id="shop-view-title">Selected products</h2></div><span id="catalog-result-count"></span></div><div class="product-grid" id="product-grid"></div><div class="catalog-more"><button class="button button-quiet" id="load-more-products" hidden>Load more</button></div><div class="empty-state" id="catalog-empty" hidden><span class="empty-glyph">∅</span><h3>Nothing in the collection yet</h3><p>Published products will appear here as the studio adds them.</p></div></section>
+    <section class="about-view" id="about-view" hidden aria-labelledby="about-title"></section>
+  </main>
+  <section class="auth-screen customer-auth-screen" id="customer-auth-modal" hidden><div class="auth-layout customer-auth-layout"><div class="auth-intro"><button class="text-button auth-close" id="customer-close-auth">← Back to collection</button><p class="eyebrow">CUSTOMER ACCESS</p><h1 id="customer-auth-heading">Your studio<br><span>account.</span></h1><p class="auth-copy">Keep your enquiries, saved products, and orders together.</p></div><div class="auth-form-stack"><form class="auth-form" id="customer-login-form"><p class="eyebrow">WELCOME BACK</p><h2>Sign in</h2><label>Email address<input name="email" type="email" autocomplete="username" required></label><label>Password<input name="password" type="password" autocomplete="current-password" required></label><button class="button button-primary" type="submit">Sign in <span aria-hidden="true">→</span></button><button class="text-button" type="button" id="customer-forgot">Forgot password?</button><p class="form-error" id="customer-login-error" role="alert"></p></form><form class="auth-form" id="customer-register-form" hidden><p class="eyebrow">NEW HERE</p><h2>Create account</h2><label>Full name<input name="name" autocomplete="name" required></label><label>Email address<input name="email" type="email" autocomplete="email" required></label><label>Phone <span class="field-optional">OPTIONAL</span><input name="phone" type="tel" autocomplete="tel"></label><label>Password<input name="password" type="password" autocomplete="new-password" minlength="12" required></label><p class="form-hint">Use at least 12 characters, including uppercase, lowercase, a number, and a symbol.</p><button class="button button-primary" type="submit">Create account <span aria-hidden="true">→</span></button><p class="form-error" id="customer-register-error" role="alert"></p></form><form class="auth-form" id="customer-reset-form" hidden><p class="eyebrow">ACCOUNT RECOVERY</p><h2>Reset password</h2><label>Reset code<input name="token" required></label><label>New password<input name="password" type="password" minlength="12" required></label><button class="button button-primary" type="submit">Set new password</button><p class="form-error" id="customer-reset-error" role="alert"></p></form></div></div></section>
+  <dialog class="portal-dialog" id="customer-dialog"><form method="dialog" class="dialog-form" id="customer-dialog-form"><div class="dialog-heading"><div><p class="eyebrow" id="customer-dialog-eyebrow">PRODUCT</p><h2 id="customer-dialog-title">Product details</h2></div><button class="icon-button" value="cancel" aria-label="Close dialog">×</button></div><div class="dialog-content" id="customer-dialog-content"></div><div class="dialog-actions" id="customer-dialog-actions"></div></form></dialog>
+  <div class="toast-region" id="customer-toast" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

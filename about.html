@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Kani Vision Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #070a0f;
+      --bg2: #0a0d14;
+      --card: rgba(14,18,28,0.75);
+      --border: rgba(255,255,255,0.07);
+      --text: #f1f5f9;
+      --muted: #64748b;
+      --soft: #94a3b8;
+      --violet: #8b5cf6;
+      --cyan: #06b6d4;
+      --font: 'Space Grotesk', sans-serif;
+      --body: 'Inter', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--body); background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px; height: 72px;
+      background: rgba(7,10,15,0.85); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-family: var(--font); font-weight: 800; font-size: 16px; color: var(--text); text-decoration: none; }
+    .nav-logo span { color: var(--violet); }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { font-family: var(--font); font-size: 13px; font-weight: 500; color: var(--soft); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--violet); }
+    .nav-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font); font-size: 13px; font-weight: 600;
+      color: var(--violet); border: 1px solid rgba(139,92,246,0.35);
+      background: rgba(139,92,246,0.08); border-radius: 100px;
+      padding: 8px 20px; text-decoration: none; transition: all 0.25s;
+    }
+    .nav-back:hover { background: rgba(139,92,246,0.18); }
+
+    /* HERO */
+    .hero {
+      min-height: 80vh; display: flex; align-items: center;
+      padding: 140px 48px 80px; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 55% 55% at 70% 50%, rgba(139,92,246,0.1) 0%, transparent 65%);
+    }
+    .hero-inner { max-width: 1280px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    @media(max-width:900px) { .hero-inner { grid-template-columns: 1fr; gap: 48px; } }
+    .hero-label {
+      font-family: var(--font); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.2em; color: var(--violet); margin-bottom: 20px;
+    }
+    .hero-title {
+      font-family: var(--font); font-weight: 900;
+      font-size: clamp(44px, 5.5vw, 80px); line-height: 1.0;
+      letter-spacing: -0.03em; margin-bottom: 28px;
+    }
+    .hero-title span {
+      background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero-tagline {
+      font-family: var(--font); font-size: 13px; font-weight: 600; letter-spacing: 0.12em;
+      color: var(--cyan); border: 1px solid rgba(6,182,212,0.3);
+      background: rgba(6,182,212,0.07); border-radius: 100px; display: inline-block;
+      padding: 6px 18px; margin-bottom: 28px;
+    }
+    .hero-desc { font-size: 17px; line-height: 1.8; color: var(--soft); max-width: 540px; }
+
+    /* STUDIO VISUAL */
+    .studio-visual {
+      width: 100%; aspect-ratio: 1/1; max-width: 440px;
+      border-radius: 28px; overflow: hidden;
+      border: 1px solid rgba(139,92,246,0.2);
+      box-shadow: 0 40px 100px rgba(139,92,246,0.15);
+      position: relative; background: var(--bg2);
+    }
+
+    section { padding: 100px 48px; }
+    .container { max-width: 1280px; margin: 0 auto; }
+    .section-label { font-family: var(--font); font-size: 11px; font-weight: 700; letter-spacing: 0.2em; color: var(--violet); margin-bottom: 16px; }
+    .section-title { font-family: var(--font); font-weight: 800; font-size: clamp(34px, 4.5vw, 62px); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 20px; }
+    .section-sub { font-size: 17px; color: var(--soft); line-height: 1.7; max-width: 640px; margin-bottom: 60px; }
+
+    /* FOCUS AREAS */
+    .focus-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    @media(max-width:700px) { .focus-grid { grid-template-columns: 1fr; } }
+    .focus-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 22px; padding: 36px;
+      position: relative; overflow: hidden;
+      transition: all 0.35s;
+    }
+    .focus-card:hover { border-color: rgba(139,92,246,0.3); transform: translateY(-6px); box-shadow: 0 24px 64px rgba(139,92,246,0.1); }
+    .fc-num { font-family: var(--font); font-weight: 900; font-size: 60px; line-height: 1; color: rgba(139,92,246,0.08); position: absolute; top: 20px; right: 24px; }
+    .fc-icon { font-size: 32px; margin-bottom: 16px; }
+    .fc-title { font-family: var(--font); font-weight: 700; font-size: 20px; margin-bottom: 10px; }
+    .fc-desc { font-size: 14px; color: var(--soft); line-height: 1.7; }
+
+    /* VALUES */
+    .values-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    @media(max-width:800px) { .values-row { grid-template-columns: 1fr 1fr; } }
+    @media(max-width:500px) { .values-row { grid-template-columns: 1fr; } }
+    .value-card {
+      border: 1px solid var(--border); border-radius: 18px; padding: 28px;
+      text-align: center; transition: all 0.3s;
+    }
+    .value-card:hover { border-color: rgba(139,92,246,0.3); }
+    .v-icon { font-size: 32px; margin-bottom: 14px; }
+    .v-title { font-family: var(--font); font-weight: 700; font-size: 16px; margin-bottom: 8px; }
+    .v-desc { font-size: 13px; color: var(--soft); line-height: 1.6; }
+
+    /* TOOLS */
+    .tools-grid { display: flex; flex-wrap: wrap; gap: 14px; }
+    .tool-chip {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 12px 22px;
+      font-family: var(--font); font-size: 14px; font-weight: 600;
+      transition: all 0.25s; cursor: default;
+    }
+    .tool-chip:hover { border-color: rgba(139,92,246,0.4); color: var(--violet); transform: translateY(-2px); }
+
+    /* BIG QUOTE */
+    .quote-section {
+      text-align: center; padding: 100px 48px;
+      background: var(--bg2);
+      position: relative; overflow: hidden;
+    }
+    .quote-mark { font-family: var(--font); font-size: 160px; line-height: 0.7; color: rgba(139,92,246,0.08); position: absolute; top: 40px; left: 60px; }
+    .big-quote {
+      font-family: var(--font); font-weight: 700;
+      font-size: clamp(22px, 3vw, 42px); line-height: 1.35;
+      max-width: 860px; margin: 0 auto; position: relative; z-index: 1;
+      color: var(--text);
+    }
+    .big-quote em { font-style: normal; color: var(--violet); }
+
+    /* CTA */
+    .cta-section {
+      text-align: center; padding: 120px 48px;
+      background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(139,92,246,0.1) 0%, transparent 70%);
+    }
+    .cta-title { font-family: var(--font); font-weight: 900; font-size: clamp(40px,5.5vw,80px); letter-spacing: -0.03em; margin-bottom: 24px; }
+    .cta-desc { font-size: 18px; color: var(--soft); max-width: 520px; margin: 0 auto 48px; line-height: 1.7; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--font); font-weight: 700; font-size: 14px;
+      color: #fff; background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+      border: none; border-radius: 100px; padding: 16px 36px;
+      text-decoration: none; transition: all 0.3s;
+    }
+    .btn-primary:hover { opacity: 0.85; transform: translateY(-2px); box-shadow: 0 16px 48px rgba(139,92,246,0.35); }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--font); font-weight: 600; font-size: 14px;
+      color: var(--text); background: transparent;
+      border: 1px solid rgba(255,255,255,0.15); border-radius: 100px;
+      padding: 16px 36px; text-decoration: none; transition: all 0.3s;
+    }
+    .btn-ghost:hover { border-color: var(--violet); color: var(--violet); }
+
+    footer { border-top: 1px solid var(--border); padding: 32px 48px; display: flex; align-items: center; justify-content: space-between; font-family: var(--font); font-size: 12px; color: var(--muted); flex-wrap: wrap; gap: 12px; }
+    .footer-logo { font-weight: 800; font-size: 14px; color: var(--text); }
+    .footer-logo span { color: var(--violet); }
+
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    @media(max-width:768px) { nav, section, footer, .hero, .quote-section, .cta-section { padding-left: 24px; padding-right: 24px; } }
+  </style>
+  <link rel="stylesheet" href="css/studio-theme.css">
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">KANI <span>VISION</span> STUDIO</a>
+  <div class="nav-links">
+    <a href="index.html#work">Work</a>
+    <a href="index.html#services">Services</a>
+    <a href="index.html#contact">Contact</a>
+    <a class="nav-back" href="index.html">← Back to Studio</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-label">ABOUT THE STUDIO</div>
+      <div class="hero-tagline">Design. Model. Visualize.</div>
+      <h1 class="hero-title">KANI<br><span>VISION</span><br>STUDIO</h1>
+      <p class="hero-desc">A creative design space focused on 3D modeling, digital interfaces, graphic design and visual storytelling. The goal is simple: take an idea and turn it into something people can see, understand and experience.</p>
+    </div>
+    <div>
+      <div class="studio-visual">
+        <svg viewBox="0 0 440 440" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+          <defs>
+            <radialGradient id="abGrad" cx="40%" cy="38%">
+              <stop offset="0%" stop-color="rgba(139,92,246,0.5)"/>
+              <stop offset="50%" stop-color="rgba(99,102,241,0.2)"/>
+              <stop offset="100%" stop-color="rgba(6,182,212,0.05)"/>
+            </radialGradient>
+            <filter id="glow"><feGaussianBlur stdDeviation="8" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <rect width="440" height="440" fill="#0a0d14"/>
+          <!-- Background glow -->
+          <circle cx="220" cy="220" r="200" fill="url(#abGrad)"/>
+          <!-- Geometric composition -->
+          <circle cx="220" cy="220" r="130" fill="none" stroke="rgba(139,92,246,0.3)" stroke-width="1"/>
+          <circle cx="220" cy="220" r="90" fill="none" stroke="rgba(6,182,212,0.2)" stroke-width="0.8" stroke-dasharray="6,6"/>
+          <circle cx="220" cy="220" r="50" fill="rgba(139,92,246,0.15)" stroke="rgba(139,92,246,0.5)" stroke-width="1.5"/>
+          <!-- Inner glowing dot -->
+          <circle cx="220" cy="220" r="12" fill="#8b5cf6" filter="url(#glow)" opacity="0.9"/>
+          <!-- Orbital nodes -->
+          <circle cx="220" cy="90" r="5" fill="#8b5cf6" opacity="0.8"/>
+          <circle cx="338" cy="275" r="4" fill="#06b6d4" opacity="0.7"/>
+          <circle cx="102" cy="275" r="4" fill="#6366f1" opacity="0.7"/>
+          <!-- Connecting lines -->
+          <line x1="220" y1="220" x2="220" y2="90" stroke="rgba(139,92,246,0.3)" stroke-width="0.8"/>
+          <line x1="220" y1="220" x2="338" y2="275" stroke="rgba(6,182,212,0.3)" stroke-width="0.8"/>
+          <line x1="220" y1="220" x2="102" y2="275" stroke="rgba(99,102,241,0.3)" stroke-width="0.8"/>
+          <!-- Studio name overlay -->
+          <text x="220" y="215" text-anchor="middle" fill="rgba(255,255,255,0.15)" font-family="Space Grotesk" font-weight="900" font-size="28" letter-spacing="0.05em">KANI</text>
+          <text x="220" y="242" text-anchor="middle" fill="rgba(139,92,246,0.5)" font-family="Space Grotesk" font-weight="900" font-size="14" letter-spacing="0.3em">VISION STUDIO</text>
+          <!-- Corner elements -->
+          <rect x="20" y="20" width="30" height="2" fill="rgba(139,92,246,0.4)"/>
+          <rect x="20" y="20" width="2" height="30" fill="rgba(139,92,246,0.4)"/>
+          <rect x="390" y="20" width="30" height="2" fill="rgba(6,182,212,0.4)" transform="translate(-30,0)"/>
+          <rect x="418" y="20" width="2" height="30" fill="rgba(6,182,212,0.4)"/>
+          <rect x="20" y="408" width="30" height="2" fill="rgba(99,102,241,0.3)"/>
+          <rect x="418" y="408" width="2" height="30" fill="rgba(99,102,241,0.3)" transform="translate(0,-30)"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOCUS AREAS -->
+<section>
+  <div class="container">
+    <div class="section-label reveal">WHAT WE DO</div>
+    <h2 class="section-title reveal">Areas of Creative<br>Focus.</h2>
+    <div class="focus-grid">
+      <div class="focus-card reveal">
+        <div class="fc-num">01</div>
+        <div class="fc-icon">🧊</div>
+        <div class="fc-title">3D & Visual Design</div>
+        <div class="fc-desc">Building realistic 3D models, environments, product visualizations, and interior spaces using Blender, Maya, and Unreal Engine.</div>
+      </div>
+      <div class="focus-card reveal">
+        <div class="fc-num">02</div>
+        <div class="fc-icon">📱</div>
+        <div class="fc-title">UI/UX Design</div>
+        <div class="fc-desc">Designing digital interfaces — mobile apps, web platforms, dashboards — that are intuitive, elegant, and purpose-built for users.</div>
+      </div>
+      <div class="focus-card reveal">
+        <div class="fc-num">03</div>
+        <div class="fc-icon">🎨</div>
+        <div class="fc-title">Graphic & Poster Design</div>
+        <div class="fc-desc">Event posters, brand graphics, social media content, and visual communication that commands attention and communicates clearly.</div>
+      </div>
+      <div class="focus-card reveal">
+        <div class="fc-num">04</div>
+        <div class="fc-icon">🎬</div>
+        <div class="fc-title">Animation & VFX</div>
+        <div class="fc-desc">Motion graphics, 3D animation, visual effects, and compositing — bringing static concepts to life through purposeful motion.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BIG QUOTE -->
+<section class="quote-section">
+  <div class="quote-mark">"</div>
+  <p class="big-quote">"The goal is simple: take an idea and turn it into something people can <em>see, understand</em> and <em>experience</em>."</p>
+</section>
+
+<!-- VALUES -->
+<section>
+  <div class="container">
+    <div class="section-label reveal">WHAT DRIVES THE WORK</div>
+    <h2 class="section-title reveal">Creative Values.</h2>
+    <div class="values-row">
+      <div class="value-card reveal">
+        <div class="v-icon">🎯</div>
+        <div class="v-title">Intentional Design</div>
+        <div class="v-desc">Every element exists for a reason. No filler, no noise — just purposeful creative decisions.</div>
+      </div>
+      <div class="value-card reveal">
+        <div class="v-icon">💎</div>
+        <div class="v-title">Craft & Quality</div>
+        <div class="v-desc">Details matter. The small things — light, spacing, texture — are what make work feel premium.</div>
+      </div>
+      <div class="value-card reveal">
+        <div class="v-icon">🔬</div>
+        <div class="v-title">Curiosity</div>
+        <div class="v-desc">Constantly learning new tools, techniques, and styles. Staying on the edge of what's visually possible.</div>
+      </div>
+      <div class="value-card reveal">
+        <div class="v-icon">🤝</div>
+        <div class="v-title">Collaboration</div>
+        <div class="v-desc">Good work comes from understanding the client's vision deeply, not just executing a brief.</div>
+      </div>
+      <div class="value-card reveal">
+        <div class="v-icon">⚡</div>
+        <div class="v-title">Efficiency</div>
+        <div class="v-desc">Delivering polished work within realistic timelines without cutting corners on the output.</div>
+      </div>
+      <div class="value-card reveal">
+        <div class="v-icon">🌱</div>
+        <div class="v-title">Growth</div>
+        <div class="v-desc">Every project is an opportunity to push further — technically and creatively.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section style="background:var(--bg2);">
+  <div class="container">
+    <div class="section-label reveal">THE TOOLKIT</div>
+    <h2 class="section-title reveal">Tools & Software</h2>
+    <p class="section-sub reveal">A constantly expanding set of creative software — each chosen for what it does best.</p>
+    <div class="tools-grid reveal">
+      <div class="tool-chip">🟠 Blender</div>
+      <div class="tool-chip">🎬 Adobe After Effects</div>
+      <div class="tool-chip">🎞️ Adobe Premiere Pro</div>
+      <div class="tool-chip">🖼️ Adobe Photoshop</div>
+      <div class="tool-chip">🎨 Figma</div>
+      <div class="tool-chip">🎭 Maya</div>
+      <div class="tool-chip">🎮 Unreal Engine</div>
+      <div class="tool-chip">📋 Canva</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="section-label" style="display:inline-block; margin-bottom:20px;">WORK TOGETHER</div>
+    <h2 class="cta-title">Have an<br><span style="background:linear-gradient(135deg,#8b5cf6,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Idea?</span></h2>
+    <p class="cta-desc">Whether it's a 3D project, a UI design, a poster, or something entirely different — let's create it.</p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+      <a class="btn-primary" href="index.html#contact">Start a Project →</a>
+      <a class="btn-ghost" href="index.html#work">View the Work</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">KANI <span>VISION</span> STUDIO</div>
+  <div>About · Design. Model. Visualize.</div>
+  <div>© 2026 All rights reserved.</div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const ro = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => ro.observe(el));
+</script>
+</body>
+</html>

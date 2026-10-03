@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UI/UX Design — Kani Vision Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #070b12;
+      --bg2: #0a0f1a;
+      --card: rgba(12,18,32,0.75);
+      --border: rgba(255,255,255,0.07);
+      --text: #f1f5f9;
+      --muted: #64748b;
+      --soft: #94a3b8;
+      --cyan: #06b6d4;
+      --blue: #3b82f6;
+      --indigo: #6366f1;
+      --font: 'Space Grotesk', sans-serif;
+      --body: 'Inter', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--body); background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px; height: 72px;
+      background: rgba(7,11,18,0.82); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-family: var(--font); font-weight: 800; font-size: 16px; letter-spacing: 0.04em; color: var(--text); text-decoration: none; }
+    .nav-logo span { color: var(--cyan); }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { font-family: var(--font); font-size: 13px; font-weight: 500; color: var(--soft); text-decoration: none; letter-spacing: 0.05em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--cyan); }
+    .nav-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font); font-size: 13px; font-weight: 600;
+      color: var(--cyan); border: 1px solid rgba(6,182,212,0.35);
+      background: rgba(6,182,212,0.08); border-radius: 100px;
+      padding: 8px 20px; text-decoration: none; transition: all 0.25s;
+    }
+    .nav-back:hover { background: rgba(6,182,212,0.18); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      position: relative; overflow: hidden; padding: 120px 48px 80px;
+      background: radial-gradient(ellipse 80% 60% at 100% 50%, rgba(6,182,212,0.08) 0%, transparent 60%);
+    }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1280px; margin: 0 auto; width: 100%; }
+    @media(max-width:900px) { .hero-grid { grid-template-columns: 1fr; gap: 48px; } }
+    .hero-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.15em; color: var(--cyan);
+      border: 1px solid rgba(6,182,212,0.4); background: rgba(6,182,212,0.08);
+      border-radius: 100px; padding: 6px 18px; margin-bottom: 28px;
+    }
+    .hero-title {
+      font-family: var(--font); font-weight: 900;
+      font-size: clamp(44px, 6vw, 88px); line-height: 0.95;
+      letter-spacing: -0.03em; margin-bottom: 28px;
+    }
+    .hero-title .grad {
+      background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #6366f1 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero-desc { font-size: 17px; line-height: 1.75; color: var(--soft); margin-bottom: 40px; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--font); font-weight: 700; font-size: 14px;
+      color: #fff; background: linear-gradient(135deg, #06b6d4, #3b82f6);
+      border: none; border-radius: 100px; padding: 14px 32px;
+      text-decoration: none; transition: all 0.3s;
+    }
+    .btn-primary:hover { opacity: 0.85; transform: translateY(-2px); box-shadow: 0 16px 48px rgba(6,182,212,0.3); }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--font); font-weight: 600; font-size: 14px;
+      color: var(--text); background: transparent;
+      border: 1px solid rgba(255,255,255,0.15); border-radius: 100px;
+      padding: 14px 32px; text-decoration: none; transition: all 0.3s;
+    }
+    .btn-ghost:hover { border-color: var(--cyan); color: var(--cyan); }
+    .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
+
+    /* PHONE MOCKUP */
+    .phone-mockup {
+      width: 240px; height: 480px;
+      border: 2px solid rgba(6,182,212,0.35);
+      border-radius: 40px; background: #0c1220;
+      box-shadow: 0 40px 100px rgba(6,182,212,0.18), inset 0 0 40px rgba(6,182,212,0.05);
+      position: relative; overflow: hidden;
+      margin: 0 auto;
+    }
+    .phone-notch {
+      width: 80px; height: 24px;
+      background: #070b12; border-radius: 0 0 16px 16px;
+      margin: 0 auto;
+    }
+    .phone-screen { padding: 16px; }
+    .phone-bar { height: 8px; border-radius: 4px; margin-bottom: 10px; }
+    .phone-row { display: flex; gap: 8px; margin-bottom: 10px; }
+    .phone-card-sm { flex: 1; height: 60px; border-radius: 10px; background: rgba(6,182,212,0.12); border: 1px solid rgba(6,182,212,0.2); }
+    .phone-nav { display: flex; justify-content: space-around; padding: 12px 0; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 20px; }
+    .phone-nav-dot { width: 20px; height: 4px; border-radius: 2px; }
+
+    /* SECTIONS */
+    section { padding: 100px 48px; }
+    .container { max-width: 1280px; margin: 0 auto; }
+    .section-label {
+      font-family: var(--font); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.2em; color: var(--cyan); margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: var(--font); font-weight: 800;
+      font-size: clamp(34px, 4.5vw, 62px); line-height: 1.05;
+      letter-spacing: -0.02em; margin-bottom: 20px;
+    }
+    .section-sub { font-size: 17px; color: var(--soft); line-height: 1.7; max-width: 640px; margin-bottom: 60px; }
+
+    /* PROCESS FLOW */
+    .process-flow {
+      display: flex; gap: 0; align-items: center; flex-wrap: wrap;
+      justify-content: center; margin-bottom: 60px;
+    }
+    .process-step {
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; padding: 24px 20px;
+      min-width: 140px;
+    }
+    .step-num {
+      width: 52px; height: 52px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font); font-weight: 800; font-size: 16px;
+      background: rgba(6,182,212,0.12); border: 1.5px solid rgba(6,182,212,0.4);
+      color: var(--cyan); margin-bottom: 12px;
+      transition: all 0.3s;
+    }
+    .process-step:hover .step-num { background: var(--cyan); color: #000; transform: scale(1.1); }
+    .step-label { font-family: var(--font); font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+    .step-sub { font-size: 12px; color: var(--muted); }
+    .step-arrow { font-size: 22px; color: rgba(6,182,212,0.3); padding: 0 4px; align-self: center; }
+
+    /* SERVICE CARDS */
+    .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    @media(max-width:700px) { .services-grid { grid-template-columns: 1fr; } }
+    .service-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 22px; padding: 36px;
+      transition: all 0.35s; position: relative; overflow: hidden;
+      cursor: default;
+    }
+    .service-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, #06b6d4, #3b82f6, #6366f1);
+      opacity: 0; transition: opacity 0.35s;
+    }
+    .service-card:hover { border-color: rgba(6,182,212,0.3); transform: translateY(-6px); box-shadow: 0 24px 64px rgba(6,182,212,0.1); }
+    .service-card:hover::after { opacity: 1; }
+    .sc-icon { font-size: 36px; margin-bottom: 16px; }
+    .sc-title { font-family: var(--font); font-weight: 700; font-size: 20px; margin-bottom: 10px; }
+    .sc-desc { font-size: 14px; color: var(--soft); line-height: 1.7; }
+
+    /* TOOLS */
+    .tools-row { display: flex; flex-wrap: wrap; gap: 14px; }
+    .tool-badge {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 12px 20px;
+      font-family: var(--font); font-size: 14px; font-weight: 600;
+      transition: all 0.25s;
+    }
+    .tool-badge:hover { border-color: rgba(6,182,212,0.4); color: var(--cyan); transform: translateY(-2px); }
+
+    /* DELIVERABLES */
+    .deliv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    @media(max-width:700px) { .deliv-grid { grid-template-columns: 1fr 1fr; } }
+    .deliv-item {
+      border: 1px solid var(--border); border-radius: 14px; padding: 20px;
+      font-family: var(--font); font-size: 14px; font-weight: 600;
+      display: flex; align-items: center; gap: 12px; color: var(--soft);
+      transition: all 0.25s;
+    }
+    .deliv-item:hover { border-color: rgba(6,182,212,0.4); color: var(--cyan); }
+    .deliv-icon { font-size: 20px; }
+
+    /* CTA */
+    .cta-section {
+      text-align: center; padding: 120px 48px;
+      background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(6,182,212,0.1) 0%, transparent 70%);
+    }
+    .cta-title { font-family: var(--font); font-weight: 900; font-size: clamp(40px,5.5vw,80px); letter-spacing: -0.03em; margin-bottom: 24px; }
+    .cta-desc { font-size: 18px; color: var(--soft); max-width: 520px; margin: 0 auto 48px; line-height: 1.7; }
+
+    footer {
+      border-top: 1px solid var(--border); padding: 32px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      font-family: var(--font); font-size: 12px; color: var(--muted); flex-wrap: wrap; gap: 12px;
+    }
+    .footer-logo { font-weight: 800; font-size: 14px; color: var(--text); }
+    .footer-logo span { color: var(--cyan); }
+
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    @media(max-width:768px) {
+      nav, section, footer { padding-left: 24px; padding-right: 24px; }
+      .hero { padding: 100px 24px 60px; }
+    }
+  </style>
+  <link rel="stylesheet" href="css/studio-theme.css">
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">KANI <span>VISION</span> STUDIO</a>
+  <div class="nav-links">
+    <a href="index.html#work">Work</a>
+    <a href="index.html#services">Services</a>
+    <a href="index.html#contact">Contact</a>
+    <a class="nav-back" href="index.html">← Back to Studio</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-pill">SERVICE 02 — UI/UX DESIGN</div>
+      <h1 class="hero-title">DESIGNING<br><span class="grad">DIGITAL</span><br>EXPERIENCES.</h1>
+      <p class="hero-desc">Simple, intuitive and visually engaging interfaces — designed around the people who use them. From first sketch to pixel-perfect delivery.</p>
+      <div class="hero-cta">
+        <a class="btn-primary" href="index.html#contact">Start a UI/UX Project →</a>
+        <a class="btn-ghost" href="index.html#work">View Case Studies</a>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; align-items:center; gap:24px; position:relative;">
+      <!-- Three device screens stacked -->
+      <div style="display:flex; gap:16px; align-items:flex-start;">
+        <!-- Phone -->
+        <div class="phone-mockup" style="width:160px; height:320px; border-radius:28px;">
+          <div class="phone-notch" style="width:50px; height:16px; border-radius:0 0 10px 10px;"></div>
+          <div class="phone-screen">
+            <div class="phone-bar" style="width:80%; background:rgba(6,182,212,0.5);"></div>
+            <div class="phone-bar" style="width:60%; background:rgba(59,130,246,0.3);"></div>
+            <div class="phone-row">
+              <div class="phone-card-sm" style="height:50px;"></div>
+              <div class="phone-card-sm" style="height:50px; background:rgba(59,130,246,0.12);"></div>
+            </div>
+            <div class="phone-bar" style="width:90%; background:rgba(99,102,241,0.2); height:12px; border-radius:6px;"></div>
+            <div style="margin-top:10px; height:80px; border-radius:10px; background:linear-gradient(135deg,rgba(6,182,212,0.15),rgba(59,130,246,0.08)); border:1px solid rgba(6,182,212,0.2);"></div>
+            <div class="phone-nav">
+              <div class="phone-nav-dot" style="background:var(--cyan);"></div>
+              <div class="phone-nav-dot" style="background:rgba(255,255,255,0.2);"></div>
+              <div class="phone-nav-dot" style="background:rgba(255,255,255,0.2);"></div>
+              <div class="phone-nav-dot" style="background:rgba(255,255,255,0.2);"></div>
+            </div>
+          </div>
+        </div>
+        <!-- Tablet/wide card -->
+        <div style="width:220px; height:160px; border:1.5px solid rgba(59,130,246,0.35); border-radius:20px; background:#0c1220; padding:16px; box-shadow:0 20px 60px rgba(59,130,246,0.12);">
+          <div style="height:8px; width:70%; border-radius:4px; background:rgba(59,130,246,0.5); margin-bottom:12px;"></div>
+          <div style="height:6px; width:50%; border-radius:3px; background:rgba(99,102,241,0.3); margin-bottom:16px;"></div>
+          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px;">
+            <div style="height:50px; border-radius:8px; background:rgba(6,182,212,0.12); border:1px solid rgba(6,182,212,0.2);"></div>
+            <div style="height:50px; border-radius:8px; background:rgba(59,130,246,0.12); border:1px solid rgba(59,130,246,0.2);"></div>
+            <div style="height:50px; border-radius:8px; background:rgba(99,102,241,0.12); border:1px solid rgba(99,102,241,0.2);"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Floating label -->
+      <div style="background:rgba(6,182,212,0.1); border:1px solid rgba(6,182,212,0.3); border-radius:12px; padding:10px 20px; font-family:var(--font); font-size:12px; font-weight:600; color:var(--cyan); letter-spacing:0.1em;">
+        ✦ PIXEL-PERFECT UI/UX DESIGN
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section style="background:var(--bg2);">
+  <div class="container">
+    <div class="section-label reveal">THE DESIGN PROCESS</div>
+    <h2 class="section-title reveal">From Research<br>to Final Experience.</h2>
+    <div class="process-flow reveal">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <div class="step-label">Research</div>
+        <div class="step-sub">User needs &amp; goals</div>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <div class="step-label">Wireframes</div>
+        <div class="step-sub">Layout &amp; structure</div>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <div class="step-label">UI Design</div>
+        <div class="step-sub">Visual system</div>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <div class="step-label">Prototype</div>
+        <div class="step-sub">Interactive flow</div>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="process-step">
+        <div class="step-num">05</div>
+        <div class="step-label">Deliver</div>
+        <div class="step-sub">Handoff-ready files</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section>
+  <div class="container">
+    <div class="section-label reveal">WHAT WE DESIGN</div>
+    <h2 class="section-title reveal">Every Type of<br>Digital Interface.</h2>
+    <p class="section-sub reveal">Web apps, mobile apps, dashboards, landing pages — we design interfaces that are both beautiful and functional.</p>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="sc-icon">📱</div>
+        <div class="sc-title">Mobile App Design</div>
+        <div class="sc-desc">iOS &amp; Android app interfaces with clean navigation, intuitive UX flows, and engaging visual systems. Prototype-ready.</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="sc-icon">🖥️</div>
+        <div class="sc-title">Web &amp; Dashboard</div>
+        <div class="sc-desc">Complex web applications, admin dashboards, and data-rich interfaces designed for clarity and usability at scale.</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="sc-icon">🎯</div>
+        <div class="sc-title">Landing Pages</div>
+        <div class="sc-desc">High-converting landing pages with strong visual hierarchy, compelling CTAs, and premium aesthetic presentation.</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="sc-icon">🧭</div>
+        <div class="sc-title">UX Research &amp; Flows</div>
+        <div class="sc-desc">User journey mapping, information architecture, wireframing, and interaction design — grounded in how people actually think.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERABLES -->
+<section style="background:var(--bg2);">
+  <div class="container">
+    <div class="section-label reveal">WHAT YOU GET</div>
+    <h2 class="section-title reveal">Deliverables</h2>
+    <div class="deliv-grid reveal">
+      <div class="deliv-item"><span class="deliv-icon">📐</span> Wireframes</div>
+      <div class="deliv-item"><span class="deliv-icon">🎨</span> UI Screens (Figma)</div>
+      <div class="deliv-item"><span class="deliv-icon">🖱️</span> Interactive Prototype</div>
+      <div class="deliv-item"><span class="deliv-icon">📦</span> Design System</div>
+      <div class="deliv-item"><span class="deliv-icon">📋</span> Style Guide</div>
+      <div class="deliv-item"><span class="deliv-icon">🔗</span> Dev Handoff</div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section>
+  <div class="container">
+    <div class="section-label reveal">SOFTWARE</div>
+    <h2 class="section-title reveal">Design Tools</h2>
+    <div class="tools-row reveal">
+      <div class="tool-badge">🎨 Figma</div>
+      <div class="tool-badge">🖼️ Adobe XD</div>
+      <div class="tool-badge">✏️ Adobe Photoshop</div>
+      <div class="tool-badge">📐 Canva</div>
+      <div class="tool-badge">🔲 Framer</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="section-label" style="display:inline-block; margin-bottom:20px;">START A PROJECT</div>
+    <h2 class="cta-title">Ready to Design<br><span style="background:linear-gradient(135deg,#06b6d4,#6366f1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Something?</span></h2>
+    <p class="cta-desc">Tell us what you need and we'll create a digital experience that's both beautiful and purposeful.</p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+      <a class="btn-primary" href="index.html#contact">Start a UI/UX Project →</a>
+      <a class="btn-ghost" href="index.html#work">Browse Portfolio</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">KANI <span>VISION</span> STUDIO</div>
+  <div>UI/UX Design · Design. Model. Visualize.</div>
+  <div>© 2026 All rights reserved.</div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const ro = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => ro.observe(el));
+</script>
+</body>
+</html>
